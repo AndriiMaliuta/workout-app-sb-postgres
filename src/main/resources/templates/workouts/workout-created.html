@@ -11,7 +11,53 @@
 
 <body>
 
-<div th:replace="/common/navbar :: navbar"/>
+<!--<div th:replace="/common/navbar :: navbar"/>-->
+
+<div th:fragment="navbar">
+    <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
+
+        <a class="navbar-brand" href="/home">Home</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/workouts/view">My Workouts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/workout/new">Create Workout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/workout/find">Find Workout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/workouts/week">Week view</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/workouts/month">Month view</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Register</a>
+                </li>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button style="float: right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+            </ul>
+        </div>
+        <div style="text-align: right">
+            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                <li class="active">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 <div class="main_padding_margin" style="text-align: center">
     <h3>Workout successfully created!</h3>
