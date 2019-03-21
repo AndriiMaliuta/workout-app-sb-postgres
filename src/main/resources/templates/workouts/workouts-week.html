@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Week view</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+
+<div th:replace="/common/navbar :: navbar"></div>
+
+<div class="main_padding_margin">
+    <h3>Workouts week view</h3>
+    <p th:text="${daysMap.get('convertedSundayDate')} + ' -- ' + ${daysMap.get('convertedSaturdayDate')}"></p>
+    <br>
+    <table class="table table-striped table-bordered month-table">
+        <tr style="background-color: #5F6B91;color: yellow" >
+            <th th:text="${daysMap.get('convertedSundayDate')}"></th>
+            <th th:text="${daysMap.get('convertedMondayDate')}"></th>
+            <th th:text="${daysMap.get('convertedTuesdayDate')}"></th>
+            <th th:text="${daysMap.get('convertedWednesdayDate')}"></th>
+            <th th:text="${daysMap.get('convertedThursdayDate')}"></th>
+            <th th:text="${daysMap.get('convertedFridayDate')}"></th>
+            <th th:text="${daysMap.get('convertedSaturdayDate')}"></th>
+        </tr>
+        <tr style="background-color: #5F6B91;color:white">
+            <th>Su
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+            <th>Mo
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+            <th>Tu
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+            <th>We
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+            <th>Th
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+            <th>Fr
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+            <th>Sa
+                <a href="/workout/new">
+                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                </a>
+            </th>
+        </tr>
+        <tr>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSundayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedMondayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedTuesdayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedWednesdayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedThursdayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedFridayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+            <td class="month-table-td">
+                <th:block th:each="workout : ${userWorkouts}">
+                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSaturdayDate'))} ">
+
+                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                        </a>
+                    </p>
+                </th:block>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

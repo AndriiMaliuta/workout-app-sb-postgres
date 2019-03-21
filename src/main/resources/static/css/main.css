@@ -1,0 +1,13 @@
+.main_padding_margin {
+    margin: 15px;
+    padding: 10px;
+}
+
+.month-table-td th td {
+    border: black;
+    border-collapse: collapse;
+}
+
+.custom-bh-text {
+    color: blue;
+}
