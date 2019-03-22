@@ -100,4 +100,42 @@ public class ExerciseSelectorService {
 
     }
 
+    public static void addExerciseToList(String exerciseName, String workoutType) {
+
+        List<String> defList = new ArrayList<>();
+        List<String> bicepsExercisesList = new ArrayList<>();
+        List<String> backExercisesList = new ArrayList<>();
+        List<String> pecsExercisesList = new ArrayList<>();
+        List<String> tricepsExercisesList = new ArrayList<>();
+        List<String> deltsExercisesList = new ArrayList<>();
+        List<String> absExercisesList = new ArrayList<>();
+        List<String> trapsExercisesList = new ArrayList<>();
+        List<String> forearmsExercisesList = new ArrayList<>();
+        List<String> quadsExercisesList = new ArrayList<>();
+        List<String> calvesExercisesList = new ArrayList<>();
+
+        if (workoutType.equalsIgnoreCase("PECS")) {
+            pecsExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("TRICEPS")) {
+            tricepsExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("BICEPS")) {
+            bicepsExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("FOREARMS")) {
+            forearmsExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("DELTS")) {
+            deltsExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("BACK")) {
+            backExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("QUADS")) {
+            quadsExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("CALVES")) {
+            calvesExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("ABS")) {
+            absExercisesList.add(exerciseName);
+        } else if (workoutType.equalsIgnoreCase("TRAPS")) {
+            trapsExercisesList.add(exerciseName);
+        }
+
+    }
+
 }
