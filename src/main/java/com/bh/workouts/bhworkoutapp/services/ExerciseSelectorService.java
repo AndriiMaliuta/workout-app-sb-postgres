@@ -81,10 +81,15 @@ public class ExerciseSelectorService {
         } else if (workoutType.equalsIgnoreCase("DELTS")) {
 
             deltsExercisesList.add("Bar Press Sitting");
+            deltsExercisesList.add("Smith Machine Press");
             deltsExercisesList.add("Kettlebell Pull to Chin");
-            deltsExercisesList.add("Dumbbells Press Sitting");
-            deltsExercisesList.add("Kettlebell Press");
             deltsExercisesList.add("Barbell Pull to Chin");
+            deltsExercisesList.add("Dumbbells Press Sitting");
+            deltsExercisesList.add("Dumbbells Press Standing");
+            deltsExercisesList.add("Kettlebell Press");
+            deltsExercisesList.add("Dumbbells Raises to Sides");
+            deltsExercisesList.add("Dumbbells Raises to Sides");
+            deltsExercisesList.add("Dumbbells Raises to Sides");
 
             return deltsExercisesList;
         }
