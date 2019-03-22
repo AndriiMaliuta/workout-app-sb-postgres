@@ -64,7 +64,6 @@
     <table class="table table-striped">
 
         <thead class="table-primary">
-        <th>Title</th>
         <th>Type</th>
         <th>Exercises Count</th>
         <th>Sets count</th>
@@ -72,7 +71,7 @@
         <th>Date</th>
         </thead>
 
-        <th:block th:each="workout : ${foundWorkouts}">
+        <th:block th:each="workout : ${foundUserWorkouts}">
 
             <tr>
                 <td>

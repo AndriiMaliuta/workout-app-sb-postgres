@@ -1,8 +1,13 @@
 package com.bh.workouts.bhworkoutapp.controllers.workout;
 
+import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +20,13 @@ import java.util.List;
 public class FindWorkoutController {
 
     private final WorkoutRepository workoutRepository;
+    private final UserService userService;
 
     @Autowired
-    public FindWorkoutController(WorkoutRepository workoutRepository) {
+    public FindWorkoutController(WorkoutRepository workoutRepository,
+                                 UserService userService) {
         this.workoutRepository = workoutRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/workout/find")
@@ -32,9 +40,15 @@ public class FindWorkoutController {
     @PostMapping("/workout/find")
     public String findWorkoutbyName(@ModelAttribute Workout workout, Model model) {
 
-        List<Workout> foundWorkouts = workoutRepository.findWorkoutByWorkoutDate(workout.getWorkoutDate());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User userByLogin = userService.findUserByLogin(authentication.getName());
 
-        model.addAttribute("foundWorkouts", foundWorkouts);
+        String date = workout.getWorkoutDate();
+
+        List<Workout> workouts = workoutRepository.findWorkoutByWorkoutDate(date);
+        List<Workout> userWorkouts = GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin);
+
+        model.addAttribute("foundUserWorkouts", userWorkouts);
 
         return "workouts/found-workouts";
     }
