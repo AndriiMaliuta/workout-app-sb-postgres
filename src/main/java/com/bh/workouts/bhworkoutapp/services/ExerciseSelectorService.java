@@ -13,6 +13,10 @@ public class ExerciseSelectorService {
         List<String> pecsExercisesList = new ArrayList<>();
         List<String> tricepsExercisesList = new ArrayList<>();
         List<String> deltsExercisesList = new ArrayList<>();
+        List<String> absExercisesList = new ArrayList<>();
+        List<String> trapsExercisesList = new ArrayList<>();
+        List<String> forearmsExercisesList = new ArrayList<>();
+
 
         if (workoutType.equalsIgnoreCase("BICEPS")) {
 
@@ -51,7 +55,6 @@ public class ExerciseSelectorService {
             pecsExercisesList.add("Suspended Pushup");
             pecsExercisesList.add("Bars Dips");
 
-
             return pecsExercisesList;
 
         } else if (workoutType.equalsIgnoreCase("TRICEPS")) {
@@ -64,7 +67,6 @@ public class ExerciseSelectorService {
             tricepsExercisesList.add("Dumbbell Squeeze Press");
             tricepsExercisesList.add("Rope Tricep Pushdown");
             tricepsExercisesList.add("Triceps Dips");
-
 
             return tricepsExercisesList;
 
@@ -87,9 +89,9 @@ public class ExerciseSelectorService {
             deltsExercisesList.add("Dumbbells Press Sitting");
             deltsExercisesList.add("Dumbbells Press Standing");
             deltsExercisesList.add("Kettlebell Press");
-            deltsExercisesList.add("Dumbbells Raises to Sides");
-            deltsExercisesList.add("Dumbbells Raises to Sides");
-            deltsExercisesList.add("Dumbbells Raises to Sides");
+            deltsExercisesList.add("Dumbbells Raises for Middle Delts");
+            deltsExercisesList.add("Dumbbells Raises for Back Delts");
+            deltsExercisesList.add("Dumbbells Raises for Front Delts");
 
             return deltsExercisesList;
         }
