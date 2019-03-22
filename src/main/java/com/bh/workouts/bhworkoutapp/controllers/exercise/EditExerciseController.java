@@ -34,7 +34,7 @@ public class EditExerciseController {
     }
 
     @PostMapping("/exercise/{exercise-id}/edit")
-    public String editExercise(@ModelAttribute Exercise exercise) {
+    public String editExercise(@PathVariable long exerciseId, @ModelAttribute Exercise exercise) {
 
         exerciseRepository.save(exercise);
 
