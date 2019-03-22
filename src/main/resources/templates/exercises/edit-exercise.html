@@ -74,7 +74,7 @@
 <div class="main_padding_margin" style="padding: 10px;margin: 10px">
 
     <form class="form-group"
-          th:action="@{/workout/{id}/exercise/new(id=${workout.id})}"
+          th:action="@{/exercise/edit}"
           th:object="${exercise}"
           method="post">
 
@@ -92,24 +92,19 @@
             <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error></p>
         </div>
 
-        <!--<div class="form-group">-->
-            <!--<label for="title">Title</label>-->
-            <!--<input th:field="*{title}" type="text" class="form-control" id="title" aria-describedby="title"-->
-                   <!--placeholder="Title">-->
-            <!--<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error></p>-->
-        <!--</div>-->
+        <div class="form-group">
+            <label for="title">Weight</label>
+            <input th:field="*{weights}" type="text" class="form-control" id="weights" aria-describedby="weights"
+                   placeholder="Weights">
+            <p th:if="${#fields.hasErrors('weights')}" th:errors="*{weights}">Weights Error></p>
+        </div>
 
-        <!--<div class="form-group">-->
-            <!--<label for="title">Weights</label>-->
-            <!--<input th:field="*{weights}" type="text" class="form-control" id="weights" aria-describedby="weights" placeholder="Weights">-->
-            <!--<p th:if="${#fields.hasErrors('weights')}" th:errors="*{weights}">Weights Error></p>-->
-        <!--</div>-->
-
-        <!--<div class="form-group">-->
-            <!--<label for="title">Minutes</label>-->
-            <!--<input th:field="*{minutes}" type="text" class="form-control" id="minutes" aria-describedby="minutes" placeholder="Minutes">-->
-            <!--<p th:if="${#fields.hasErrors('minutes')}" th:errors="*{minutes}">Minutes Error></p>-->
-        <!--</div>-->
+        <div class="form-group">
+            <label for="title">Minutes</label>
+            <input th:field="*{minutes}" type="text" class="form-control" id="minutes" aria-describedby="minutes"
+                   placeholder="Minutes">
+            <p th:if="${#fields.hasErrors('minutes')}" th:errors="*{title}">Minutes Error></p>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
 

@@ -25,16 +25,16 @@ public class EditExerciseController {
         this.workoutRepository = workoutRepository;
     }
 
-    @GetMapping("/exercise/{exercise-id}/edit")
+    @GetMapping("/exercise/{exerciseId}/edit")
     public String getForm(@PathVariable long exerciseId,  Model model) {
 
-        model.addAttribute("exercise", exerciseRepository.findById(exerciseId));
+        model.addAttribute("exercise", exerciseRepository.findById(exerciseId).get());
 
-        return "edit-exercise";
+        return "exercises/edit-exercise";
     }
 
-    @PostMapping("/exercise/{exercise-id}/edit")
-    public String editExercise(@PathVariable long exerciseId, @ModelAttribute Exercise exercise) {
+    @PostMapping("/exercise/edit")
+    public String editExercise(@ModelAttribute Exercise exercise) {
 
         exerciseRepository.save(exercise);
 

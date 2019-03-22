@@ -30,8 +30,11 @@ public class CreateExerciseController {
     public String getCreateForm(@PathVariable long id, Model model) {
 
         model.addAttribute("exercise", new Exercise());
+
         Workout workout = workoutRepository.findById(id).get();
+
         model.addAttribute("workout", workout);
+
         model.addAttribute("exercisesList", ExerciseSelectorService.getExercisesList(workout.getWorkoutType()));
 
         return "exercises/create-exercise";
@@ -44,7 +47,6 @@ public class CreateExerciseController {
 
         newExercise.setTitle(exercise.getTitle());
         newExercise.setWorkout(workoutRepository.findById(id).get());
-
 
         exerciseRepository.save(newExercise);
 
