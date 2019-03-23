@@ -1,7 +1,13 @@
 package com.bh.workouts.bhworkoutapp.services;
 
+import com.bh.workouts.bhworkoutapp.models.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExerciseSelectorService {
 
@@ -16,7 +22,6 @@ public class ExerciseSelectorService {
         List<String> absExercisesList = new ArrayList<>();
         List<String> trapsExercisesList = new ArrayList<>();
         List<String> forearmsExercisesList = new ArrayList<>();
-
 
         if (workoutType.equalsIgnoreCase("BICEPS")) {
 
@@ -100,7 +105,13 @@ public class ExerciseSelectorService {
 
     }
 
-    public static void addExerciseToList(String exerciseName, String workoutType) {
+    public static void addExerciseToList(String exerciseName, String workoutType, User user) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Map<String, String> defMap = new HashMap<>();
+        Map<String, String> bicepsExercisesMap = new HashMap<>();
+        Map<String, String> pecsExercisesMap = new HashMap<>();
 
         List<String> defList = new ArrayList<>();
         List<String> bicepsExercisesList = new ArrayList<>();
@@ -115,6 +126,7 @@ public class ExerciseSelectorService {
         List<String> calvesExercisesList = new ArrayList<>();
 
         if (workoutType.equalsIgnoreCase("PECS")) {
+            pecsExercisesMap.put(exerciseName, authentication.getName());
             pecsExercisesList.add(exerciseName);
         } else if (workoutType.equalsIgnoreCase("TRICEPS")) {
             tricepsExercisesList.add(exerciseName);

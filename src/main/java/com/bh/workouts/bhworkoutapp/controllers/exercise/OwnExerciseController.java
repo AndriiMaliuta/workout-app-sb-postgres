@@ -3,6 +3,7 @@ package com.bh.workouts.bhworkoutapp.controllers.exercise;
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
+import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AddNewOwnExerciseController {
+public class OwnExerciseController {
 
     private final UserService userService;
     private final ExerciseNameService exerciseNameService;
 
     @Autowired
-    public AddNewOwnExerciseController(UserService userService,
-                                       ExerciseNameService exerciseNameService) {
+    public OwnExerciseController(UserService userService,
+                                 ExerciseNameService exerciseNameService) {
         this.userService = userService;
         this.exerciseNameService = exerciseNameService;
     }
@@ -31,6 +32,10 @@ public class AddNewOwnExerciseController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByLogin = userService.findUserByLogin(authentication.getName());
+
+        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameService);
+
+        initExercisesService.initExercises(userByLogin);
 
         model.addAttribute("ownExercisesList", exerciseNameService.getUserExerciseNames(userByLogin));
 
@@ -56,9 +61,10 @@ public class AddNewOwnExerciseController {
 
         newExerciseName.setName(exerciseName.getName());
         newExerciseName.setUser(userByLogin);
+        newExerciseName.setCategory(exerciseName.getCategory());
 
         exerciseNameService.save(exerciseName);
 
-        return "exercises/add-own";
+        return "redirect:/exercises/own";
     }
 }

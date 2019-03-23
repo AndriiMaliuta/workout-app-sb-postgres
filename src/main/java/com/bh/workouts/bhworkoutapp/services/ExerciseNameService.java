@@ -49,7 +49,6 @@ public class ExerciseNameService {
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
         exerciseName.setUser(userByLogin);
-        exerciseName.setName(exerciseName.getName());
 
         exerciseNameRepository.save(exerciseName);
     }
