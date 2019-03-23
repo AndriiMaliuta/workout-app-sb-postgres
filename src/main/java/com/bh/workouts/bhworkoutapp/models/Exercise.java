@@ -29,8 +29,8 @@ public class Exercise {
 
     private int minutes;
 
-    @OneToOne(mappedBy = "exercise")
-    private ExerciseName exerciseName;
+//    @OneToOne(mappedBy = "exercise")
+//    private ExerciseName exerciseName;
 
 
 }

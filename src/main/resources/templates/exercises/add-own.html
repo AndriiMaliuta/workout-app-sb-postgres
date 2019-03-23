@@ -84,10 +84,10 @@
 
 <div class="main_padding_margin">
 
-    <form class="form-group" th:action="@{/exercises/own}" th:object="${exerciseName}" method="post">
+    <form class="form-group" th:action="@{/exercise/own/add}" th:object="${exerciseName}" method="post">
 
         <div class="form-group">
-            <label for="name" style="color: blue">Exercise Name</label>
+            <label for="name" >Exercise Name</label>
             <input class="form-control" type="text" id="name" th:field="*{name}" >
         </div>
 

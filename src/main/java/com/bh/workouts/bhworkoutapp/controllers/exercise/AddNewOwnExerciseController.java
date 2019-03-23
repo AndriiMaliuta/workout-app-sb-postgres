@@ -2,8 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers.exercise;
 
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
-import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
+import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,36 +12,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AddNewOwnExerciseController {
 
-    private final ExerciseRepository exerciseRepository;
-    private final ExerciseNameRepository exerciseNameRepository;
     private final UserService userService;
+    private final ExerciseNameService exerciseNameService;
 
     @Autowired
-    public AddNewOwnExerciseController(ExerciseRepository exerciseRepository,
-                                       ExerciseNameRepository exerciseNameRepository,
-                                       UserService userService) {
-        this.exerciseRepository = exerciseRepository;
-        this.exerciseNameRepository = exerciseNameRepository;
+    public AddNewOwnExerciseController(UserService userService,
+                                       ExerciseNameService exerciseNameService) {
         this.userService = userService;
+        this.exerciseNameService = exerciseNameService;
     }
 
-    @RequestMapping("/exercises/own")
+    @GetMapping("/exercises/own")
     public String getOwnExercises(Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
-        model.addAttribute("ownExercisesList", exerciseNameRepository.findExerciseNameByUser(userByLogin));
+        model.addAttribute("ownExercisesList", exerciseNameService.getUserExerciseNames(userByLogin));
 
         return "exercises/own-exercises";
     }
-
-
 
     @GetMapping("/exercise/own/add")
     public String getForm(Model model) {
@@ -59,9 +52,12 @@ public class AddNewOwnExerciseController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
-        exerciseName.setUser(userByLogin);
+        ExerciseName newExerciseName = new ExerciseName();
 
-        exerciseNameRepository.save(exerciseName);
+        newExerciseName.setName(exerciseName.getName());
+        newExerciseName.setUser(userByLogin);
+
+        exerciseNameService.save(exerciseName);
 
         return "exercises/add-own";
     }
