@@ -33,10 +33,6 @@ public class OwnExerciseController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
-        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameService);
-
-        initExercisesService.initExercises(userByLogin);
-
         model.addAttribute("ownExercisesList", exerciseNameService.getUserExerciseNames(userByLogin));
 
         return "exercises/own-exercises";

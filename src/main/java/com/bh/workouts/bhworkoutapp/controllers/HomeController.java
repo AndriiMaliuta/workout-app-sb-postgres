@@ -1,6 +1,9 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.controllers.workout.CreateWorkoutController;
+import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
+import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +19,13 @@ public class HomeController {
 
     private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
     private final UserService userService;
+    private final ExerciseNameService exerciseNameService;
 
     @Autowired
-    public HomeController(UserService userService) {
+    public HomeController(UserService userService,
+                          ExerciseNameService exerciseNameService) {
         this.userService = userService;
+        this.exerciseNameService = exerciseNameService;
     }
 
     @RequestMapping("/home")
@@ -30,6 +36,11 @@ public class HomeController {
         model.addAttribute("userName", userService.findUserByLogin(authentication.getName()).getFirstName());
 
         logger.info("**** User Name is " + authentication.getName());
+
+        User userByLogin = userService.findUserByLogin(authentication.getName());
+        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameService);
+
+        initExercisesService.initExercises(userByLogin);
 
         return "home";
     }

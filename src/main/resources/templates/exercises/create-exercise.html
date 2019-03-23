@@ -88,8 +88,8 @@
 
                 <option value="0">Select Exercise</option>
                 <option th:each="title : ${exercisesList}"
-                        th:value="${title}"
-                        th:text="${title}">
+                        th:value="${title.name}"
+                        th:text="${title.name}">
 
                 </option>
             </select>
