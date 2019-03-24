@@ -87,7 +87,7 @@
 
         <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">
             <tr>
-                <th th:width="30" style="background-color: #5F6B91;color:white" th:text="${currentWorkoutDay.daynumber}">
+                <th th:width="30" style="background-color:grey;color:white" th:text="${currentWorkoutDay.daynumber}">
                 </th>
                 <th width="130" style="background-color: #5F6B91;color: white;" th:text="${currentWorkoutDay.getDayName()}"></th>
                 <td>

@@ -15,68 +15,68 @@
 
 <!--<div th:replace="/common/navbar :: navbar"/>-->
 
-<div th:fragment="navbar">
-    <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
+<!--<div th:fragment="navbar">-->
+    <!--<nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">-->
 
-        <a class="navbar-brand" href="/home">Home</a>
+        <!--<a class="navbar-brand" href="/home">Home</a>-->
 
-        <button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!--<button class="navbar-toggler" type="button"-->
+                <!--data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+            <!--<span class="navbar-toggler-icon"></span>-->
+        <!--</button>-->
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li style="color: white" class="nav-item">
-                    <a class="nav-link" href="/workouts/view">My Workouts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workout/new">Create Workout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workout/find">Find Workout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workouts/week">Week view</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workouts/month">Month view</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/registration">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises/own">Own Exercises</a>
-                </li>
-                <!--<form class="form-inline">-->
-                <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-                <!--<button style="float: right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-                <!--</form>-->
-            </ul>
-        </div>
-        <div>
-            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                <li  class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       style="color: white"
-                       href="#"
-                       id="navbarDropdown"
-                       role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">
-                        Profile
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/profile}" href="#">Profile page</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
+        <!--<div class="collapse navbar-collapse" id="navbarNav">-->
+            <!--<ul class="navbar-nav">-->
+                <!--<li style="color: white" class="nav-item">-->
+                    <!--<a class="nav-link" href="/workouts/view">My Workouts</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/workout/new">Create Workout</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/workout/find">Find Workout</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/workouts/week">Week view</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/workouts/month">Month view</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/registration">Register</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/exercises/own">Own Exercises</a>-->
+                <!--</li>-->
+                <!--&lt;!&ndash;<form class="form-inline">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+                <!--&lt;!&ndash;<button style="float: right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</form>&ndash;&gt;-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<ul class="navbar-nav" sec:authorize="isAuthenticated()">-->
+                <!--<li  class="nav-item dropdown">-->
+                    <!--<a class="nav-link dropdown-toggle"-->
+                       <!--style="color: white"-->
+                       <!--href="#"-->
+                       <!--id="navbarDropdown"-->
+                       <!--role="button"-->
+                       <!--data-toggle="dropdown"-->
+                       <!--aria-haspopup="true"-->
+                       <!--aria-expanded="false">-->
+                        <!--Profile-->
+                    <!--</a>-->
+                    <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                        <!--<a class="dropdown-item" th:href="@{/profile}" href="#">Profile page</a>-->
+                        <!--<div class="dropdown-divider"></div>-->
+                        <!--<a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</nav>-->
+<!--</div>-->
 
 <div class="container">
     <!--<img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" />-->
@@ -98,6 +98,7 @@
         <!--</div>-->
 
         <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+        <a href="" th:href="@{/registration}" class="btn btn-danger btn-block" name="Submit" value="Register" type="Submit" th:text="Register"></a>
 
     </form>
 </div>

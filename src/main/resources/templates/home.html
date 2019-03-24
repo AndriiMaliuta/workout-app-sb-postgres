@@ -4,17 +4,24 @@
 
 <head>
     <meta charset="UTF-8">
+    <style>
+        .home_page_body {
+            /*background-image: url("../../images/dumb_1.png");*/
+            padding: 15px;
+            margin: 15px;
+        }
+    </style>
     <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 
-<body>
+<body background="../../images/dumb_1.png">
 
 <!--<div th:replace="/common/navbar :: navbar"/>-->
 
-<div th:fragment="navbar">
+<div th:fragment="navbar" background="../images/dumb_1.png">
     <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
 
         <a class="navbar-brand" href="/home">Home</a>
@@ -77,8 +84,7 @@
     </nav>
 </div>
 
-
-<div class="main_padding_margin">
+<div class="home_page_body" ba>
     <h3>Home Page</h3>
     <!--<img src="../../images/dumb_1.png" width="350" height="250" alt="">-->
 

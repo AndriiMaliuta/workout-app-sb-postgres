@@ -324,61 +324,110 @@ public class InitExercisesService {
         deltsExercise10.setUser(user);
         exerciseNameService.save(deltsExercise10);
 
+        ExerciseName deltsExercise11 = new ExerciseName();
+        deltsExercise11.setId(45L);
+        deltsExercise11.setCategory(WorkoutType.DELTS.toString());
+        deltsExercise11.setName("Bar Press Standing");
+        deltsExercise11.setUser(user);
+        exerciseNameService.save(deltsExercise11);
+
+        ExerciseName deltsExercise12 = new ExerciseName();
+        deltsExercise12.setId(46L);
+        deltsExercise12.setCategory(WorkoutType.DELTS.toString());
+        deltsExercise12.setName("Hammer Press Sitting");
+        deltsExercise12.setUser(user);
+        exerciseNameService.save(deltsExercise12);
+
         ExerciseName tricepsExercise1 = new ExerciseName();
-        tricepsExercise1.setId(45L);
+        tricepsExercise1.setId(47L);
         tricepsExercise1.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise1.setName("Close-grip Bench Press");
         tricepsExercise1.setUser(user);
         exerciseNameService.save(tricepsExercise1);
 
         ExerciseName tricepsExercise2 = new ExerciseName();
-        tricepsExercise2.setId(46L);
+        tricepsExercise2.setId(48L);
         tricepsExercise2.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise2.setName("Standing Barbell Triceps Extensions");
         tricepsExercise2.setUser(user);
         exerciseNameService.save(tricepsExercise2);
 
         ExerciseName tricepsExercise3 = new ExerciseName();
-        tricepsExercise3.setId(47L);
+        tricepsExercise3.setId(49L);
         tricepsExercise3.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise3.setName("1-Dumbbell Triceps Overhead Extensions");
         tricepsExercise3.setUser(user);
         exerciseNameService.save(tricepsExercise3);
 
         ExerciseName tricepsExercise4 = new ExerciseName();
-        tricepsExercise4.setId(48L);
+        tricepsExercise4.setId(50L);
         tricepsExercise4.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise4.setName("Pulley Push-Downs");
         tricepsExercise4.setUser(user);
         exerciseNameService.save(tricepsExercise4);
 
         ExerciseName tricepsExercise5 = new ExerciseName();
-        tricepsExercise5.setId(49L);
+        tricepsExercise5.setId(51L);
         tricepsExercise5.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise5.setName("Lying Barbell Triceps Extensions");
         tricepsExercise5.setUser(user);
         exerciseNameService.save(tricepsExercise5);
 
         ExerciseName tricepsExercise6 = new ExerciseName();
-        tricepsExercise6.setId(50L);
+        tricepsExercise6.setId(52L);
         tricepsExercise6.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise6.setName("Dumbbell Squeeze Press");
         tricepsExercise6.setUser(user);
         exerciseNameService.save(tricepsExercise6);
 
         ExerciseName tricepsExercise7 = new ExerciseName();
-        tricepsExercise7.setId(51L);
+        tricepsExercise7.setId(53L);
         tricepsExercise7.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise7.setName("Rope Tricep Pushdown");
         tricepsExercise7.setUser(user);
         exerciseNameService.save(tricepsExercise7);
 
         ExerciseName tricepsExercise8 = new ExerciseName();
-        tricepsExercise8.setId(52L);
+        tricepsExercise8.setId(54L);
         tricepsExercise8.setCategory(WorkoutType.TRICEPS.toString());
         tricepsExercise8.setName("Triceps Dips");
         tricepsExercise8.setUser(user);
         exerciseNameService.save(tricepsExercise8);
+
+        ExerciseName absExercise1 = new ExerciseName();
+        absExercise1.setId(55L);
+        absExercise1.setCategory(WorkoutType.ABS.toString());
+        absExercise1.setName("Horizontal Crunches");
+        absExercise1.setUser(user);
+        exerciseNameService.save(absExercise1);
+
+        ExerciseName absExercise2 = new ExerciseName();
+        absExercise2.setId(56L);
+        absExercise2.setCategory(WorkoutType.ABS.toString());
+        absExercise2.setName("Legs Raises");
+        absExercise2.setUser(user);
+        exerciseNameService.save(absExercise2);
+
+        ExerciseName absExercise3 = new ExerciseName();
+        absExercise3.setId(57L);
+        absExercise3.setCategory(WorkoutType.ABS.toString());
+        absExercise3.setName("Crunches");
+        absExercise3.setUser(user);
+        exerciseNameService.save(absExercise3);
+
+        ExerciseName absExercise4 = new ExerciseName();
+        absExercise4.setId(58L);
+        absExercise4.setCategory(WorkoutType.ABS.toString());
+        absExercise4.setName("Machine Crunches");
+        absExercise4.setUser(user);
+        exerciseNameService.save(absExercise4);
+
+        ExerciseName absExercise5 = new ExerciseName();
+        absExercise5.setId(59L);
+        absExercise5.setCategory(WorkoutType.ABS.toString());
+        absExercise5.setName("Prayer");
+        absExercise5.setUser(user);
+        exerciseNameService.save(absExercise5);
         
     }
 

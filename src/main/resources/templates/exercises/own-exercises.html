@@ -104,6 +104,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
             <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
@@ -124,11 +125,12 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
-            <div class="card-header" id="headingTwo">
+            <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        PECS exercises
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        TRICEPS exercises
                     </button>
                 </h5>
             </div>
@@ -144,6 +146,70 @@
                 </div>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        DELTS exercises
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table>
+                        <th:block th:each="exercise : ${ownExercisesList}">
+                            <tr>
+                                <td th:if="${exercise.category.equalsIgnoreCase('DELTS')}" th:text="${exercise.name}"></td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        BACK exercises
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table>
+                        <th:block th:each="exercise : ${ownExercisesList}">
+                            <tr>
+                                <td th:if="${exercise.category.equalsIgnoreCase('BACK')}" th:text="${exercise.name}"></td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingSix">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        ABS exercises
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table>
+                        <th:block th:each="exercise : ${ownExercisesList}">
+                            <tr>
+                                <td th:if="${exercise.category.equalsIgnoreCase('ABS')}" th:text="${exercise.name}"></td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

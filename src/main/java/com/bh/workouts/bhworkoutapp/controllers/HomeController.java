@@ -5,6 +5,7 @@ import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.sun.org.apache.xml.internal.security.Init;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class HomeController {
         logger.info("**** User Name is " + authentication.getName());
 
         User userByLogin = userService.findUserByLogin(authentication.getName());
+
         InitExercisesService initExercisesService = new InitExercisesService(exerciseNameService);
 
         initExercisesService.initExercises(userByLogin);

@@ -1,16 +1,18 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
+import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -19,10 +21,13 @@ public class UserRegistrationController {
     private Logger logger = Logger.getLogger(UserRegistrationController.class.getName());
 
     private final UserService userService;
+    private final ExerciseNameService exerciseNameService;
 
     @Autowired
-    public UserRegistrationController(UserService userService) {
+    public UserRegistrationController(UserService userService,
+                                      ExerciseNameService exerciseNameService) {
         this.userService = userService;
+        this.exerciseNameService = exerciseNameService;
     }
 
     @GetMapping("/registration")

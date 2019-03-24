@@ -28,14 +28,11 @@ public class ExerciseNameService {
 
     public List<ExerciseName> getUserExerciseNames(User user) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(authentication.getName());
-
         List<ExerciseName> exerciseNames = exerciseNameRepository.findAll();
         List<ExerciseName> userExerciseNames = new ArrayList<>();
 
         for (ExerciseName exerciseName : exerciseNames) {
-            if (exerciseName.getUser().equals(userByLogin)) {
+            if (exerciseName.getUser().equals(user)) {
                 userExerciseNames.add(exerciseName);
             }
         }
