@@ -61,6 +61,8 @@ public class EditExerciseController {
     @PostMapping("/exercise/edit")
     public String editExercise(@ModelAttribute Exercise exercise) {
 
+        exercise.setWorkout(workoutRepository.findById(exercise.getWorkout().getId()).get());
+
         exerciseRepository.save(exercise);
 
         return "/exercise/" + exercise.getId() + "/view";
