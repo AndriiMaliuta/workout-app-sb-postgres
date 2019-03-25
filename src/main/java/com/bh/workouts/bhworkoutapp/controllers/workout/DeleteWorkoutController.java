@@ -22,6 +22,6 @@ public class DeleteWorkoutController {
 
         workoutRepository.deleteById(id);
 
-        return "redirect:workouts/view";
+        return "redirect:/workouts/view";
     }
 }

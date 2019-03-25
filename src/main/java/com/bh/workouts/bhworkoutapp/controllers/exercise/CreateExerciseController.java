@@ -53,13 +53,17 @@ public class CreateExerciseController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         model.addAttribute("exercisesList",
-                ExerciseSelectorService.getExercisesList(exercisesList, workout.getWorkoutType(), userService.findUserByLogin(authentication.getName())));
+                ExerciseSelectorService.getExercisesList(exercisesList,
+                        workout.getWorkoutType(),
+                        userService.findUserByLogin(authentication.getName())));
 
         return "exercises/create-exercise";
     }
 
     @PostMapping("/workout/{id}/exercise/new")
     public String createExercise(@ModelAttribute Exercise exercise, @PathVariable long id, Model model) {
+
+        Workout workout = workoutRepository.findById(id).get();
 
         Exercise newExercise = new Exercise();
 
@@ -70,6 +74,6 @@ public class CreateExerciseController {
 
         model.addAttribute("newExercise", newExercise);
 
-        return "redirect:/exercise/" + newExercise.getId();
+        return "redirect:/workout/" + workout.getId();
     }
 }

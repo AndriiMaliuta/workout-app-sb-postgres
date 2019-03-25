@@ -85,11 +85,17 @@
         <div class="form-group">
             <label for="workoutType" style="color: blue">Type</label>
             <select class="form-control" id="workoutType" th:field="*{workoutType}">
+
+
+
                 <option value="" disabled selected>--Select workout type--</option>
                 <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}"
                         th:value="${workoutType}"
                         th:text="${workoutType}">
                 </option>
+
+
+
             </select>
             <p th:if="${#fields.hasErrors('workoutType')}" th:errors="*{workoutType}">Type Error></p>
         </div>

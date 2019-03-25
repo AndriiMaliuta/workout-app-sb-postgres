@@ -1,5 +1,7 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
+import com.bh.workouts.bhworkoutapp.models.RoleEnum;
+import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,18 @@ public class LoginController {
 
     @RequestMapping({"/","/login"})
     public String login() {
+
+        User anma = new User();
+        anma.setId(1L);
+        anma.setRoles(RoleEnum.ADMIN);
+        anma.setActive(1);
+        anma.setEmail("m@m");
+        anma.setLogin("anma");
+        anma.setFirstName("Andrii");
+        anma.setLastName("M");
+        anma.setPassword("mypass");
+
+        userService.saveUser(anma);
 
         logger.info("=======================");
         logger.info("Getting Login page");
