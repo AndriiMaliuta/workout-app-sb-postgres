@@ -97,7 +97,7 @@
 
                 <th:block th:each="exercise : ${workout.exercises}">
 
-                    <a href="#" th:href="@{/exercise/{id}(id=${exercise.id})}">
+                    <a href="#" th:href="@{/exercise/{id}/view(id=${exercise.id})}">
                         <p th:text="${exercise.title}"></p>
                     </a>
 

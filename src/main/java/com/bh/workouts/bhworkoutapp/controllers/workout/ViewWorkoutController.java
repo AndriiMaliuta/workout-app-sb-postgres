@@ -55,7 +55,6 @@ public class ViewWorkoutController {
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
 
-
         model.addAttribute("workout", workoutRepository.findById(id).get());
         model.addAttribute("userByLogin", userByLogin);
 

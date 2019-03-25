@@ -127,7 +127,7 @@
                    class="btn btn-primary btn-sm" >
                     Edit
                 </a>
-                <a th:href="@{/exercise/{exercise-id}/delete(exercise-id=${exercise.id})}"
+                <a th:href="@{/workout/{workoutId}/exercise/{exerciseId}/delete(exerciseId=${exercise.id},workoutId=${workout.id})}"
 
                    class="btn btn-danger btn-sm"
                    onclick="if (!(confirm('Are you sure you want to delete this workout?'))) return false">
