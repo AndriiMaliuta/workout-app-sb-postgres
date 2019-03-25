@@ -82,6 +82,7 @@
           th:object="${exercise}"
           method="post">
 
+        <input type="hidden" th:field="*{workout.id}" />
         <input type="hidden" th:field="*{id}" />
 
         <div class="form-group">
@@ -111,6 +112,12 @@
             <input th:field="*{minutes}" type="text" class="form-control" id="minutes" aria-describedby="minutes"
                    placeholder="Minutes">
             <p th:if="${#fields.hasErrors('minutes')}" th:errors="*{title}">Minutes Error></p>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea class="form-control" id="comments" th:field="*{comments}" rows="3"></textarea>
+            <p th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}">Comments Error></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

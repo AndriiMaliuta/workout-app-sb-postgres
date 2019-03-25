@@ -17,6 +17,7 @@ public class ExerciseSet {
     private int weight;
     private int reps;
     private int breakInSeconds;
+    private String comments;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "exercise_id", referencedColumnName = "exercise_id", nullable = false)

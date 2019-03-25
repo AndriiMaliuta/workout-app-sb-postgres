@@ -2,6 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers.exercise;
 
 import com.bh.workouts.bhworkoutapp.models.Exercise;
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
+import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
@@ -38,14 +39,17 @@ public class EditExerciseController {
         this.exerciseNameRepository = exerciseNameRepository;
     }
 
-    @GetMapping("/exercise/{exerciseId}/edit")
-    public String getForm(@PathVariable long exerciseId,  Model model) {
+    @GetMapping("/workout/{workoutId}/exercise/{exerciseId}/edit")
+    public String getForm(@PathVariable long workoutId, @PathVariable long exerciseId,  Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Workout workout = workoutRepository.findById(workoutId).get();
 
         Exercise exercise = exerciseRepository.findById(exerciseId).get();
 
         model.addAttribute("exercise", exercise);
+        model.addAttribute("workout", workout);
 
         List<ExerciseName> exerciseList = exerciseNameRepository.findAll();
         List<ExerciseName> userExercisesList =
@@ -61,11 +65,11 @@ public class EditExerciseController {
     @PostMapping("/exercise/edit")
     public String editExercise(@ModelAttribute Exercise exercise) {
 
-        exercise.setWorkout(workoutRepository.findById(exercise.getWorkout().getId()).get());
+//        exercise.setWorkout(workoutRepository.findById(exercise.getWorkout().getId()).get());
 
         exerciseRepository.save(exercise);
 
-        return "/exercise/" + exercise.getId() + "/view";
+        return "redirect:/exercise/" + exercise.getId() + "/view";
     }
 
 

@@ -119,11 +119,16 @@
 
                 </th:block>
             </td>
+
+        </tr>
+        <tr>
+            <th style="background-color: grey;color:white;text-align: right">Comments</th>
+            <td th:text="${exercise.comments}"></td>
         </tr>
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Actions</th>
             <td>
-                <a th:href="@{/exercise/{exercise-id}/edit(exercise-id=${exercise.id})}"
+                <a th:href="@{/workout/{workoutId}/exercise/{exerciseId}/edit(exerciseId=${exercise.id},workoutId=${workout.id})}"
                    class="btn btn-primary btn-sm" >
                     Edit
                 </a>
