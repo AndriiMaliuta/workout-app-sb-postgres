@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>Create Exercise</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/main.css">
 </head>
-
 <body>
 
-<!--<div th:replace="/common/navbar :: navbar"/>-->
+<!--<div th:replace="/common/navbar :: navbar"></div>-->
 
 <div th:fragment="navbar">
     <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
@@ -77,15 +75,43 @@
     </nav>
 </div>
 
-<div class="main_padding_margin">
-    <hr>
-    <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
-    <hr>
-    <a class="btn btn-primary" href="" th:href="@{/workouts/view}">My Workouts</a>
+<div class="main_padding_margin" style="padding: 10px;margin: 10px">
+
+    <form class="form-group"
+          th:action="@{/workout/other/month}"
+          th:object="${monthForm}"
+          method="post">
+
+        <div class="form-group">
+            <label for="month"><b>Month</b></label>
+            <select class="form-control" id="month" th:field="*{month}">
+
+                <option value="0">Select Month</option>
+                <option th:each="month : ${months}"
+                        th:value="${month}"
+                        th:text="${month}">
+
+                </option>
+            </select>
+            <p th:if="${#fields.hasErrors('month')}" th:errors="*{month}">Month Error></p>
+        </div>
+
+        <div class="form-group">
+            <label for="year"><b>Year</b></label>
+            <input th:field="*{year}" type="text" class="form-control" id="year" aria-describedby="year"
+                   placeholder="Year">
+            <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year Error></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </body>
 </html>

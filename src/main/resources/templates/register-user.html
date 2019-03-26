@@ -77,9 +77,12 @@
 <!--</div>-->
 <!--</nav>-->
 <!--</div>-->
-<a style="text-align: center" class="btn btn-primary" href="" th:href="@{/login}">To Login Page</a>
+<br />
+<div style="text-align: center">
+    <a class="btn btn-primary" href="" th:href="@{/login}">To Login Page</a>
+</div>
 <div class="container">
-
+    <br />
     <h3 style="text-align: center">Registration Form</h3>
     <form autocomplete="off" action="#" th:action="@{/registration} " class="form-signin"
           th:object="${user}"
@@ -98,7 +101,7 @@
         <div class="form-group">
             <div class="col-sm-9">
                 <label style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
-                          class="validation-message"></label>
+                       class="validation-message"></label>
                 <input type="text" th:field="*{firstName}"
                        placeholder="First Name" class="form-control" />
             </div>
@@ -107,7 +110,7 @@
         <div class="form-group">
             <div class="col-sm-9">
                 <label style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                          class="validation-message"></label>
+                       class="validation-message"></label>
                 <input type="text" th:field="*{lastName}"
                        placeholder="Last Name" class="form-control" />
             </div>
@@ -125,7 +128,7 @@
                 <input type="password" th:field="*{password}"
                        placeholder="Password" class="form-control" />
                 <label style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                    class="validation-message"></label>
+                       class="validation-message"></label>
             </div>
         </div>
 

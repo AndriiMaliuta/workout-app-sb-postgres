@@ -79,7 +79,13 @@
 
 <div class="main_padding_margin">
 
-    <a class="btn btn-primary" href="" th:href="@{/workout/new}">Create Workout</a>
+    <hr>
+    <h3>My Workouts</h3>
+    <hr>
+
+    <div>
+        <a class="btn btn-primary" href="" th:href="@{/workout/new}">Create Workout</a>
+    </div>
     <br />
     <table class="table table-bordered" >
 
@@ -105,6 +111,7 @@
                 <td th:text="${workout.workoutDay}"></td>
                 <td th:text="${workout.workoutDate}"></td>
             </tr>
+
         </th:block>
 
     </table>

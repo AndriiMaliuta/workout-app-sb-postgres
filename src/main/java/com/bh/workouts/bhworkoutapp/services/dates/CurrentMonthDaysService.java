@@ -10,13 +10,11 @@ import java.util.*;
 
 public class CurrentMonthDaysService {
 
-    public static Map<Integer, CurrentWorkoutDay> getMonthDays() {
+    public static Map<Integer, CurrentWorkoutDay> getMonthDays(YearMonth yearMonth) {
 
         Map<Integer, CurrentWorkoutDay> map = new TreeMap<>();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-
-        YearMonth yearMonth = YearMonth.now();
 
         LocalDate firstDayOfMonth = yearMonth.atDay( 1 );
         LocalDate lastDayOfMonth = yearMonth.atEndOfMonth();

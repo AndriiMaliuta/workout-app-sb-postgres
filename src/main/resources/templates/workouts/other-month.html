@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>Month view</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/main.css">
@@ -12,7 +12,7 @@
 
 <body>
 
-<!--<div th:replace="/common/navbar :: navbar"/>-->
+<!--<div th:replace="/common/navbar :: navbar"></div>-->
 
 <div th:fragment="navbar">
     <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
@@ -78,10 +78,39 @@
 </div>
 
 <div class="main_padding_margin">
+
     <hr>
-    <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
+    <h3>Workouts month view</h3>
     <hr>
-    <a class="btn btn-primary" href="" th:href="@{/workouts/view}">My Workouts</a>
+
+    <h5 style="color: #5F6B91" th:text="${currentDayMap.get(1).monthName} + ' ' + ${currentDayMap.get(1).year}"></h5>
+
+    <p>
+        <a class="btn btn-primary" href="#" th:href="@{/workout/new}">Create Workout</a>
+    </p>
+
+    <table class="table table-bordered">
+
+        <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">
+
+            <tr>
+                <th th:width="30" style="background-color:grey;color:white" th:text="${currentWorkoutDay.daynumber}">
+                </th>
+                <th width="130" style="background-color: #5F6B91;color: white;" th:text="${currentWorkoutDay.getDayName()}"></th>
+                <td>
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(currentWorkoutDay.todayWeekDate)} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+            </tr>
+
+        </th:block>
+
+    </table>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

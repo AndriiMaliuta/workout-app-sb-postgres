@@ -78,10 +78,13 @@
 </div>
 
 <div class="main_padding_margin">
-    <h3 style="text-align: center" th:text="${exercise.title}"></h3>
+
     <p style="text-align: center">
         <a class="btn btn-primary" href="" th:href="@{/workout/{id}(id=${exercise.workout.id})}">Back to Workout</a>
     </p>
+
+    <h3 style="text-align: center" th:text="${exercise.title}"></h3>
+
     <table class="table table-bordered">
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Title</th>

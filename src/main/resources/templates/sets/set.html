@@ -78,10 +78,13 @@
 </div>
 
 <div class="main_padding_margin">
-    <h3 style="text-align: center" th:text="'Set ' + ${set.number}"></h3>
+
     <p style="text-align: center">
         <a class="btn btn-primary" href="" th:href="@{/exercise/{id}/view(id=${set.exercise.id})}">Back to Exercise</a>
     </p>
+
+    <h3 style="text-align: center" th:text="'Set ' + ${set.number}"></h3>
+
     <table class="table table-bordered">
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Number</th>

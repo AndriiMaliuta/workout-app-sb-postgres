@@ -78,14 +78,24 @@
 </div>
 
 <div class="main_padding_margin">
-    <h4>Workouts month view</h4>
+
+    <hr>
+    <h3>Workouts month view</h3>
+    <hr>
 
     <h5 style="color: #5F6B91" th:text="${currentDayMap.get(1).monthName} + ' ' + ${currentDayMap.get(1).year}"></h5>
+    <div>
+        <a href="" class="btn btn-primary" th:href="@{/workout/other/month}">Other Month</a>
+    </div>
+    <hr>
+    <p>
+        <a class="btn btn-primary" href="#" th:href="@{/workout/new}">Create Workout</a>
+    </p>
 
-    <p><a class="btn btn-success btn-sm" href="#" th:href="@{/workout/new}">Create Workout</a></p>
     <table class="table table-bordered">
 
         <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">
+
             <tr>
                 <th th:width="30" style="background-color:grey;color:white" th:text="${currentWorkoutDay.daynumber}">
                 </th>
@@ -100,6 +110,7 @@
                     </th:block>
                 </td>
             </tr>
+
         </th:block>
 
     </table>

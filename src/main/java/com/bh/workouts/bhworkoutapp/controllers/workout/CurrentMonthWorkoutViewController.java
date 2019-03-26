@@ -13,17 +13,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.YearMonth;
 import java.util.List;
 
 @Controller
-public class MonthWorkoutViewController {
+public class CurrentMonthWorkoutViewController {
 
     private final WorkoutRepository workoutRepository;
     private final UserService userService;
 
     @Autowired
-    public MonthWorkoutViewController(WorkoutRepository workoutRepository,
-                                      UserService userService) {
+    public CurrentMonthWorkoutViewController(WorkoutRepository workoutRepository,
+                                             UserService userService) {
         this.workoutRepository = workoutRepository;
         this.userService = userService;
     }
@@ -36,8 +37,10 @@ public class MonthWorkoutViewController {
 
         List<Workout> workouts = workoutRepository.findAll();
 
+        YearMonth yearMonth = YearMonth.now();
+
         model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
-        model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays());
+        model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
 
         return "workouts/workouts-month";
     }
