@@ -25,9 +25,9 @@ public class Exercise {
     @OneToMany(mappedBy = "exercise")
     private List<ExerciseSet> sets;
 
-    private int weights;
+    private int overallWeight;
 
-    private int minutes;
+    private int overallTime;
 
     private String comments;
 

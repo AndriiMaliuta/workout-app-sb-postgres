@@ -17,6 +17,7 @@ public class ExerciseSet {
     private int weight;
     private int reps;
     private int breakInSeconds;
+    private int setTime;
     private String comments;
 
     @ManyToOne(fetch = FetchType.EAGER)

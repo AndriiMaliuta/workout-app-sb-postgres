@@ -96,6 +96,10 @@
             <td th:text="${set.reps}"></td>
         </tr>
         <tr>
+            <th style="background-color: grey;color:white;text-align: right">Set Duration Time</th>
+            <td th:text="${set.setTime}"></td>
+        </tr>
+        <tr>
             <th style="background-color: grey;color:white;text-align: right">Break(Seconds)</th>
             <td th:text="${set.breakInSeconds}"></td>
         </tr>
@@ -112,7 +116,7 @@
                 </a>
                 <a th:href="@{/set/{id}/delete(id=${set.id})}"
                    class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Are you sure you want to delete this workout?'))) return false">
+                   onclick="if (!(confirm('Are you sure you want to delete this set?'))) return false">
                     Delete
                 </a>
             </td>

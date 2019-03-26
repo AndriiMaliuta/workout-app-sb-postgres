@@ -83,7 +83,7 @@
           method="post">
 
         <div class="form-group">
-            <label style="color: blue" for="title">Title</label>
+            <label style="color: blue" for="title"><b>Title</b></label>
             <select class="form-control" id="title" th:field="*{title}">
 
                 <option value="0">Select Exercise</option>
@@ -96,24 +96,11 @@
             <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error></p>
         </div>
 
-        <!--<div class="form-group">-->
-            <!--<label for="title">Title</label>-->
-            <!--<input th:field="*{title}" type="text" class="form-control" id="title" aria-describedby="title"-->
-                   <!--placeholder="Title">-->
-            <!--<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error></p>-->
-        <!--</div>-->
-
-        <!--<div class="form-group">-->
-            <!--<label for="title">Weights</label>-->
-            <!--<input th:field="*{weights}" type="text" class="form-control" id="weights" aria-describedby="weights" placeholder="Weights">-->
-            <!--<p th:if="${#fields.hasErrors('weights')}" th:errors="*{weights}">Weights Error></p>-->
-        <!--</div>-->
-
-        <!--<div class="form-group">-->
-            <!--<label for="title">Minutes</label>-->
-            <!--<input th:field="*{minutes}" type="text" class="form-control" id="minutes" aria-describedby="minutes" placeholder="Minutes">-->
-            <!--<p th:if="${#fields.hasErrors('minutes')}" th:errors="*{minutes}">Minutes Error></p>-->
-        <!--</div>-->
+        <div class="form-group">
+            <label for="comments"><h4><b>Comments</b></h4></label>
+            <textarea class="form-control" id="comments" th:field="*{comments}" rows="3"></textarea>
+            <p th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}">Comments Error></p>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
 

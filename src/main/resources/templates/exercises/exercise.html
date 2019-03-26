@@ -88,12 +88,12 @@
             <td th:text="${exercise.title}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Weight</th>
-            <td th:text="${exercise.weights}"></td>
+            <th style="background-color: grey;color:white;text-align: right">Overall Weight</th>
+            <td th:text="${exercise.overallWeight}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Minutes</th>
-            <td th:text="${exercise.minutes}"></td>
+            <th style="background-color: grey;color:white;text-align: right">Overall Time</th>
+            <td th:text="${exercise.overallTime}"></td>
         </tr>
         <!--<tr>-->
         <!--<th style="text-align: right">Type</th>-->
@@ -113,7 +113,7 @@
 
                 <th:block th:each="set : ${exercise.sets}">
 
-                    <a href="#" th:href="@{/set/{id}(id=${set.id})}">
+                    <a href="#" th:href="@{/set/{id}/view(id=${set.id})}">
                         <p th:text="'set ' + ${set.number}"></p>
                     </a>
 

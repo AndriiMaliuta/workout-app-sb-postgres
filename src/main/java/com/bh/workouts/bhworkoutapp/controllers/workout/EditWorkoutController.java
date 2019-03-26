@@ -39,7 +39,7 @@ public class EditWorkoutController {
         return "workouts/edit-workout";
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/workout/edit")
     public String editWorkout(@ModelAttribute Workout workout) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

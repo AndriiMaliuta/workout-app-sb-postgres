@@ -43,11 +43,12 @@ public class CreateSetController {
         newExerciseSet.setReps(exerciseSet.getReps());
         newExerciseSet.setBreakInSeconds(exerciseSet.getBreakInSeconds());
         newExerciseSet.setExercise(exerciseRepository.findById(id).get());
+        newExerciseSet.setComments(exerciseSet.getComments());
 
         setRepository.save(newExerciseSet);
 
         model.addAttribute("newExerciseSet", newExerciseSet);
 
-        return "redirect:/set/" + newExerciseSet.getId();
+        return "redirect:/set/" + newExerciseSet.getId() + "/view";
     }
 }

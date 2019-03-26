@@ -95,7 +95,7 @@
         </div>
 
         <div class="form-group">
-            <label for="category" >Workout Type</label>
+            <label for="category"><b>Workout Type</b></label>
             <select class="form-control" id="category" th:field="*{category}">
                 <option value="" disabled selected>--Select workout type--</option>
                 <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}"

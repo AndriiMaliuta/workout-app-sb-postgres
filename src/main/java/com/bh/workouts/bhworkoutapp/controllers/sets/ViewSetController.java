@@ -17,15 +17,15 @@ public class ViewSetController {
         this.setRepository = setRepository;
     }
 
-    @GetMapping("/exercise/{id}/sets/view")
-    public String getExercises(@PathVariable long id, Model model) {
+//    @GetMapping("/exercise/{id}/sets/view")
+//    public String getExercises(@PathVariable long id, Model model) {
+//
+//        model.addAttribute("sets", setRepository.findAll());
+//
+//        return "sets/sets";
+//    }
 
-        model.addAttribute("sets", setRepository.findAll());
-
-        return "sets/sets";
-    }
-
-    @GetMapping("/set/{id}")
+    @GetMapping("/set/{id}/view")
     public String getWorkout(@PathVariable long id, Model model) {
 
         model.addAttribute("set", setRepository.findById(id).get());
