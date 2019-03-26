@@ -83,7 +83,7 @@
           method="post">
 
         <div class="form-group">
-            <label style="color: blue" for="title"><b>Title</b></label>
+            <label for="title"><b>Title</b></label>
             <select class="form-control" id="title" th:field="*{title}">
 
                 <option value="0">Select Exercise</option>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="form-group">
-            <label for="comments"><h4><b>Comments</b></h4></label>
+            <label for="comments"><b>Comments</b></label>
             <textarea class="form-control" id="comments" th:field="*{comments}" rows="3"></textarea>
             <p th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}">Comments Error></p>
         </div>

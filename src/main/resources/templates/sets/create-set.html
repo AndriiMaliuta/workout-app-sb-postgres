@@ -98,7 +98,13 @@
         </div>
 
         <div class="form-group">
-            <label for="number"><b>Break(seconds)</b></label>
+            <label for="setTime"><b>Duration Time (seconds)</b></label>
+            <input th:field="*{setTime}" type="text" class="form-control" id="setTime" aria-describedby="setTime" placeholder="Set Time">
+            <p th:if="${#fields.hasErrors('setTime')}" th:errors="*{setTime}">Set Duration Error></p>
+        </div>
+
+        <div class="form-group">
+            <label for="number"><b>Break Time (seconds)</b></label>
             <input th:field="*{breakInSeconds}" type="text" class="form-control" id="breakInSeconds" aria-describedby="breakInSeconds" placeholder="Time">
             <p th:if="${#fields.hasErrors('breakInSeconds')}" th:errors="*{breakInSeconds}">Number Error></p>
         </div>

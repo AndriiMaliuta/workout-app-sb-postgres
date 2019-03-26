@@ -1,8 +1,9 @@
-package com.bh.workouts.bhworkoutapp.services;
+package com.bh.workouts.bhworkoutapp.services.exercise;
 
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.WorkoutType;
+import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import org.springframework.stereotype.Service;
 
 @Service

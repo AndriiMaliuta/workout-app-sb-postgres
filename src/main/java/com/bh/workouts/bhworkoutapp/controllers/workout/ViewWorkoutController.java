@@ -3,6 +3,7 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.exercise.GetSetsForWorkoutService;
 import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -54,9 +54,13 @@ public class ViewWorkoutController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
+        Workout workout = workoutRepository.findById(id).get();
 
-        model.addAttribute("workout", workoutRepository.findById(id).get());
+        int allSetsCount = GetSetsForWorkoutService.getWorkoutSets(workout);
+
+        model.addAttribute("workout", workout);
         model.addAttribute("userByLogin", userByLogin);
+        model.addAttribute("allSetsCount", allSetsCount);
 
         return "workouts/workout";
     }

@@ -3,7 +3,7 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.CurrentMonthDaysService;
+import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
 import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,8 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers.exercise;
 
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
-import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
+import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

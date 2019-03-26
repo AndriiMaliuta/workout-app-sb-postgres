@@ -1,6 +1,5 @@
 package com.bh.workouts.bhworkoutapp;
 
-import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

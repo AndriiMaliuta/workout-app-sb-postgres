@@ -40,6 +40,7 @@ public class CreateSetController {
 
         newExerciseSet.setNumber(exerciseSet.getNumber());
         newExerciseSet.setWeight(exerciseSet.getWeight());
+        newExerciseSet.setSetTime(exerciseSet.getSetTime());
         newExerciseSet.setReps(exerciseSet.getReps());
         newExerciseSet.setBreakInSeconds(exerciseSet.getBreakInSeconds());
         newExerciseSet.setExercise(exerciseRepository.findById(id).get());

@@ -2,7 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
+import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

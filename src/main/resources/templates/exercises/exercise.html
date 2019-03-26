@@ -87,20 +87,27 @@
             <th style="background-color: grey;color:white;text-align: right">Title</th>
             <td th:text="${exercise.title}"></td>
         </tr>
+
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Overall Weight</th>
-            <td th:text="${exercise.overallWeight}"></td>
+            <td th:text="${overallExerciseWeights}"></td>
         </tr>
+
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Overall Time</th>
-            <td th:text="${exercise.overallTime}"></td>
+            <th style="background-color: grey;color:white;text-align: right">Overall Reps</th>
+            <td th:text="${overallExerciseReps}"></td>
         </tr>
-        <!--<tr>-->
-        <!--<th style="text-align: right">Type</th>-->
-        <!--<td>-->
-        <!--<img src="#" alt="image" width="65" height="25" th:src="@{${workout.imagePath}}" />-->
-        <!--</td>-->
-        <!--</tr>-->
+
+        <tr>
+            <th style="background-color: grey;color:white;text-align: right">Overall Duration</th>
+            <td th:text="${overallExerciseDuration}"></td>
+        </tr>
+
+        <tr>
+            <th style="background-color: grey;color:white;text-align: right">Overall Break Time</th>
+            <td th:text="${overallExerciseBreakTime}"></td>
+        </tr>
+
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Sets
                 <br />

@@ -2,8 +2,8 @@ package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.controllers.workout.CreateWorkoutController;
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.services.ExerciseNameService;
-import com.bh.workouts.bhworkoutapp.services.InitExercisesService;
+import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
+import com.bh.workouts.bhworkoutapp.services.exercise.InitExercisesService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

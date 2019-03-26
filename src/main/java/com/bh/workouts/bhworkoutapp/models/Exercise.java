@@ -27,7 +27,11 @@ public class Exercise {
 
     private int overallWeight;
 
-    private int overallTime;
+    private int overallSetsTime;
+
+    private int overallBreakTime;
+
+    private int overallRepsCount;
 
     private String comments;
 
