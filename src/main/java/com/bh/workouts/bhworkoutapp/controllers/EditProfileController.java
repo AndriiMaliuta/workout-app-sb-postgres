@@ -1,0 +1,45 @@
+package com.bh.workouts.bhworkoutapp.controllers;
+
+import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class EditProfileController {
+
+    private final UserService userService;
+
+    @Autowired
+    public EditProfileController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/profile/edit")
+    public String editProfilePageForm(Model model) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User userByLogin = userService.findUserByLogin(auth.getName());
+
+        model.addAttribute("user", userByLogin);
+
+        return "edit-profile";
+    }
+
+    @PostMapping("/profile/edit")
+    public String editProfile(@ModelAttribute User user) {
+
+        userService.saveUser(user);
+
+        return "redirect:/profile";
+    }
+
+
+}

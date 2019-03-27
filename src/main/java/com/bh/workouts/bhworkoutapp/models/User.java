@@ -45,6 +45,14 @@ public class User {
     @NotEmpty(message = "*Please provide email")
     private String email;
 
+    private int weight;
+
+    private String sex;
+
+    private int age;
+
+    private int height;
+
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 //    private Collection<Role> roles;

@@ -4,19 +4,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <style>
-        .home_page_body {
-            padding: 15px;
-            margin: 15px;
-        }
-    </style>
-    <title>Home</title>
+    <title>Edit Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 
-<body background="../../images/dumb_1_opaq.png">
+<body>
 
 <!--<div th:replace="/common/navbar :: navbar"/>-->
 
@@ -83,14 +77,45 @@
     </nav>
 </div>
 
-<div class="home_page_body">
+<div class="main_padding_margin">
     <hr>
-    <h3>Home Page</h3>
+    <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
     <hr>
-    <br/>
-    <h5 th:text="'Hello ' + ${userName} + ' !'"></h5>
-    <br/>
-    <h6>Welcome to the Workouts site</h6>
+    <br />
+
+    <form class="form-group" th:action="@{/profile/edit}" th:object="${user}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="firstName"><b>First Name</b></label>
+            <input class="form-control" type="text" id="firstName" th:field="*{firstName}" >
+        </div>
+
+        <div class="form-group">
+            <label for="lastName"><b>Last Name</b></label>
+            <input class="form-control" type="text" id="lastName" th:field="*{lastName}" >
+        </div>
+
+        <div class="form-group">
+            <label for="age"><b>Age</b></label>
+            <input class="form-control" type="text" id="age" th:field="*{age}" >
+        </div>
+
+        <div class="form-group">
+            <label for="weight"><b>Weight</b></label>
+            <input class="form-control" type="text" id="weight" th:field="*{weight}" >
+        </div>
+
+        <div class="form-group">
+            <label for="height"><b>Height</b></label>
+            <input class="form-control" type="text" id="height" th:field="*{height}" >
+        </div>
+
+        <button type="submit" style="background-color: #5F6B91;" class="btn btn-primary">Submit</button>
+
+    </form>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

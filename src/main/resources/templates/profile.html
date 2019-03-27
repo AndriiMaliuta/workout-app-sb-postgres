@@ -81,7 +81,39 @@
     <hr>
     <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
     <hr>
-    <a class="btn btn-primary" href="" th:href="@{/workouts/view}">My Workouts</a>
+    <div>
+        <a class="btn btn-primary" href="" th:href="@{/workouts/view}">My Workouts</a>
+    </div>
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th style="background-color: #5F6B91;color:white">First Name</th>
+            <td th:text="${user.firstName}"></td>
+        </tr>
+        <tr>
+            <th style="background-color: #5F6B91;color:white">Last Name</th>
+            <td th:text="${user.lastName}"></td>
+        </tr>
+        <tr>
+            <th style="background-color: #5F6B91;color:white">Email</th>
+            <td th:text="${user.email}"></td>
+        </tr>
+        <tr>
+            <th style="background-color: #5F6B91;color:white">Age</th>
+            <td th:text="${user.age}"></td>
+        </tr>
+        <tr>
+            <th style="background-color: #5F6B91;color:white">Weight</th>
+            <td th:text="${user.weight}"></td>
+        </tr>
+        <tr>
+            <th style="background-color: #5F6B91;color:white">Height</th>
+            <td th:text="${user.height}"></td>
+        </tr>
+    </table>
+
+    <a class="btn btn-primary" href="" th:href="@{profile/edit}">Edit Info</a>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

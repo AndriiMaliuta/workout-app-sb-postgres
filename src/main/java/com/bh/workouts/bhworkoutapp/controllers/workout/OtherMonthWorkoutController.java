@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,7 @@ public class OtherMonthWorkoutController {
         List<Workout> workouts = workoutRepository.findAll();
 
         String monthName = monthForm.getMonth();
+
         int monthInt = 0;
 
         switch (monthName) {
@@ -94,7 +96,13 @@ public class OtherMonthWorkoutController {
                 break;
         }
 
-        YearMonth yearMonth = YearMonth.of(monthForm.getYear(), monthInt);
+        YearMonth yearMonth;
+
+        if (monthForm.getYear() == 0 || monthForm.getYear() == null) {
+            yearMonth = YearMonth.of(Year.now().getValue(), monthInt);
+        } else {
+            yearMonth = YearMonth.of(monthForm.getYear(), monthInt);
+        }
 
         model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
         model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
