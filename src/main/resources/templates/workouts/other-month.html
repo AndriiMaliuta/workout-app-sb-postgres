@@ -85,6 +85,11 @@
 
     <h5 style="color: #5F6B91" th:text="${currentDayMap.get(1).monthName} + ' ' + ${currentDayMap.get(1).year}"></h5>
 
+    <div>
+        <a href="" class="btn btn-primary" th:href="@{/workout/other/month}">Other Month</a>
+    </div>
+    <hr>
+
     <p>
         <a class="btn btn-primary" href="#" th:href="@{/workout/new}">Create Workout</a>
     </p>
