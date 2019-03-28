@@ -42,6 +42,8 @@ public class EditProfileController {
 
         user.setLogin(userRepository.findById(user.getId()).get().getLogin());
         user.setEmail(userRepository.findById(user.getId()).get().getEmail());
+        user.setActive(userRepository.findById(user.getId()).get().getActive());
+        user.setRoles(userRepository.findById(user.getId()).get().getRoles());
 
         userRepository.save(user);
 

@@ -4,9 +4,12 @@ import com.bh.workouts.bhworkoutapp.models.MonthForm;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.DigitFromMonthNameService;
 import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +29,7 @@ public class OtherMonthWorkoutController {
 
     private final UserService userService;
     private final WorkoutRepository workoutRepository;
+    private Logger logger = LoggerFactory.getLogger(OtherMonthWorkoutController.class);
 
     @Autowired
     public OtherMonthWorkoutController(UserService userService, WorkoutRepository workoutRepository) {
@@ -67,45 +71,28 @@ public class OtherMonthWorkoutController {
 
         String monthName = monthForm.getMonth();
 
-        int monthInt = 0;
-
-        switch (monthName) {
-            case "JANUARY" : monthInt = 1;
-                break;
-            case "FEBRUARY" : monthInt = 2;
-                break;
-            case "MARCH" : monthInt = 3;
-                break;
-            case "APRIL" : monthInt = 4;
-                break;
-            case "MAY" : monthInt = 5;
-                break;
-            case "JUNE" : monthInt = 6;
-                break;
-            case "JULY" : monthInt = 7;
-                break;
-            case "AUGUST" : monthInt = 8;
-                break;
-            case "SEPTEMBER" : monthInt = 9;
-                break;
-            case "OCTOBER" : monthInt = 10;
-                break;
-            case "NOVEMBER" : monthInt = 11;
-                break;
-            case "DECEMBER" : monthInt = 12;
-                break;
-        }
-
         YearMonth yearMonth;
 
-        if (monthForm.getYear() == 0 || monthForm.getYear() == null) {
-            yearMonth = YearMonth.of(Year.now().getValue(), monthInt);
-        } else {
-            yearMonth = YearMonth.of(monthForm.getYear(), monthInt);
+        try {
+
+            if (monthForm.getYear() == 0 || monthForm.getYear() == null) {
+                yearMonth = YearMonth.of(Year.now().getValue(), DigitFromMonthNameService.getDigitFromMonth(monthName));
+            } else {
+                yearMonth = YearMonth.of(monthForm.getYear(), DigitFromMonthNameService.getDigitFromMonth(monthName));
+            }
+
+            model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
+            model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
+            model.addAttribute("monthName", monthName);
+
+        } catch (NullPointerException e) {
+            logger.info(e.toString());
         }
 
-        model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
-        model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
+        logger.info(monthName);
+        logger.info(String.valueOf(DigitFromMonthNameService.getDigitFromMonth(monthName)));
+
+
 
         return "workouts/other-month";
     }
