@@ -34,6 +34,8 @@ public class LoginController {
         anma.setFirstName("Andrii");
         anma.setLastName("M");
         anma.setPassword("mypass");
+        anma.setAge(30);
+        anma.setSex("M");
 
         userService.saveUser(anma);
 

@@ -1,6 +1,7 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.repositories.UserRepository;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,10 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class EditProfileController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public EditProfileController(UserService userService) {
+    public EditProfileController(UserService userService,
+                                 UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/profile/edit")
@@ -36,7 +40,10 @@ public class EditProfileController {
     @PostMapping("/profile/edit")
     public String editProfile(@ModelAttribute User user) {
 
-        userService.saveUser(user);
+        user.setLogin(userRepository.findById(user.getId()).get().getLogin());
+        user.setEmail(userRepository.findById(user.getId()).get().getEmail());
+
+        userRepository.save(user);
 
         return "redirect:/profile";
     }
