@@ -93,7 +93,7 @@
 
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Overall Weight</th>
-            <td th:text="${overallExerciseWeights}"></td>
+            <td th:text="${overallExerciseWeights} + ' (kg)'"></td>
         </tr>
 
         <tr>
@@ -103,12 +103,12 @@
 
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Overall Duration</th>
-            <td th:text="${overallExerciseDuration}"></td>
+            <td th:text="${overallExerciseDuration} + ' (seconds)'"></td>
         </tr>
 
         <tr>
             <th style="background-color: grey;color:white;text-align: right">Overall Break Time</th>
-            <td th:text="${overallExerciseBreakTime}"></td>
+            <td th:text="${overallExerciseBreakTime} + ' (seconds)'"></td>
         </tr>
 
         <tr>
@@ -145,7 +145,7 @@
                 <a th:href="@{/workout/{workoutId}/exercise/{exerciseId}/delete(exerciseId=${exercise.id},workoutId=${workout.id})}"
 
                    class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Are you sure you want to delete this workout?'))) return false">
+                   onclick="if (!(confirm('Are you sure you want to delete this exercise?'))) return false">
                     Delete
                 </a>
             </td>

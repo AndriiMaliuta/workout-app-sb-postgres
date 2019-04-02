@@ -29,6 +29,7 @@ public class ViewSetController {
     public String getWorkout(@PathVariable long id, Model model) {
 
         model.addAttribute("set", setRepository.findById(id).get());
+        model.addAttribute("exercise", setRepository.findById(id).get().getExercise());
 
         return "sets/set";
     }

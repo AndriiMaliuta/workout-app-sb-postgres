@@ -69,6 +69,7 @@ public class CreateExerciseController {
 
         newExercise.setTitle(exercise.getTitle());
         newExercise.setWorkout(workoutRepository.findById(id).get());
+        newExercise.setComments(exercise.getComments());
 
         exerciseRepository.save(newExercise);
 

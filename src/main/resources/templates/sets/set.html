@@ -117,7 +117,7 @@
                    class="btn btn-primary btn-sm" >
                     Edit
                 </a>
-                <a th:href="@{/set/{id}/delete(id=${set.id})}"
+                <a th:href="@{/exercise/{exerciseId}/set/{setId}/delete(setId=${set.id},exerciseId=${exercise.id})}"
                    class="btn btn-danger btn-sm"
                    onclick="if (!(confirm('Are you sure you want to delete this set?'))) return false">
                     Delete
