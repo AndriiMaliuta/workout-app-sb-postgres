@@ -27,7 +27,7 @@ public class ProfileController {
 
         model.addAttribute("user", userByLogin);
 
-        return "profile";
+        return "profile/profile";
     }
 
 

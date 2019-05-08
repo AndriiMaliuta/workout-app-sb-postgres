@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
+
     private final UserService userService;
     private final ExerciseNameService exerciseNameService;
 

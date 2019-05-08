@@ -34,7 +34,7 @@ public class EditProfileController {
 
         model.addAttribute("user", userByLogin);
 
-        return "edit-profile";
+        return "profile/edit-profile";
     }
 
     @PostMapping("/profile/edit")

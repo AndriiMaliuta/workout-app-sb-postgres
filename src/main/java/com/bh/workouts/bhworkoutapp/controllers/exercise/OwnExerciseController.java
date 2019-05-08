@@ -30,6 +30,7 @@ public class OwnExerciseController {
     public String getOwnExercises(Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
         model.addAttribute("ownExercisesList", exerciseNameService.getUserExerciseNames(userByLogin));
@@ -50,6 +51,7 @@ public class OwnExerciseController {
     public String addOwnExercise(@ModelAttribute ExerciseName exerciseName) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
         ExerciseName newExerciseName = new ExerciseName();
@@ -58,7 +60,7 @@ public class OwnExerciseController {
         newExerciseName.setUser(userByLogin);
         newExerciseName.setCategory(exerciseName.getCategory());
 
-        exerciseNameService.save(exerciseName);
+        exerciseNameService.saveExerciseByUser(exerciseName);
 
         return "redirect:/exercises/own";
     }

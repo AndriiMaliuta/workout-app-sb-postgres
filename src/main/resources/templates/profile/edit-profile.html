@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>Edit Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/main.css">
@@ -81,38 +81,41 @@
     <hr>
     <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
     <hr>
-    <div>
-        <a class="btn btn-primary" href="" th:href="@{/workouts/view}">My Workouts</a>
-    </div>
     <br />
-    <table class="table table-bordered">
-        <tr>
-            <th style="background-color: #5F6B91;color:white">First Name</th>
-            <td th:text="${user.firstName}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white">Last Name</th>
-            <td th:text="${user.lastName}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white">Email</th>
-            <td th:text="${user.email}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white">Age</th>
-            <td th:text="${user.age}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white">Weight</th>
-            <td th:text="${user.weight} + ' kg'"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white">Height</th>
-            <td th:text="${user.height} + ' cm'"></td>
-        </tr>
-    </table>
 
-    <a class="btn btn-primary" href="" th:href="@{profile/edit}">Edit Info</a>
+    <form class="form-group" th:action="@{/profile/edit}" th:object="${user}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{password}" />
+
+        <div class="form-group">
+            <label for="firstName"><b>First Name</b></label>
+            <input class="form-control" type="text" id="firstName" th:field="*{firstName}" >
+        </div>
+
+        <div class="form-group">
+            <label for="lastName"><b>Last Name</b></label>
+            <input class="form-control" type="text" id="lastName" th:field="*{lastName}" >
+        </div>
+
+        <div class="form-group">
+            <label for="age"><b>Age</b></label>
+            <input class="form-control" type="text" id="age" th:field="*{age}" >
+        </div>
+
+        <div class="form-group">
+            <label for="weight"><b>Weight(Kg)</b></label>
+            <input class="form-control" type="text" id="weight" th:field="*{weight}" >
+        </div>
+
+        <div class="form-group">
+            <label for="height"><b>Height(cm)</b></label>
+            <input class="form-control" type="text" id="height" th:field="*{height}" >
+        </div>
+
+        <button type="submit" style="background-color: #5F6B91;" class="btn btn-success">Submit</button>
+
+    </form>
 
 </div>
 
