@@ -41,15 +41,15 @@ public class ExerciseNameService {
         return userExerciseNames;
     }
 
-    public void saveExerciseByUser(ExerciseName exerciseName) {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        User userByLogin = userService.findUserByLogin(authentication.getName());
-
-        exerciseName.setUser(userByLogin);
-
-        exerciseNameRepository.save(exerciseName);
-    }
+//    public void saveExerciseByUser(ExerciseName exerciseName) {
+//
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//        User userByLogin = userService.findUserByLogin(authentication.getName());
+//
+//        exerciseName.setUser(userByLogin);
+//
+//        exerciseNameRepository.save(exerciseName);
+//    }
 
 }

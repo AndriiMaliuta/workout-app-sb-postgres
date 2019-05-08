@@ -2,6 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers.exercise;
 
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,15 @@ public class OwnExerciseController {
 
     private final UserService userService;
     private final ExerciseNameService exerciseNameService;
+    private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
     public OwnExerciseController(UserService userService,
-                                 ExerciseNameService exerciseNameService) {
+                                 ExerciseNameService exerciseNameService,
+                                 ExerciseNameRepository exerciseNameRepository) {
         this.userService = userService;
         this.exerciseNameService = exerciseNameService;
+        this.exerciseNameRepository = exerciseNameRepository;
     }
 
     @GetMapping("/exercises/own")
@@ -60,7 +64,7 @@ public class OwnExerciseController {
         newExerciseName.setUser(userByLogin);
         newExerciseName.setCategory(exerciseName.getCategory());
 
-        exerciseNameService.saveExerciseByUser(exerciseName);
+        exerciseNameRepository.save(exerciseName);
 
         return "redirect:/exercises/own";
     }

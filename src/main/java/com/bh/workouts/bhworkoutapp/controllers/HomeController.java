@@ -1,9 +1,10 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.controllers.workout.CreateWorkoutController;
+import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
-import com.bh.workouts.bhworkoutapp.services.exercise.InitExercisesService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +22,15 @@ public class HomeController {
 
     private final UserService userService;
     private final ExerciseNameService exerciseNameService;
+    private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
     public HomeController(UserService userService,
-                          ExerciseNameService exerciseNameService) {
+                          ExerciseNameService exerciseNameService,
+                          ExerciseNameRepository exerciseNameRepository) {
         this.userService = userService;
         this.exerciseNameService = exerciseNameService;
+        this.exerciseNameRepository = exerciseNameRepository;
     }
 
     @RequestMapping("/home")
@@ -40,9 +44,13 @@ public class HomeController {
 
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
-        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameService);
+        int counter = 1;
 
-        initExercisesService.initExercises(userByLogin);
+        for (ExerciseName exerciseName : exerciseNameRepository.findAll()) {
+            exerciseName.setUser(userByLogin);
+            logger.info(counter + " success");
+            counter++;
+        }
 
         return "home";
     }
