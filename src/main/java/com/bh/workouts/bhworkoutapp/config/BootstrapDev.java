@@ -1,6 +1,5 @@
 package com.bh.workouts.bhworkoutapp.config;
 
-import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
@@ -16,21 +15,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("DEV")
-public class Bootstrap implements CommandLineRunner {
+public class BootstrapDev implements CommandLineRunner {
 
-    Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+    Logger logger = LoggerFactory.getLogger(BootstrapDev.class);
 
     private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
-    public Bootstrap(UserService userService,
-                     ExerciseNameRepository exerciseNameRepository) {
+    public BootstrapDev(UserService userService,
+                        ExerciseNameRepository exerciseNameRepository) {
         this.userService = userService;
         this.exerciseNameRepository = exerciseNameRepository;
     }
 
-    private User loadUsers() {
+    private void loadUsers() {
 
         User anma = new User();
 
@@ -49,28 +48,20 @@ public class Bootstrap implements CommandLineRunner {
 
         userService.saveUser(anma);
 
-        return anma;
-
     }
 
     private void loadExercises () {
 
-        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameRepository);
+        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameRepository, userService);
 
-        initExercisesService.initExercises(loadUsers());
+        initExercisesService.initExercises();
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        loadUsers();
         loadExercises();
 
-        int counter = 1;
-
-        for (ExerciseName exerciseName : exerciseNameRepository.findAll()) {
-            exerciseName.setUser(loadUsers());
-            logger.info(counter + " success");
-            counter++;
-        }
     }
 }

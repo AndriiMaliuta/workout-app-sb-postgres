@@ -27,13 +27,17 @@ public class ExerciseNameService {
         this.userService = userService;
     }
 
-    public List<ExerciseName> getUserExerciseNames(User user) {
+    public List<ExerciseName> getUserExerciseNames() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User userByLogin = userService.findUserByLogin(authentication.getName());
 
         List<ExerciseName> exerciseNames = exerciseNameRepository.findAll();
         List<ExerciseName> userExerciseNames = new ArrayList<>();
 
         for (ExerciseName exerciseName : exerciseNames) {
-            if (exerciseName.getUser().equals(user)) {
+            if (exerciseName.getUser().equals(userByLogin) || exerciseName.getAccess().equals("COMMON")) {
                 userExerciseNames.add(exerciseName);
             }
         }

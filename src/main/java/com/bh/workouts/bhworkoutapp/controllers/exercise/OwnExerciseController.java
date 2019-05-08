@@ -37,7 +37,7 @@ public class OwnExerciseController {
 
         User userByLogin = userService.findUserByLogin(authentication.getName());
 
-        model.addAttribute("ownExercisesList", exerciseNameService.getUserExerciseNames(userByLogin));
+        model.addAttribute("ownExercisesList", exerciseNameService.getUserExerciseNames());
 
         return "exercises/own-exercises";
     }
