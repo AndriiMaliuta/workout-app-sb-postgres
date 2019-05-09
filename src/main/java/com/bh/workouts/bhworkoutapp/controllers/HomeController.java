@@ -42,16 +42,6 @@ public class HomeController {
 
         logger.info("**** User Name is " + authentication.getName());
 
-        User userByLogin = userService.findUserByLogin(authentication.getName());
-
-        int counter = 1;
-
-        for (ExerciseName exerciseName : exerciseNameRepository.findAll()) {
-            exerciseName.setUser(userByLogin);
-            logger.info(counter + " success");
-            counter++;
-        }
-
         return "home";
     }
 }

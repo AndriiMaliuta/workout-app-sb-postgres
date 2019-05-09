@@ -27,6 +27,7 @@ public class LoginController {
 
         logger.info("=======================");
         logger.info("Getting Login page");
+        logger.info("=======================");
 
         return "login";
     }

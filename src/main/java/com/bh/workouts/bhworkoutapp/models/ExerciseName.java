@@ -1,12 +1,14 @@
 package com.bh.workouts.bhworkoutapp.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table
 @Data
+@NoArgsConstructor
 public class ExerciseName {
 
     @Id

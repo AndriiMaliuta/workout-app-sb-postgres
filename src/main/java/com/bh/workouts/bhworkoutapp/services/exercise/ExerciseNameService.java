@@ -1,6 +1,5 @@
 package com.bh.workouts.bhworkoutapp.services.exercise;
 
-
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
@@ -19,7 +18,6 @@ public class ExerciseNameService {
     private final ExerciseNameRepository exerciseNameRepository;
     private final UserService userService;
 
-
     @Autowired
     public ExerciseNameService(ExerciseNameRepository exerciseNameRepository,
                                UserService userService) {
@@ -27,7 +25,7 @@ public class ExerciseNameService {
         this.userService = userService;
     }
 
-    public List<ExerciseName> getUserExerciseNames() {
+    public List<ExerciseName> getOwnExerciseNames() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -37,7 +35,12 @@ public class ExerciseNameService {
         List<ExerciseName> userExerciseNames = new ArrayList<>();
 
         for (ExerciseName exerciseName : exerciseNames) {
-            if (exerciseName.getUser().equals(userByLogin) || exerciseName.getAccess().equals("COMMON")) {
+
+            if (exerciseName.getAccess().equals("COMMON")) {
+                userExerciseNames.add(exerciseName);
+            }
+
+            if (exerciseName.getAccess().equals("PERSONAL") && exerciseName.getUser().equals(userByLogin)) {
                 userExerciseNames.add(exerciseName);
             }
         }

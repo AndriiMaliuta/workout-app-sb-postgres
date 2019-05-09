@@ -12,19 +12,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 
 @Component
 @Profile("DEV")
-public class BootstrapDev implements CommandLineRunner {
+public class Bootstrap implements CommandLineRunner {
 
-    Logger logger = LoggerFactory.getLogger(BootstrapDev.class);
+    Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
-    public BootstrapDev(UserService userService,
-                        ExerciseNameRepository exerciseNameRepository) {
+    public Bootstrap(UserService userService,
+                     ExerciseNameRepository exerciseNameRepository) {
         this.userService = userService;
         this.exerciseNameRepository = exerciseNameRepository;
     }
@@ -50,7 +52,7 @@ public class BootstrapDev implements CommandLineRunner {
 
     }
 
-    private void loadExercises () {
+    private void loadExercises () throws IOException {
 
         InitExercisesService initExercisesService = new InitExercisesService(exerciseNameRepository, userService);
 
