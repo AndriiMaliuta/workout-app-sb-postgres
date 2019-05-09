@@ -1,12 +1,14 @@
 package com.bh.workouts.bhworkoutapp.config;
+/*
+Andrii Maliuta
+January 2019
+ */
 
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.exercise.InitExercisesService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -14,12 +16,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-
 @Component
 @Profile("DEV")
 public class Bootstrap implements CommandLineRunner {
-
-    Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;

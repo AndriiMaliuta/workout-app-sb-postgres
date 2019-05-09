@@ -39,7 +39,10 @@ public class InitExercisesService {
                 absExercise.setCategory(WorkoutType.ABS.name());
                 absExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(absExercise);
-                logger.info(absExercise.getName());
+                logger.info("++++++");
+                logger.info("Loading exercises");
+                logger.info("++++++");
+                logger.info("ABS " + absExercise.getName());
 
             }
 
@@ -60,7 +63,7 @@ public class InitExercisesService {
                 backExercise.setCategory(WorkoutType.BACK.name());
                 backExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(backExercise);
-                logger.info(backExercise.getName());
+                logger.info("BACK " + backExercise.getName());
 
             }
 
@@ -81,7 +84,7 @@ public class InitExercisesService {
                 bicepsExercise.setCategory(WorkoutType.BICEPS.name());
                 bicepsExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(bicepsExercise);
-                logger.info(bicepsExercise.getName());
+                logger.info("BICEPS " + bicepsExercise.getName());
 
             }
 
@@ -102,7 +105,7 @@ public class InitExercisesService {
                 deltsExercise.setCategory(WorkoutType.DELTS.name());
                 deltsExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(deltsExercise);
-                logger.info(deltsExercise.getName());
+                logger.info("DELTS " + deltsExercise.getName());
 
             }
 
@@ -123,7 +126,7 @@ public class InitExercisesService {
                 pecsExercise.setCategory(WorkoutType.PECS.name());
                 pecsExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(pecsExercise);
-                logger.info(pecsExercise.getName());
+                logger.info("PECS " + pecsExercise.getName());
 
             }
 
@@ -144,7 +147,7 @@ public class InitExercisesService {
                 tricepsExercise.setCategory(WorkoutType.TRICEPS.name());
                 tricepsExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(tricepsExercise);
-                logger.info(tricepsExercise.getName());
+                logger.info("TRICS " + tricepsExercise.getName());
 
             }
 
