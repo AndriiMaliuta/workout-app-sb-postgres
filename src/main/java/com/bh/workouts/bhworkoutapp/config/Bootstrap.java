@@ -37,7 +37,7 @@ public class Bootstrap implements CommandLineRunner {
         anma.setLogin("anma");
         anma.setFirstName("Andrii");
         anma.setLastName("M");
-        anma.setPassword("");
+        anma.setPassword("Porkie");
         anma.setAge(30);
         anma.setWeight(82);
         anma.setSex("M");
