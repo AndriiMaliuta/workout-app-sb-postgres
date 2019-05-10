@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -70,4 +71,13 @@ public class OwnExerciseController {
 
         return "redirect:/exercises/own";
     }
+
+    @GetMapping("/exercise/own/{id}/delete")
+    public String deleteWorkout(@PathVariable long id) {
+
+        exerciseNameRepository.deleteById(id);
+
+        return "redirect:/exercises/own";
+    }
+
 }

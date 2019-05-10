@@ -102,6 +102,7 @@
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('BICEPS')}" th:text="${exercise.name}"></td>
+                                <td th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}"></td>
                             </tr>
                         </th:block>
                     </table>
@@ -119,10 +120,13 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
-                    <table>
+                    <table class="table">
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('PECS')}" th:text="${exercise.name}"></td>
+                                <td>
+                                    <a th:if="${exercise.category.equalsIgnoreCase('PECS')}" th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}" class="btn-sm btn-danger" href="#">Delete</a>
+                                </td>
                             </tr>
                         </th:block>
                     </table>
