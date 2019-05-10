@@ -1,8 +1,4 @@
 package com.bh.workouts.bhworkoutapp.config;
-/*
-Andrii Maliuta
-January 2019
- */
 
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;

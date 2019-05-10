@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Controller
@@ -52,6 +53,7 @@ public class CreateWorkoutController {
         Workout newWorkout = new Workout();
 
         newWorkout.setWorkoutType(workout.getWorkoutType());
+        newWorkout.setWorkoutMonth(LocalDate.now().getMonth().name());
         newWorkout.setCreationDate(workout.getCreationDate());
         newWorkout.setWorkoutDate(workout.getWorkoutDate());
         newWorkout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));

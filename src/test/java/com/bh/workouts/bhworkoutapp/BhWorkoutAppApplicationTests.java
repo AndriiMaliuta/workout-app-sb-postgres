@@ -11,6 +11,8 @@ public class BhWorkoutAppApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
+
 	}
 
 }

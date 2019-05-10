@@ -33,6 +33,9 @@ public class Workout {
     @CreationTimestamp
     private Date creationDate;
 
+    @Column(columnDefinition = "varchar(100)")
+    private String workoutMonth;
+
     private String workoutDate;
 
     private String workoutTime;

@@ -91,7 +91,25 @@
     <p>
         <a class="btn btn-primary" href="#" th:href="@{/workout/new}">Create Workout</a>
     </p>
-
+    <h5>Number of workouts this month</h5>
+    <table>
+        <tr>
+            <td><img src="../../images/colors/back_new.png" alt=""></td><td th:text="${backWorkoutsNumber}"></td>
+        </tr>
+        <tr>
+            <td><img src="../../images/colors/bics_new.png" alt=""></td><td th:text="${bicepsWorkoutsNumber}"></td>
+        </tr>
+        <tr>
+            <td><img src="../../images/colors/delts_new.png" alt=""></td><td th:text="${deltsWorkoutsNumber}"></td>
+        </tr>
+        <tr>
+            <td><img src="../../images/colors/pecs_new.png" alt=""></td><td th:text="${pecsWorkoutsNumber}"></td>
+        </tr>
+        <tr>
+            <td><img src="../../images/colors/trics_new.png" alt=""></td><td th:text="${tricepsWorkoutsNumber}"></td>
+        </tr>
+    </table>
+    <br />
     <table class="table table-bordered">
 
         <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">

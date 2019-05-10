@@ -32,6 +32,10 @@ public class InitExercisesService {
 
             String line;
 
+            logger.info("++++++++++++++++++++++++++");
+            logger.info("Loading exercises");
+            logger.info("++++++++++++++++++++++++++");
+
             while ((line = reader.readLine()) != null) {
 
                 ExerciseName absExercise = new ExerciseName();
@@ -39,9 +43,6 @@ public class InitExercisesService {
                 absExercise.setCategory(WorkoutType.ABS.name());
                 absExercise.setAccess(ExerciseNameAccess.COMMON.name());
                 exerciseNameRepository.save(absExercise);
-                logger.info("++++++");
-                logger.info("Loading exercises");
-                logger.info("++++++");
                 logger.info("ABS " + absExercise.getName());
 
             }

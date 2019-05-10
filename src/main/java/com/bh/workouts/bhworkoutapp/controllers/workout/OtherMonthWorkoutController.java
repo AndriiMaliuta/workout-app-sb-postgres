@@ -3,11 +3,13 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.MonthForm;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
+import com.bh.workouts.bhworkoutapp.models.WorkoutType;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.DigitFromMonthNameService;
 import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
+import com.bh.workouts.bhworkoutapp.services.stats.MonthWorkoutsStatsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -80,6 +83,22 @@ public class OtherMonthWorkoutController {
             } else {
                 yearMonth = YearMonth.of(monthForm.getYear(), DigitFromMonthNameService.getDigitFromMonth(monthName));
             }
+
+            MonthWorkoutsStatsService monthWorkoutsStatsService = new MonthWorkoutsStatsService(workoutRepository);
+
+            int pecsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.PECS.name());
+            int backWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.BACK.name());
+            int bicepsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.BICEPS.name());
+            int tricepsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.TRICEPS.name());
+            int deltsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.DELTS.name());
+
+            model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
+            model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
+            model.addAttribute("pecsWorkoutsNumber", pecsWorkoutsNumber);
+            model.addAttribute("bicepsWorkoutsNumber", bicepsWorkoutsNumber);
+            model.addAttribute("tricepsWorkoutsNumber", tricepsWorkoutsNumber);
+            model.addAttribute("backWorkoutsNumber", backWorkoutsNumber);
+            model.addAttribute("deltsWorkoutsNumber", deltsWorkoutsNumber);
 
             model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
             model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));

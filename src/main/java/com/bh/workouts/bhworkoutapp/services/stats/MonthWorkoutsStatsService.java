@@ -1,18 +1,33 @@
 package com.bh.workouts.bhworkoutapp.services.stats;
 
-import java.time.LocalDate;
+import com.bh.workouts.bhworkoutapp.models.Workout;
+import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MonthWorkoutsStatsService {
 
-    private static int getWorkoutsNumberByType(String workoutType) {
+    private final WorkoutRepository workoutRepository;
 
-        int numberOfWorkouts = 0;
+    public MonthWorkoutsStatsService(WorkoutRepository workoutRepository) {
+        this.workoutRepository = workoutRepository;
+    }
 
-        LocalDate localDate = LocalDate.now();
-        localDate.getMonthValue();
+    public int getWorkoutsNumberByType(String month, String workoutType) {
 
+        List<Workout> allWorkouts = workoutRepository.findAll();
+        List<Workout> workoutsByType = new ArrayList<>();
 
+        for (Workout workout : allWorkouts) {
 
-        return numberOfWorkouts;
+            if (workout.getWorkoutMonth().equals(month) && workout.getWorkoutType().equals(workoutType)) {
+
+                workoutsByType.add(workout);
+
+            }
+        }
+
+        return workoutsByType.size();
     }
 }
