@@ -38,7 +38,7 @@ public class FindWorkoutController {
     }
 
     @PostMapping("/workout/find")
-    public String findWorkoutbyName(@ModelAttribute Workout workout, Model model) {
+    public String findWorkoutByName(@ModelAttribute Workout workout, Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByLogin = userService.findUserByLogin(authentication.getName());

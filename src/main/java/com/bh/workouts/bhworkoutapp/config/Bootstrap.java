@@ -26,7 +26,7 @@ public class Bootstrap implements CommandLineRunner {
         this.exerciseNameRepository = exerciseNameRepository;
     }
 
-    private void loadUsers() {
+    public void loadUsers() {
 
         User anma = new User();
 
