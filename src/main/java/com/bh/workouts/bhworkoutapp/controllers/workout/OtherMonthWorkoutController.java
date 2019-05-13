@@ -86,11 +86,16 @@ public class OtherMonthWorkoutController {
 
             MonthWorkoutsStatsService monthWorkoutsStatsService = new MonthWorkoutsStatsService(workoutRepository);
 
-            int pecsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.PECS.name());
-            int backWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.BACK.name());
-            int bicepsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.BICEPS.name());
-            int tricepsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.TRICEPS.name());
-            int deltsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(LocalDate.now().getMonth().name(), WorkoutType.DELTS.name());
+            int pecsWorkoutsNumber =
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.PECS.name(), userByLogin);
+            int backWorkoutsNumber =
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BACK.name(), userByLogin);
+            int bicepsWorkoutsNumber =
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BICEPS.name(), userByLogin);
+            int tricepsWorkoutsNumber =
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.TRICEPS.name(), userByLogin);
+            int deltsWorkoutsNumber =
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), userByLogin);
 
             model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
             model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
@@ -110,8 +115,6 @@ public class OtherMonthWorkoutController {
 
         logger.info(monthName);
         logger.info(String.valueOf(DigitFromMonthNameService.getDigitFromMonth(monthName)));
-
-
 
         return "workouts/other-month";
     }

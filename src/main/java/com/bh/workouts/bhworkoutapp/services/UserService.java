@@ -12,8 +12,8 @@ import java.util.List;
 @Service("userService")
 public class UserService {
 
-    private UserRepository userRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository,
@@ -37,8 +37,8 @@ public class UserService {
         user.setActive(1);
 
 //        Role userRole = roleRepository.findByRole("USER");
-
 //        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+
         user.setRoles(RoleEnum.USER);
 
         userRepository.save(user);

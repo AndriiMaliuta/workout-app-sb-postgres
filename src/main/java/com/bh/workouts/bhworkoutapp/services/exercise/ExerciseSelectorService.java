@@ -13,10 +13,18 @@ public class ExerciseSelectorService {
         List<ExerciseName> userWorkoutTypeExercisesList = new ArrayList<>();
 
         for (ExerciseName exerciseName : list) {
-            if (exerciseName.getCategory().equalsIgnoreCase(workoutType)
-                    && exerciseName.getUser().equals(user)) {
 
+            if (exerciseName.getAccess().equals("COMMON")
+                    && exerciseName.getCategory().equalsIgnoreCase(workoutType)) {
                 userWorkoutTypeExercisesList.add(exerciseName);
+            }
+
+            if (!exerciseName.getAccess().equals("COMMON")) {
+                if (exerciseName.getCategory().equalsIgnoreCase(workoutType)
+                        && exerciseName.getUser().equals(user)) {
+
+                    userWorkoutTypeExercisesList.add(exerciseName);
+                }
             }
         }
 

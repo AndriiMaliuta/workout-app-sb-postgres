@@ -5,6 +5,7 @@ import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.WorkoutColorService;
+import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +54,9 @@ public class CreateWorkoutController {
         Workout newWorkout = new Workout();
 
         newWorkout.setWorkoutType(workout.getWorkoutType());
-        newWorkout.setWorkoutMonth(LocalDate.now().getMonth().name());
         newWorkout.setCreationDate(workout.getCreationDate());
         newWorkout.setWorkoutDate(workout.getWorkoutDate());
+        newWorkout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));
         newWorkout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
         newWorkout.setComments(workout.getComments());
         newWorkout.setUser(userByLogin);
@@ -70,6 +71,5 @@ public class CreateWorkoutController {
 
         return "redirect:/workout/" + newWorkout.getId();
     }
-
 
 }

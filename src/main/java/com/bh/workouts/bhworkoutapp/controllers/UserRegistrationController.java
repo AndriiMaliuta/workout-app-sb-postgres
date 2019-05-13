@@ -1,14 +1,15 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.validation.Valid;
 import java.util.logging.Logger;
 

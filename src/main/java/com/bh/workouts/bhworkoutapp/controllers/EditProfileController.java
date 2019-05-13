@@ -28,9 +28,9 @@ public class EditProfileController {
     @GetMapping("/profile/edit")
     public String editProfilePageForm(Model model) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        User userByLogin = userService.findUserByLogin(auth.getName());
+        User userByLogin = userService.findUserByLogin(authentication.getName());
 
         model.addAttribute("user", userByLogin);
 

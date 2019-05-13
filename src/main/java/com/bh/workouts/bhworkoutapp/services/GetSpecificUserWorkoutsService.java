@@ -10,7 +10,6 @@ public class GetSpecificUserWorkoutsService {
 
     public static List<Workout> userWorkouts(List<Workout> workouts, User userLogin) {
 
-
         List<Workout> userWorkouts = new ArrayList<>();
 
         for (Workout workout : workouts) {

@@ -1,6 +1,5 @@
 package com.bh.workouts.bhworkoutapp.config;
 
-import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${spring.queries.users-query}")
     private String usersQuery;
-//
+
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
@@ -79,7 +78,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
-
-
 
 }

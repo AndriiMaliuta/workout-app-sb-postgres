@@ -1,7 +1,6 @@
 package com.bh.workouts.bhworkoutapp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
