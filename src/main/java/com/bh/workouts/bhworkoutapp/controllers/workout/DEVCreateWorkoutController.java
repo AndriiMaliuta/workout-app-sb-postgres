@@ -23,17 +23,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@Profile("PROD")
-public class CreateWorkoutController {
+@Profile("DEV")
+public class DEVCreateWorkoutController {
 
     private final UserService userService;
     private final WorkoutRepository workoutRepository;
 
-    private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
+    private Logger logger = LoggerFactory.getLogger(DEVCreateWorkoutController.class);
 
     @Autowired
-    public CreateWorkoutController(UserService userService,
-                                   WorkoutRepository workoutRepository) {
+    public DEVCreateWorkoutController(UserService userService,
+                                      WorkoutRepository workoutRepository) {
         this.userService = userService;
         this.workoutRepository = workoutRepository;
     }
@@ -49,28 +49,19 @@ public class CreateWorkoutController {
     @PostMapping("/workout/new")
     public String createWorkout(@ModelAttribute Workout workout, Model model) throws ParseException {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(auth.getName());
-
-        Workout newWorkout = new Workout();
-
-        newWorkout.setWorkoutType(workout.getWorkoutType());
-        newWorkout.setCreationDate(workout.getCreationDate());
-        newWorkout.setWorkoutDate(workout.getWorkoutDate());
-        newWorkout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));
-        newWorkout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
-        newWorkout.setComments(workout.getComments());
-        newWorkout.setUser(userByLogin);
+        workout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));
+        workout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
+        workout.setUser(userService.findUserByLogin("anma"));
 
         Date dayDate = new SimpleDateFormat("MM/dd/yyyy").parse(workout.getWorkoutDate());
 
-        newWorkout.setWorkoutDay(new SimpleDateFormat("EEEE").format(dayDate));
+        workout.setWorkoutDay(new SimpleDateFormat("EEEE").format(dayDate));
 
-        workoutRepository.save(newWorkout);
+        workoutRepository.save(workout);
 
-        model.addAttribute("newWorkout", newWorkout);
+        model.addAttribute("newWorkout", workout);
 
-        return "redirect:/workout/" + newWorkout.getId();
+        return "redirect:/workout/" + workout.getId();
     }
 
 }

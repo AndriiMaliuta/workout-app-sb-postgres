@@ -7,6 +7,7 @@ import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,9 @@ public class HomeController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        model.addAttribute("userName", userService.findUserByLogin(authentication.getName()).getFirstName());
+        if (authentication.getName().equals("anma")) {
+            model.addAttribute("userName", userService.findUserByLogin(authentication.getName()).getFirstName());
+        }
 
         logger.info("**** User Name is " + authentication.getName());
 
