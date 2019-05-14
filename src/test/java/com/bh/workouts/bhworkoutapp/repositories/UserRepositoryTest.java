@@ -42,7 +42,6 @@ public class UserRepositoryTest {
 
         assertEquals(userAnma, userRepository.findByEmail(userAnma.getEmail()));
 
-
     }
 
     @Test

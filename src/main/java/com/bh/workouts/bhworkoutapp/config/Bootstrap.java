@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-@Profile("DEV")
 public class Bootstrap implements CommandLineRunner {
 
     private final UserService userService;
@@ -49,9 +48,12 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadExercises () throws IOException {
 
-        InitExercisesService initExercisesService = new InitExercisesService(exerciseNameRepository, userService);
+        if (exerciseNameRepository.findAll().size() == 0) {
 
-        initExercisesService.initExercises();
+            InitExercisesService initExercisesService = new InitExercisesService(exerciseNameRepository, userService);
+
+            initExercisesService.initExercises();
+        }
     }
 
     @Override

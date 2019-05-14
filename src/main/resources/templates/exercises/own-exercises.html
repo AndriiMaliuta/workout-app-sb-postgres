@@ -102,7 +102,9 @@
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('BICEPS')}" th:text="${exercise.name}"></td>
-                                <td th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}"></td>
+                                <td>
+                                    <a th:if="${exercise.category.equalsIgnoreCase('BICEPS')}" th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}" class="btn-sm btn-danger" href="#">Delete</a>
+                                </td>
                             </tr>
                         </th:block>
                     </table>
@@ -120,7 +122,7 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
-                    <table class="table">
+                    <table>
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('PECS')}" th:text="${exercise.name}"></td>
@@ -148,6 +150,9 @@
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('TRICEPS')}" th:text="${exercise.name}"></td>
+                                <td>
+                                    <a th:if="${exercise.category.equalsIgnoreCase('TRICEPS')}" th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}" class="btn-sm btn-danger" href="#">Delete</a>
+                                </td>
                             </tr>
                         </th:block>
                     </table>
@@ -169,6 +174,9 @@
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('DELTS')}" th:text="${exercise.name}"></td>
+                                <td>
+                                    <a th:if="${exercise.category.equalsIgnoreCase('DELTS')}" th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}" class="btn-sm btn-danger" href="#">Delete</a>
+                                </td>
                             </tr>
                         </th:block>
                     </table>
@@ -190,6 +198,9 @@
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('BACK')}" th:text="${exercise.name}"></td>
+                                <td>
+                                    <a th:if="${exercise.category.equalsIgnoreCase('BACK')}" th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}" class="btn-sm btn-danger" href="#">Delete</a>
+                                </td>
                             </tr>
                         </th:block>
                     </table>
@@ -211,6 +222,9 @@
                         <th:block th:each="exercise : ${ownExercisesList}">
                             <tr>
                                 <td th:if="${exercise.category.equalsIgnoreCase('ABS')}" th:text="${exercise.name}"></td>
+                                <td>
+                                    <a th:if="${exercise.category.equalsIgnoreCase('ABS')}" th:href="@{/exercise/own/{id}/delete(id=${exercise.id})}" class="btn-sm btn-danger" href="#">Delete</a>
+                                </td>
                             </tr>
                         </th:block>
                     </table>
