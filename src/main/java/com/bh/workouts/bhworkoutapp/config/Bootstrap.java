@@ -5,6 +5,8 @@ import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.exercise.InitExercisesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,8 @@ public class Bootstrap implements CommandLineRunner {
 
     private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;
+
+    private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     @Autowired
     public Bootstrap(UserService userService,
@@ -43,6 +47,9 @@ public class Bootstrap implements CommandLineRunner {
 
         userService.saveUser(anma);
 
+        logger.debug("=======");
+        logger.debug("User created!");
+
     }
 
     private void loadExercises () throws IOException {
@@ -60,6 +67,9 @@ public class Bootstrap implements CommandLineRunner {
 
         loadUsers();
         loadExercises();
+
+        logger.debug("===========");
+        logger.debug("Exercises loaded");
 
     }
 }

@@ -14,9 +14,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
+@Profile("PROD")
 @Configuration
 @EnableWebSecurity
-@Profile("PROD")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
