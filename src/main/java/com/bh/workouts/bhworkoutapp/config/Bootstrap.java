@@ -30,22 +30,25 @@ public class Bootstrap implements CommandLineRunner {
 
     public void loadUsers() {
 
-        User anma = new User();
+        if (userService.findAllUsers().size() == 0) {
 
-        anma.setId(1L);
-        anma.setRoles(RoleEnum.ADMIN);
-        anma.setActive(1);
-        anma.setEmail("test-main@test.com");
-        anma.setLogin("anma");
-        anma.setFirstName("Andrii");
-        anma.setLastName("Maliuta");
-        anma.setPassword("Porkie");
-        anma.setAge(30);
-        anma.setWeight(83);
-        anma.setSex("M");
-        anma.setHeight(174);
+            User anma = new User();
 
-        userService.saveUser(anma);
+            anma.setId(1L);
+            anma.setRoles(RoleEnum.ADMIN);
+            anma.setActive(1);
+            anma.setEmail("test-main@test.com");
+            anma.setLogin("anma");
+            anma.setFirstName("Andrii");
+            anma.setLastName("Maliuta");
+            anma.setPassword("Porkie");
+            anma.setAge(30);
+            anma.setWeight(83);
+            anma.setSex("M");
+            anma.setHeight(174);
+
+            userService.saveUser(anma);
+        }
 
         logger.debug("=======");
         logger.debug("User created!");
