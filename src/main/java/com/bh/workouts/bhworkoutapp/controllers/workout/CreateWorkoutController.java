@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 @Controller
@@ -54,6 +55,8 @@ public class CreateWorkoutController {
 
         User userByLogin = authInitiator.getUserFromAuth();
 
+        Calendar calendar = Calendar.getInstance();
+
         Workout newWorkout = new Workout();
 
         newWorkout.setWorkoutType(workout.getWorkoutType());
@@ -63,6 +66,7 @@ public class CreateWorkoutController {
         newWorkout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
         newWorkout.setComments(workout.getComments());
         newWorkout.setUser(userByLogin);
+        newWorkout.setWeek(calendar.get(Calendar.WEEK_OF_MONTH));
 
         Date dayDate = new SimpleDateFormat("MM/dd/yyyy").parse(workout.getWorkoutDate());
 

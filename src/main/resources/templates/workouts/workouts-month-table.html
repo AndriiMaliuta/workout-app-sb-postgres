@@ -110,29 +110,39 @@
         </tr>
     </table>
     <br />
-    <table class="table table-bordered">
 
         <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">
 
-            <tr>
-                <th th:width="30" style="background-color:grey;color:white" th:text="${currentWorkoutDay.daynumber}">
-                </th>
-                <th width="130" style="background-color: #5F6B91;color: white;" th:text="${currentWorkoutDay.getDayName()}"></th>
-                <td>
-                    <th:block th:each="workout : ${userWorkouts}">
-                        <p th:if="${workout.workoutDate.equals(currentWorkoutDay.todayWeekDate)} ">
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
-                        </p>
-                    </th:block>
-                </td>
-                <td th:text="${currentWorkoutDay.week}"></td>
-            </tr>
+            <p th:if="${currentWorkoutDay.week} == 1" th:text="${currentWorkoutDay.dayName} + ' '
+            + ${currentWorkoutDay.dayNumber}" >
+            </p>
 
         </th:block>
 
-    </table>
+        <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">
+
+            <p th:if="${currentWorkoutDay.week} == 2" th:text="${currentWorkoutDay.dayName} + ' '
+               + ${currentWorkoutDay.dayNumber}" >
+            </p>
+
+        </th:block>
+
+<!--        <tr>-->
+<!--            <th:block th:each="currentWorkoutDay : ${currentDayMap.values()}">-->
+<!--                <th th:if="${currentWorkoutDay.week} == 1" th:text="${currentWorkoutDay.dayName} + ' '-->
+<!--                + ${currentWorkoutDay.dayNumber}"></th>-->
+<!--                <td>-->
+<!--                    <th:block th:each="workout : ${userWorkouts}">-->
+<!--                        <p th:if="${workout.workoutDate.equals(currentWorkoutDay.todayWeekDate)} ">-->
+<!--                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">-->
+<!--                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />-->
+<!--                            </a>-->
+<!--                        </p>-->
+<!--                    </th:block>-->
+<!--                </td>-->
+<!--            </th:block>-->
+<!--        </tr>-->
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

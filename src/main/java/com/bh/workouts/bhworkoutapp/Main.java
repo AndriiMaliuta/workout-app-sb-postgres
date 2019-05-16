@@ -18,19 +18,8 @@ public class Main {
 
         Calendar calendar = Calendar.getInstance();
 
-        System.out.println(calendar.get(Calendar.WEEK_OF_MONTH));
-
-        System.out.println(LocalDate.now().getDayOfWeek().name());
-
-//        WeekFields week = WeekFields.of(firstDayOfWeek, minDays);
-
-        WeekFields weekFields = WeekFields.of(Locale.getDefault());
-
-        System.out.println(weekFields.weekOfMonth().getDisplayName(Locale.getDefault()));
-
-        TemporalField temporalField = weekFields.weekOfMonth();
-
-        System.out.println(temporalField);
+        calendar.get(Calendar.WEEK_OF_MONTH);
 
     }
 }
+    

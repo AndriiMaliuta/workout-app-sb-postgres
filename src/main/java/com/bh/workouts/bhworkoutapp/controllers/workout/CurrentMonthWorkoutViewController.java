@@ -62,8 +62,7 @@ public class CurrentMonthWorkoutViewController {
         model.addAttribute("monthNow", localDate.getMonth().name());
         model.addAttribute("yearNow", localDate.getYear());
 
-        return "workouts/workouts-month";
+        return "workouts/workouts-month-table";
     }
-
 
 }

@@ -49,4 +49,6 @@ public class Workout {
     @Column(columnDefinition = "varchar(500)")
     private String comments;
 
+    private int week;
+
 }

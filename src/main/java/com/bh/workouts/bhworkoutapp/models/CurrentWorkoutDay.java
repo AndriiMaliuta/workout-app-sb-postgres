@@ -21,8 +21,9 @@ public class CurrentWorkoutDay {
     private String title;
     private String todayWeekDate;
     private String dayName;
-    private int daynumber;
+    private int dayNumber;
     private int year;
     private String monthName;
+    private int week;
 
 }
