@@ -1,5 +1,6 @@
 package com.bh.workouts.bhworkoutapp.controllers.workout;
 
+import com.bh.workouts.bhworkoutapp.config.AuthInitiator;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
@@ -49,8 +50,9 @@ public class CreateWorkoutController {
     @PostMapping("/workout/new")
     public String createWorkout(@ModelAttribute Workout workout, Model model) throws ParseException {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(auth.getName());
+        AuthInitiator authInitiator = new AuthInitiator(userService);
+
+        User userByLogin = authInitiator.getUserFromAuth();
 
         Workout newWorkout = new Workout();
 
