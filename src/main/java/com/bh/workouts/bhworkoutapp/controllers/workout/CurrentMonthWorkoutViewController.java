@@ -59,6 +59,8 @@ public class CurrentMonthWorkoutViewController {
         model.addAttribute("tricepsWorkoutsNumber", tricepsWorkoutsNumber);
         model.addAttribute("backWorkoutsNumber", backWorkoutsNumber);
         model.addAttribute("deltsWorkoutsNumber", deltsWorkoutsNumber);
+        model.addAttribute("monthNow", localDate.getMonth().name());
+        model.addAttribute("yearNow", localDate.getYear());
 
         return "workouts/workouts-month";
     }
