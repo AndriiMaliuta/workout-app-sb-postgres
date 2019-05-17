@@ -7,6 +7,7 @@ import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
+import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
 import com.bh.workouts.bhworkoutapp.services.stats.MonthWorkoutsStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -52,8 +53,21 @@ public class CurrentMonthWorkoutViewController {
         int tricepsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.TRICEPS.name(), userByLogin);
         int deltsWorkoutsNumber = monthWorkoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.DELTS.name(), userByLogin);
 
+        model.addAttribute("weekOneCurrentDays",
+                CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));
+        model.addAttribute("weekTwoCurrentDays",
+                CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 2));
+        model.addAttribute("weekThreeCurrentDays",
+                CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 3));
+        model.addAttribute("weekFourCurrentDays",
+                CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 4));
+        model.addAttribute("weekFiveCurrentDays",
+                CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 5));
+        model.addAttribute("weekSixCurrentDays",
+                CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 6));
+
         model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
-        model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
+//        model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
         model.addAttribute("pecsWorkoutsNumber", pecsWorkoutsNumber);
         model.addAttribute("bicepsWorkoutsNumber", bicepsWorkoutsNumber);
         model.addAttribute("tricepsWorkoutsNumber", tricepsWorkoutsNumber);
