@@ -77,6 +77,8 @@
     </nav>
 </div>
 
+<!-- NAVBAR END -->
+
 <div class="main_padding_margin">
     <!--<h3 style="text-align: center" th:text="${workout.name}"></h3>-->
     <table class="table table-bordered">
@@ -116,7 +118,11 @@
             <td th:text="${allSetsCount}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Workout Duration Time</th>
+            <th style="background-color: grey;color:white;text-align: right">
+                Workout Duration Time
+                <br />
+                <img height="30px" width="30px" src="../../images/workout/time.png" alt="">
+            </th>
             <td th:text="${workout.workoutTime}"></td>
         </tr>
         <tr>
@@ -128,7 +134,11 @@
             <td th:text="${workout.workoutDay}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Date</th>
+            <th style="background-color: grey;color:white;text-align: right">
+                Date
+                <br />
+                <img height="30px" width="30px" src="../../images/workout/date.png" alt="">
+            </th>
             <td th:text="${workout.workoutDate}"></td>
         </tr>
         <tr>
