@@ -15,7 +15,7 @@
 <!--<div th:replace="/common/navbar :: navbar"></div>-->
 
 <div th:fragment="navbar">
-    <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
+    <nav style="background-color: #8393c4;color:white" class="navbar navbar-expand-lg navbar-dark ">
 
         <a class="navbar-brand" href="/home">Home</a>
 
@@ -77,7 +77,7 @@
     </nav>
 </div>
 
-<!-- NAVBAR END-->
+<!-- NAVIGATION BAR END -->
 
 <div class="main_padding_margin">
 
@@ -93,6 +93,9 @@
     <p>
         <a class="btn btn-success" href="#" th:href="@{/workout/new}">Create Workout</a>
     </p>
+
+    <!--  STATISTICS  -->
+
     <h5>Number of workouts this month</h5>
     <table>
         <tr>
@@ -113,7 +116,7 @@
     </table>
     <br />
 
-    <!-- NAVIGATION BAR END -->
+    <!-- END of STATS -->
 
     <ul class="list-group">
         <li class="list-group-item">
@@ -121,10 +124,10 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
 
-                    <div style="float: left;background-color: #C4C6D6;border: darkmagenta;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
 
                         <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: red" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
                         <th:block th:each="workout : ${userWorkouts}">
 
@@ -150,10 +153,10 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekTwoCurrentDays}">
 
-                    <div style="float: left;background-color: #C4C6D6;border: darkmagenta;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
 
                         <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: red" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
                         <th:block th:each="workout : ${userWorkouts}">
 
@@ -179,10 +182,10 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekThreeCurrentDays}">
 
-                    <div style="float: left;background-color: #C4C6D6;border: darkmagenta;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
 
                         <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: red" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
                         <th:block th:each="workout : ${userWorkouts}">
 
@@ -208,10 +211,10 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekFourCurrentDays}">
 
-                    <div style="float: left;background-color: #C4C6D6;border: darkmagenta;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
 
                         <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: red" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
                         <th:block th:each="workout : ${userWorkouts}">
 
@@ -237,10 +240,10 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekFiveCurrentDays}">
 
-                    <div style="float: left;background-color: #C4C6D6;border: darkmagenta;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
 
                         <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: red" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
                         <th:block th:each="workout : ${userWorkouts}">
 
@@ -266,10 +269,10 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekSixCurrentDays}">
 
-                    <div style="float: left;background-color: #C4C6D6;border: darkmagenta;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
 
                         <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: red" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
                         <th:block th:each="workout : ${userWorkouts}">
 

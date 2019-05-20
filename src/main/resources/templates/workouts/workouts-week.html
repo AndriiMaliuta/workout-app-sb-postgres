@@ -77,6 +77,8 @@
     </nav>
 </div>
 
+<!-- NAVIGATION END-->
+
 <div class="main_padding_margin">
     <hr>
     <h3>Workouts week view</h3>
@@ -84,47 +86,54 @@
     <p th:text="${daysMap.get('convertedSundayDate')} + ' -- ' + ${daysMap.get('convertedSaturdayDate')}"></p>
     <br>
     <table class="table table-bordered month-table">
-        <tr style="background-color: #5F6B91;color: yellow" >
-            <th th:text="${daysMap.get('convertedSundayDate')}"></th>
-            <th th:text="${daysMap.get('convertedMondayDate')}"></th>
-            <th th:text="${daysMap.get('convertedTuesdayDate')}"></th>
-            <th th:text="${daysMap.get('convertedWednesdayDate')}"></th>
-            <th th:text="${daysMap.get('convertedThursdayDate')}"></th>
-            <th th:text="${daysMap.get('convertedFridayDate')}"></th>
-            <th th:text="${daysMap.get('convertedSaturdayDate')}"></th>
-        </tr>
-        <tr style="background-color: grey;color:white">
-            <th>Su
+<!--        <tr style="background-color: #5F6B91;color: yellow" >-->
+<!--            <th th:text="${daysMap.get('convertedSundayDate')}"></th>-->
+<!--            <th th:text="${daysMap.get('convertedMondayDate')}"></th>-->
+<!--            <th th:text="${daysMap.get('convertedTuesdayDate')}"></th>-->
+<!--            <th th:text="${daysMap.get('convertedWednesdayDate')}"></th>-->
+<!--            <th th:text="${daysMap.get('convertedThursdayDate')}"></th>-->
+<!--            <th th:text="${daysMap.get('convertedFridayDate')}"></th>-->
+<!--            <th th:text="${daysMap.get('convertedSaturdayDate')}"></th>-->
+<!--        </tr>-->
+        <tr style="background-color: #8393c4;color:white">
+            <th>SUNDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedSundayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
             </th>
-            <th>Mo
+            <th>MONDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedMondayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
             </th>
-            <th>Tu
+            <th>TUESDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedTuesdayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
             </th>
-            <th>We
+            <th>WEDNESDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedWednesdayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
             </th>
-            <th>Th
+            <th>THURSDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedThursdayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
             </th>
-            <th>Fr
+            <th>FRIDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedFridayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
             </th>
-            <th>Sa
+            <th>SATURDAY
+                <span style="color: orange" th:text="${daysMap.get('convertedSaturdayDate').substring(3, 5)}"></span>
                 <a href="/workout/new">
                     <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                 </a>
