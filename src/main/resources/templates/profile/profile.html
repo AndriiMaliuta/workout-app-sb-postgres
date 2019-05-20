@@ -91,28 +91,28 @@
     <br />
     <table class="table table-bordered">
         <tr>
-            <th style="background-color: #5F6B91;color:white">First Name</th>
+            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">First Name</th>
             <td th:text="${user.firstName}"></td>
         </tr>
         <tr>
-            <th style="background-color: #5F6B91;color:white">Last Name</th>
+            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Last Name</th>
             <td th:text="${user.lastName}"></td>
         </tr>
         <tr>
-            <th style="background-color: #5F6B91;color:white">Email</th>
+            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Email</th>
             <td th:text="${user.email}"></td>
         </tr>
         <tr>
-            <th style="background-color: #5F6B91;color:white">Age</th>
+            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Age</th>
             <td th:text="${user.age}"></td>
         </tr>
         <tr>
-            <th style="background-color: #5F6B91;color:white">Weight</th>
-            <td th:text="${user.weight} + ' kg'"></td>
+            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Weight</th>
+            <td th:text="${user.weight} + ' (kg)'"></td>
         </tr>
         <tr>
-            <th style="background-color: #5F6B91;color:white">Height</th>
-            <td th:text="${user.height} + ' cm'"></td>
+            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Height</th>
+            <td th:text="${user.height} + ' (cm)'"></td>
         </tr>
     </table>
 
