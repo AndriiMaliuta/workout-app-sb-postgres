@@ -9,6 +9,7 @@ import com.bh.workouts.bhworkoutapp.services.DigitFromMonthNameService;
 import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.UserService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
+import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
 import com.bh.workouts.bhworkoutapp.services.stats.MonthWorkoutsStatsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,6 +98,19 @@ public class OtherMonthWorkoutController {
             int deltsWorkoutsNumber =
                     monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), userByLogin);
 
+            model.addAttribute("weekOneCurrentDays",
+                    CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));
+            model.addAttribute("weekTwoCurrentDays",
+                    CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 2));
+            model.addAttribute("weekThreeCurrentDays",
+                    CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 3));
+            model.addAttribute("weekFourCurrentDays",
+                    CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 4));
+            model.addAttribute("weekFiveCurrentDays",
+                    CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 5));
+            model.addAttribute("weekSixCurrentDays",
+                    CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 6));
+
             model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
             model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
             model.addAttribute("pecsWorkoutsNumber", pecsWorkoutsNumber);
@@ -106,7 +120,7 @@ public class OtherMonthWorkoutController {
             model.addAttribute("deltsWorkoutsNumber", deltsWorkoutsNumber);
 
             model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
-            model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
+//            model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
             model.addAttribute("monthName", monthName);
 
         } catch (NullPointerException e) {
@@ -116,6 +130,6 @@ public class OtherMonthWorkoutController {
         logger.info(monthName);
         logger.info(String.valueOf(DigitFromMonthNameService.getDigitFromMonth(monthName)));
 
-        return "workouts/other-month";
+        return "workouts/workouts-other-month-table";
     }
 }
