@@ -122,6 +122,7 @@ public class OtherMonthWorkoutController {
             model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
 //            model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
             model.addAttribute("monthName", monthName);
+            model.addAttribute("yearMonth", monthForm.getYear());
 
         } catch (NullPointerException e) {
             logger.info(e.toString());
