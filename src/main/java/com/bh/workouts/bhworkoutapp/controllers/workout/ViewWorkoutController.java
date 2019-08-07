@@ -62,6 +62,10 @@ public class ViewWorkoutController {
         model.addAttribute("userByLogin", userByLogin);
         model.addAttribute("allSetsCount", allSetsCount);
 
+        logger.info("Getting workout " + workout.getWorkoutType());
+        logger.info(workout.getId().toString());
+        logger.info(workout.getWorkoutDay());
+
         return "workouts/workout";
     }
 

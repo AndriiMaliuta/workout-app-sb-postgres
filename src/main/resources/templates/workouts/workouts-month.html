@@ -120,7 +120,7 @@
                 <th width="130" style="background-color: #5F6B91;color: white;" th:text="${currentWorkoutDay.getDayName()}"></th>
                 <td>
                     <th:block th:each="workout : ${userWorkouts}">
-                        <p th:if="${workout.workoutDate.equals(currentWorkoutDay.todayWeekDate)} ">
+                        <p style="float:right" th:if="${workout.workoutDate.equals(currentWorkoutDay.todayWeekDate)} ">
                             <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
                                 <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
                             </a>

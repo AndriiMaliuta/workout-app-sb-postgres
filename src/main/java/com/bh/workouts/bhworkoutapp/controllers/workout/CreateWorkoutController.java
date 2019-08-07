@@ -74,6 +74,11 @@ public class CreateWorkoutController {
 
         model.addAttribute("newWorkout", newWorkout);
 
+        logger.info("===== Workout created: =====");
+        logger.info(newWorkout.getId().toString());
+        logger.info(newWorkout.getWorkoutType());
+        logger.info(newWorkout.getWorkoutDay());
+
         return "redirect:/workout/" + newWorkout.getId();
     }
 
