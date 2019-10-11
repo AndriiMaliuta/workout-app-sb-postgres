@@ -1,5 +1,6 @@
 package com.bh.workouts.bhworkoutapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -42,6 +43,7 @@ public class Workout {
 
     private String workoutDay;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private User user;

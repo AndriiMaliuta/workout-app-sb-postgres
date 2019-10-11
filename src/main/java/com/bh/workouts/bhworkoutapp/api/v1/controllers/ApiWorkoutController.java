@@ -4,6 +4,7 @@ import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class ApiWorkoutController {
         this.workoutRepository = workoutRepository;
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Workout> getWorkoutsForApi() {
 
@@ -33,5 +34,12 @@ public class ApiWorkoutController {
     public Workout getWorkoutByIdApi(@PathVariable long id) {
 
         return workoutRepository.findById(id).get();
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Workout createWorkout(@RequestBody Workout workout) {
+
+        return workoutRepository.save(workout);
     }
 }
