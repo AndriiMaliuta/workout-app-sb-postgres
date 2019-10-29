@@ -1,5 +1,6 @@
 package com.bh.workouts.bhworkoutapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ public class Exercise {
     @NotNull
     private String title;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "workout_id", referencedColumnName = "workout_id", nullable = false)
     private Workout workout;

@@ -1,5 +1,6 @@
 package com.bh.workouts.bhworkoutapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -58,9 +59,11 @@ public class User {
 
     private RoleEnum roles;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Workout> workouts;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<ExerciseName> exerciseNames;
 

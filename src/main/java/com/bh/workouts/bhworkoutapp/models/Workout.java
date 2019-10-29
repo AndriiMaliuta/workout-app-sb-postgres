@@ -43,7 +43,6 @@ public class Workout {
 
     private String workoutDay;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private User user;
