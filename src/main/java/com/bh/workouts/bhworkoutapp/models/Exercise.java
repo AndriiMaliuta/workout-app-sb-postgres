@@ -24,6 +24,7 @@ public class Exercise {
     @JoinColumn(name = "workout_id", referencedColumnName = "workout_id", nullable = false)
     private Workout workout;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "exercise")
     private List<ExerciseSet> sets;
 

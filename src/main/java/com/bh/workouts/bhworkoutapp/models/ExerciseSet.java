@@ -1,5 +1,6 @@
 package com.bh.workouts.bhworkoutapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class ExerciseSet {
     private int setTime;
     private String comments;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "exercise_id", referencedColumnName = "exercise_id", nullable = false)
     private Exercise exercise;
