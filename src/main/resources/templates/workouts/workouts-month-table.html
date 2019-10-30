@@ -105,13 +105,13 @@
         </div>
         <hr>
         <p>
-            <a class="button is-link" href="#" th:href="@{/workout/new}">Create Workout</a>
+            <a class="button is-primary" href="#" th:href="@{/workout/new}">Create Workout</a>
         </p>
     </div>
 
     <!--  STATISTICS  -->
-    <div>
-        <div>
+    <div class="columns">
+        <div class="column">
             <h5>Number of workouts this month</h5>
             <table>
                 <tr>
@@ -131,7 +131,7 @@
                 </tr>
             </table>
         </div>
-        <div >
+        <div class="column">
             <div id="donutchart" style="width: 900px; height: 500px;"></div>
         </div>
 
@@ -337,7 +337,7 @@
         ]);
 
         var options = {
-          title: 'My Daily Activities',
+          title: 'Statistics on Workouts',
           pieHole: 0.4,
         };
 
