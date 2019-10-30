@@ -91,24 +91,31 @@
     <p>
         <a class="btn btn-primary" href="#" th:href="@{/workout/new}">Create Workout</a>
     </p>
-    <h5>Number of workouts this month</h5>
-    <table>
-        <tr>
-            <td><img src="../../images/colors/back_new.png" alt=""></td><td th:text="${backWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/bics_new.png" alt=""></td><td th:text="${bicepsWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/delts_new.png" alt=""></td><td th:text="${deltsWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/pecs_new.png" alt=""></td><td th:text="${pecsWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/trics_new.png" alt=""></td><td th:text="${tricepsWorkoutsNumber}"></td>
-        </tr>
-    </table>
+    <div>
+        <div>
+            <h5>Number of workouts this month</h5>
+            <table>
+                <tr>
+                    <td><img src="../../images/colors/back_new.png" alt=""></td><td th:text="${backWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/bics_new.png" alt=""></td><td th:text="${bicepsWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/delts_new.png" alt=""></td><td th:text="${deltsWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/pecs_new.png" alt=""></td><td th:text="${pecsWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/trics_new.png" alt=""></td><td th:text="${tricepsWorkoutsNumber}"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="float:right">
+            <div  id="donutchart" style="width: 900px; height: 500px;"></div>
+        </div>
+    </div>
     <br />
     <table class="table table-bordered">
 
@@ -134,6 +141,30 @@
 
     </table>
 </div>
+
+<script th:inline="javascript" type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script th:inline="javascript" type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Type', 'Workout types'],
+          ['Back',     [[${backWorkoutsNumber}]]],
+          ['Pecs',      2],
+          ['Biceps',  2],
+          ['Triceps', 3],
+          ['Delts',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
