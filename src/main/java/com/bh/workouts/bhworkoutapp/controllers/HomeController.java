@@ -41,8 +41,6 @@ public class HomeController {
             model.addAttribute("userName", userService.findUserByLogin(authentication.getName()).getFirstName());
         }
 
-//        model.addAttribute("var1", 16);
-
         logger.info("============= User Name is " + authentication.getName());
 
         return "home";
