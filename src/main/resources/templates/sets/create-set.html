@@ -3,118 +3,126 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create Set</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
 
 <!--<div th:replace="/common/navbar :: navbar"></div>-->
 
 <div th:fragment="navbar">
-    <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/home">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
+            </a>
 
-        <a class="navbar-brand" href="/home">Home</a>
-
-        <button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li style="color: white" class="nav-item">
-                    <a class="nav-link" href="/workouts/view">My Workouts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workout/new">Create Workout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workout/find">Find Workout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workouts/week">Week view</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workouts/month">Month view</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/registration">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises/own">Own Exercises</a>
-                </li>
-                <!--<form class="form-inline">-->
-                <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-                <!--<button style="float: right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-                <!--</form>-->
-            </ul>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-        <div>
-            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                <li  class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       style="color: white"
-                       href="#"
-                       id="navbarDropdown"
-                       role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">
-                        Profile
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/home">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="/workouts/view">
+                    Workouts
+                </a>
+
+                <a class="navbar-item" href="/workouts/week">
+                    Week View
+                </a>
+
+                <a class="navbar-item" href="/workouts/month">
+                    Month View
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/profile}" href="#">Profile page</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="/workout/find">
+                            Find Workout
+                        </a>
+                        <a class="navbar-item" href="/workout/new">
+                            Create Workout
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/registration">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/profile">
+                            Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 </div>
 
-<div class="main_padding_margin" style="padding: 10px;margin: 10px">
+<div class="container">
 
-    <form class="form-group" th:action="@{/exercise/{id}/sets/new(id=${exercise.id})}" th:object="${set}" method="post">
+    <form th:action="@{/exercise/{id}/sets/new(id=${exercise.id})}" th:object="${set}" method="post">
 
-        <div class="form-group">
-            <label for="number"><b>Number</b></label>
-            <input th:field="*{number}" type="text" class="form-control" id="number" aria-describedby="number" placeholder="Number">
+        <div class="field">
+            <label class="label" for="number"><b>Number</b></label>
+            <input class="input is-info" th:field="*{number}" type="text" class="form-control" id="number" aria-describedby="number" placeholder="Number">
             <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Number Error></p>
         </div>
 
-        <div class="form-group">
-            <label for="number"><b>Weight(Kg)</b></label>
-            <input th:field="*{weight}" type="text" class="form-control" id="weight" aria-describedby="weight" placeholder="Weight">
+        <div class="field">
+            <label class="label" for="number"><b>Weight(Kg)</b></label>
+            <input class="input is-info"th:field="*{weight}" type="text" class="form-control" id="weight" aria-describedby="weight" placeholder="Weight">
             <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Number Error></p>
         </div>
 
-        <div class="form-group">
-            <label for="number"><b>Reps</b></label>
-            <input th:field="*{reps}" type="text" class="form-control" id="reps" aria-describedby="reps" placeholder="Reps">
+        <div class="field">
+            <label class="label" for="number"><b>Reps</b></label>
+            <input class="input is-info" th:field="*{reps}" type="text" class="form-control" id="reps" aria-describedby="reps" placeholder="Reps">
             <p th:if="${#fields.hasErrors('reps')}" th:errors="*{number}">reps Error></p>
         </div>
 
-        <div class="form-group">
-            <label for="setTime"><b>Duration Time (seconds)</b></label>
-            <input th:field="*{setTime}" type="text" class="form-control" id="setTime" aria-describedby="setTime" placeholder="Set Time">
+        <div class="field">
+            <label class="label" for="setTime"><b>Duration Time (seconds)</b></label>
+            <input class="input is-info" th:field="*{setTime}" type="text" class="form-control" id="setTime" aria-describedby="setTime" placeholder="Set Time">
             <p th:if="${#fields.hasErrors('setTime')}" th:errors="*{setTime}">Set Duration Error></p>
         </div>
 
-        <div class="form-group">
-            <label for="number"><b>Break Time (seconds)</b></label>
-            <input th:field="*{breakInSeconds}" type="text" class="form-control" id="breakInSeconds" aria-describedby="breakInSeconds" placeholder="Time">
+        <div class="field">
+            <label class="label" for="number"><b>Break Time (seconds)</b></label>
+            <input class="input" th:field="*{breakInSeconds}" type="text" class="form-control" id="breakInSeconds" aria-describedby="breakInSeconds" placeholder="Time">
             <p th:if="${#fields.hasErrors('breakInSeconds')}" th:errors="*{breakInSeconds}">Number Error></p>
         </div>
 
-        <div class="form-group">
-            <label for="comments"><b>Comments</b></label>
-            <textarea class="form-control" id="comments" th:field="*{comments}" rows="3"></textarea>
+        <div class="field">
+            <label class="label" for="comments"><b>Comments</b></label>
+            <textarea class="textarea" id="comments" th:field="*{comments}" rows="3"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="button is-success">Submit</button>
 
     </form>
 

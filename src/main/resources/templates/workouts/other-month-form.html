@@ -19,7 +19,7 @@
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/home">
-                <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNxJ-rgMTlAhXVxMQBHaJWB_sQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhedgehog&psig=AOvVaw0hDmC_ibJcA2Dxt_dPTzzo&ust=1572525541138505" width="112" height="28">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -38,8 +38,6 @@
                 <a class="navbar-item" href="/workouts/view">
                     Workouts
                 </a>
-
-
 
                 <a class="navbar-item" href="/workouts/week">
                     Week View
@@ -88,35 +86,33 @@
     </nav>
 </div>
 
-<div class="main_padding_margin" style="padding: 10px;margin: 10px">
+<div class="contaner">
 
-    <form class="form-group"
-          th:action="@{/workout/other/month}"
+    <form th:action="@{/workout/other/month}"
           th:object="${monthForm}"
           method="post">
 
-        <div class="form-group">
-            <label for="month"><b>Month</b></label>
-            <select class="form-control" id="month" th:field="*{month}">
+        <div class="field">
+            <label class="label" for="month"><b>Month</b></label>
+            <select class="select" id="month" th:field="*{month}">
 
                 <option value="0">Select Month</option>
                 <option th:each="month : ${months}"
                         th:value="${month}"
                         th:text="${month}">
-
                 </option>
             </select>
             <p th:if="${#fields.hasErrors('month')}" th:errors="*{month}">Month Error></p>
         </div>
 
-        <div class="form-group">
-            <label for="year"><b>Year</b></label>
-            <input th:field="*{year}" type="text" class="form-control" id="year" aria-describedby="year"
+        <div class="field">
+            <label class="label" for="year"><b>Year</b></label>
+            <input th:field="*{year}" type="text" class="input" id="year" aria-describedby="year"
                    placeholder="Year">
             <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year Error></p>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="button is-success">Submit</button>
 
     </form>
 
