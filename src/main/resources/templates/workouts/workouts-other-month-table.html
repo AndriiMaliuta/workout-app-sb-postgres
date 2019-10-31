@@ -92,37 +92,54 @@
 
 <div class="container">
 
-    <hr>
-    <h3 class="title is-3">Workouts month view</h3>
-    <hr>
-
-    <h4 class="title is-4" style="color: #5F6B91" th:text="${monthName} + ' ' + ${yearMonth}"></h4>
     <div>
-        <a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a>
+        <hr>
+        <h3 class="title is-3">Workouts month view</h3>
+        <hr>
+
+        <h4 class="title is-4" th:text="${monthNow} + ' ' + ${yearNow}"></h4>
+        <div>
+            <a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a>
+        </div>
+        <hr>
+        <p>
+            <a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a>
+        </p>
     </div>
-    <hr>
-    <p>
-        <a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a>
-    </p>
-    <h5 class="title is-5">Number of workouts this month</h5>
-    <table>
-        <tr>
-            <td><img src="../../images/colors/back_new.png" alt=""></td><td th:text="${backWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/bics_new.png" alt=""></td><td th:text="${bicepsWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/delts_new.png" alt=""></td><td th:text="${deltsWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/pecs_new.png" alt=""></td><td th:text="${pecsWorkoutsNumber}"></td>
-        </tr>
-        <tr>
-            <td><img src="../../images/colors/trics_new.png" alt=""></td><td th:text="${tricepsWorkoutsNumber}"></td>
-        </tr>
-    </table>
+
+    <!--  STATISTICS  -->
+    <div class="columns">
+        <div class="column">
+
+            <h5 class="title is-5">Number of workouts this month</h5>
+
+            <table class="table table-bordered">
+                <tr>
+                    <td><img src="../../images/colors/back_new.png" alt=""></td><td th:text="${backWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/bics_new.png" alt=""></td><td th:text="${bicepsWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/delts_new.png" alt=""></td><td th:text="${deltsWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/pecs_new.png" alt=""></td><td th:text="${pecsWorkoutsNumber}"></td>
+                </tr>
+                <tr>
+                    <td><img src="../../images/colors/trics_new.png" alt=""></td><td th:text="${tricepsWorkoutsNumber}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="column">
+            <div id="donutchart" style="width: 900px; height: 500px;"></div>
+        </div>
+
+    </div>
+
     <br />
+
+    <!-- END of STATS -->
 
     <div class="container">
         
@@ -299,7 +316,6 @@
     </div>
 
 </div>
-
 
 
 </body>
