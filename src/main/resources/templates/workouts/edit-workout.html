@@ -110,13 +110,15 @@
 
         <div class="field">
             <label class="label" for="workoutType"><b>Type</b></label>
-            <select class="select" id="workoutType" th:field="*{workoutType}">
-                <option>Select workout type</option>
-                <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}"
-                        th:value="${workoutType}"
-                        th:text="${workoutType}">
-                </option>
-            </select>
+            <div class="select">
+                <select id="workoutType" th:field="*{workoutType}">
+                    <option>Select workout type</option>
+                    <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}"
+                            th:value="${workoutType}"
+                            th:text="${workoutType}">
+                    </option>
+                </select>
+            </div>
             <p th:if="${#fields.hasErrors('workoutType')}" th:errors="*{workoutType}">Type Error></p>
         </div>
 

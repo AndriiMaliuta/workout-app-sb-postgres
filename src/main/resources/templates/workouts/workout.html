@@ -160,11 +160,11 @@
             <th style="text-align: right">Actions</th>
             <td>
                 <a th:href="@{/workout/{id}/edit(id=${workout.id})}"
-                   class="btn btn-primary btn-sm" >
+                   class="button is-info" >
                     Edit
                 </a>
                 <a th:href="@{/workout/{id}/delete(id=${workout.id})}"
-                   class="btn btn btn-danger btn-sm"
+                   class="button is-danger"
                    onclick="if (!(confirm('Are you sure you want to delete this workout?'))) return false">
                     Delete
                 </a>
