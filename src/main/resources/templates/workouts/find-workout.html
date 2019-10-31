@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="utf-8">
@@ -14,109 +13,118 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        $( function() {
-            $( "#datepicker" ).datepicker();
-        } );
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+
     </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
+
 <body>
 
-<!--<div th:replace="/common/navbar :: navbar"></div>-->
+    <!--<div th:replace="/common/navbar :: navbar"></div>-->
 
-<div th:fragment="navbar">
-    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/home">
-                <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNxJ-rgMTlAhXVxMQBHaJWB_sQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhedgehog&psig=AOvVaw0hDmC_ibJcA2Dxt_dPTzzo&ust=1572525541138505" width="112" height="28">
-            </a>
-
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
+    <div th:fragment="navbar">
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
                 <a class="navbar-item" href="/home">
-                    Home
+                    <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNxJ-rgMTlAhXVxMQBHaJWB_sQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhedgehog&psig=AOvVaw0hDmC_ibJcA2Dxt_dPTzzo&ust=1572525541138505" width="112" height="28">
                 </a>
 
-                <a class="navbar-item" href="/workouts/view">
-                    Workouts
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
+            </div>
 
-                <a class="navbar-item" href="/workouts/week">
-                    Week View
-                </a>
-
-                <a class="navbar-item" href="/workouts/month">
-                    Month View
-                </a>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        More
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/home">
+                        Home
                     </a>
 
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/workouts/find">
-                            Find Workout
+                    <a class="navbar-item" href="/workouts/view">
+                        Workouts
+                    </a>
+
+                    <a class="navbar-item" href="/workouts/week">
+                        Week View
+                    </a>
+
+                    <a class="navbar-item" href="/workouts/month">
+                        Month View
+                    </a>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            More
                         </a>
-                        <a class="navbar-item" href="/workouts/new">
-                            Create Workout
-                        </a>
-                        <a class="navbar-item">
-                            Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Report an issue
-                        </a>
+
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="/workouts/find">
+                                Find Workout
+                            </a>
+                            <a class="navbar-item" href="/workouts/new">
+                                Create Workout
+                            </a>
+                            <a class="navbar-item">
+                                Contact
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary" href="/registration">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="/profile">
+                                Profile
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </nav>
+    </div>
 
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary" href="/registration">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light" href="/profile">
-                            Profile
-                        </a>
+    <div class="section">
+
+        <div class="container">
+
+            <form th:action="@{/workout/find}" th:object="${workout}" method="post">
+
+                <!--<div class="form-group">-->
+                <!--<label for="name">Title</label>-->
+                <!--<input th:field="*{name}" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Title">-->
+                <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Title Error></p>-->
+                <!--</div>-->
+
+                <div class="field">
+                    <label class="label" for="datepicker"><b>Date( MM/dd/yyyy )</b></label>
+                    <div class="control">
+                        <input class="input" type="text" id="datepicker" th:field="*{workoutDate}">
                     </div>
                 </div>
-            </div>
-        </div>
-    </nav>
-</div>
 
-<div class="main_padding_margin">
+                <button type="submit" class="button is-primary">Submit</button>
 
-    <form class="form-group" th:action="@{/workout/find}" th:object="${workout}" method="post">
+            </form>
 
-        <!--<div class="form-group">-->
-        <!--<label for="name">Title</label>-->
-        <!--<input th:field="*{name}" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Title">-->
-        <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Title Error></p>-->
-        <!--</div>-->
-
-        <div class="form-group">
-            <label for="datepicker"><b>Date( MM/dd/yyyy )</b></label>
-            <input class="form-control" type="text" id="datepicker" th:field="*{workoutDate}" >
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
-
-</div>
+    </div>
 
 </body>
+
 </html>

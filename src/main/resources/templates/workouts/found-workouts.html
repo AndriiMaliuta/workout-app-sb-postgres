@@ -92,14 +92,14 @@
 
 <div class="main_padding_margin">
 
-    <table class="table table-bordered">
+    <table class="table is-bordered is-fullwidth" >
 
-        <thead style="background-color: #5F6B91;color: white" >
-        <th>Type</th>
-        <th>Exercises Count</th>
-        <th>Sets count</th>
-        <th>Day</th>
-        <th>Date</th>
+        <thead>
+            <th>Type</th>
+            <th>Exercises Count</th>
+            <th>Sets count</th>
+            <th>Day</th>
+            <th>Date</th>
         </thead>
 
         <th:block th:each="workout : ${foundUserWorkouts}">
@@ -121,7 +121,7 @@
     </table>
 
 </div>
-
+    
 
 </body>
 </html>
