@@ -1,12 +1,7 @@
 package com.bh.workouts.bhworkoutapp;
 
-import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
-
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.Month;
-import java.time.temporal.TemporalField;
-import java.time.temporal.WeekFields;
 import java.util.Calendar;
 import java.util.Locale;
 
