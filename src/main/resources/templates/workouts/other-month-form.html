@@ -86,7 +86,7 @@
     </nav>
 </div>
 
-<div class="contaner">
+<div class="container">
 
     <form th:action="@{/workout/other/month}"
           th:object="${monthForm}"
@@ -94,20 +94,23 @@
 
         <div class="field">
             <label class="label" for="month"><b>Month</b></label>
-            <select class="select" id="month" th:field="*{month}">
+            <div class="select">
+                <select id="month" th:field="*{month}">
 
-                <option value="0">Select Month</option>
-                <option th:each="month : ${months}"
-                        th:value="${month}"
-                        th:text="${month}">
-                </option>
-            </select>
+                    <option value="0">Select Month</option>
+                    <option th:each="month : ${months}"
+                            th:value="${month}"
+                            th:text="${month}">
+                    </option>
+                </select>
+            </div>
+            
             <p th:if="${#fields.hasErrors('month')}" th:errors="*{month}">Month Error></p>
         </div>
 
         <div class="field">
             <label class="label" for="year"><b>Year</b></label>
-            <input th:field="*{year}" type="text" class="input" id="year" aria-describedby="year"
+            <input class="input is-info" th:field="*{year}" type="text" class="input" id="year" aria-describedby="year"
                    placeholder="Year">
             <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year Error></p>
         </div>

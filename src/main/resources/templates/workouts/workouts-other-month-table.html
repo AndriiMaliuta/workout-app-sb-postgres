@@ -317,6 +317,31 @@
 
 </div>
 
+<script th:inline="javascript" type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script th:inline="javascript" type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Type', 'Workout Types'],
+          ['Pecs', [[${pecsWorkoutsNumber}]]],
+          ['Triceps', [[${tricepsWorkoutsNumber}]]],
+          ['Back',  [[${backWorkoutsNumber}]]],
+          ['Delts', [[${deltsWorkoutsNumber}]]],
+          ['Biceps', [[${bicepsWorkoutsNumber}]]]
+        ]);
+
+        var options = {
+          title: 'Statistics on Workouts',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+</script>
+
+
 
 </body>
 </html>
