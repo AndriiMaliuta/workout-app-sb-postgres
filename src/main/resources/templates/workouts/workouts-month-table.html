@@ -21,7 +21,7 @@
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/home">
-                <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNxJ-rgMTlAhXVxMQBHaJWB_sQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhedgehog&psig=AOvVaw0hDmC_ibJcA2Dxt_dPTzzo&ust=1572525541138505" width="112" height="28">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -40,8 +40,6 @@
                 <a class="navbar-item" href="/workouts/view">
                     Workouts
                 </a>
-
-
 
                 <a class="navbar-item" href="/workouts/week">
                     Week View
@@ -92,7 +90,7 @@
 
 <!-- NAVIGATION BAR END -->
 
-<div class="main_padding_margin">
+<div class="container">
 
     <div>
         <hr>
@@ -112,8 +110,10 @@
     <!--  STATISTICS  -->
     <div class="columns">
         <div class="column">
+
             <h5>Number of workouts this month</h5>
-            <table>
+
+            <table class="table">
                 <tr>
                     <td><img src="../../images/colors/back_new.png" alt=""></td><td th:text="${backWorkoutsNumber}"></td>
                 </tr>
@@ -141,37 +141,47 @@
 
     <!-- END of STATS -->
 
-    <div>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <div>
+    <div class="container">
+        
+        <article class="panel is-info">
+                <p class="panel-heading">
+                    Month View
+                </p>
+            <div>
 
-                    <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
-
-                        <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
-
-                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
-
-                            <th:block th:each="workout : ${userWorkouts}">
-
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
-
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
-
-                        </span>
-
+                <li class="list-group-item">
+            
+                        <div>
+        
+                            <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
+        
+                                <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
+        
+                                    <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                                    <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+        
+                                    <th:block th:each="workout : ${userWorkouts}">
+        
+                                <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+        
+                                    <br />
+                                    <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                        <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                    </a>
+        
+                                </span>
+        
+                                    </th:block>
+        
+                                </div>
+        
                             </th:block>
-
+        
                         </div>
+                </li>
 
-                    </th:block>
-
-                </div>
-            </li>
+            </div>
+            
             <li class="list-group-item">
                 <div>
 
@@ -317,7 +327,7 @@
 
                 </div>
             </li>
-        </ul>
+        </article>
     </div>
 
 </div>

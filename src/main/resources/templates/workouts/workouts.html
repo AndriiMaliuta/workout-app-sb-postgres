@@ -20,8 +20,9 @@
 <div th:fragment="navbar">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
+
             <a class="navbar-item" href="/home">
-                <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNxJ-rgMTlAhXVxMQBHaJWB_sQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhedgehog&psig=AOvVaw0hDmC_ibJcA2Dxt_dPTzzo&ust=1572525541138505" width="112" height="28">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -32,6 +33,7 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
+
             <div class="navbar-start">
                 <a class="navbar-item" href="/home">
                     Home
@@ -40,8 +42,6 @@
                 <a class="navbar-item" href="/workouts/view">
                     Workouts
                 </a>
-
-
 
                 <a class="navbar-item" href="/workouts/week">
                     Week View
@@ -57,10 +57,10 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/workouts/find">
+                        <a class="navbar-item" href="/workout/find">
                             Find Workout
                         </a>
-                        <a class="navbar-item" href="/workouts/new">
+                        <a class="navbar-item" href="/workout/new">
                             Create Workout
                         </a>
                         <a class="navbar-item">
@@ -90,49 +90,52 @@
     </nav>
 </div>
 
-<div class="main_padding_margin">
+<div class="section">
 
-    <hr>
-    <h3>My Workouts</h3>
-    <hr>
-
-    <div>
-        <a class="button is-primary" href="" th:href="@{/workout/new}">Create Workout</a>
+    <div class="container">
+            <hr>
+            <h3>My Workouts</h3>
+            <hr>
+        
+            <div>
+                <a class="button is-primary" href="" th:href="@{/workout/new}">Create Workout</a>
+            </div>
+        
+            <br />
+        
+            <div class="table-container">
+        
+                <table class="table is-bordered" >
+        
+                    <thead>
+                    <th>Type</th>
+                    <th>Exercises Count</th>
+                    <th>Sets count</th>
+                    <th>Day</th>
+                    <th>Date</th>
+                    </thead>
+        
+                    <th:block th:each="workout : ${userWorkouts}">
+        
+                        <tr>
+                            <td>
+                                <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                    <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                </a>
+                            </td>
+        
+                            <td th:text="${workout.exercises.size()}"></td>
+                            <td th:text="${workout.sets}"></td>
+                            <td th:text="${workout.workoutDay}"></td>
+                            <td th:text="${workout.workoutDate}"></td>
+                        </tr>
+        
+                    </th:block>
+        
+                </table>
+            </div>
     </div>
 
-    <br />
-
-    <div class="table-container">
-
-        <table class="table is-bordered is-fullwidth" >
-
-            <thead>
-            <th>Type</th>
-            <th>Exercises Count</th>
-            <th>Sets count</th>
-            <th>Day</th>
-            <th>Date</th>
-            </thead>
-
-            <th:block th:each="workout : ${userWorkouts}">
-
-                <tr>
-                    <td>
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </td>
-
-                    <td th:text="${workout.exercises.size()}"></td>
-                    <td th:text="${workout.sets}"></td>
-                    <td th:text="${workout.workoutDay}"></td>
-                    <td th:text="${workout.workoutDate}"></td>
-                </tr>
-
-            </th:block>
-
-        </table>
-    </div>
 </div>
 
 
