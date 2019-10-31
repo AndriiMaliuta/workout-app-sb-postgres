@@ -20,6 +20,7 @@
 <div th:fragment="navbar">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
+
             <a class="navbar-item" href="/home">
                 <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
             </a>
@@ -40,8 +41,6 @@
                 <a class="navbar-item" href="/workouts/view">
                     Workouts
                 </a>
-
-
 
                 <a class="navbar-item" href="/workouts/week">
                     Week View
@@ -92,140 +91,142 @@
 
 <!-- NAVIGATION END-->
 
-<div class="main_padding_margin">
-    <hr>
-    <h3>Workouts week view</h3>
-    <hr>
-    <p th:text="${daysMap.get('convertedSundayDate')} + ' -- ' + ${daysMap.get('convertedSaturdayDate')}"></p>
-    <br>
-    <table class="table table-bordered month-table">
-<!--        <tr style="background-color: #5F6B91;color: yellow" >-->
-<!--            <th th:text="${daysMap.get('convertedSundayDate')}"></th>-->
-<!--            <th th:text="${daysMap.get('convertedMondayDate')}"></th>-->
-<!--            <th th:text="${daysMap.get('convertedTuesdayDate')}"></th>-->
-<!--            <th th:text="${daysMap.get('convertedWednesdayDate')}"></th>-->
-<!--            <th th:text="${daysMap.get('convertedThursdayDate')}"></th>-->
-<!--            <th th:text="${daysMap.get('convertedFridayDate')}"></th>-->
-<!--            <th th:text="${daysMap.get('convertedSaturdayDate')}"></th>-->
-<!--        </tr>-->
-        <tr >
-            <th>SUNDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedSundayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-            <th>MONDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedMondayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-            <th>TUESDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedTuesdayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-            <th>WEDNESDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedWednesdayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-            <th>THURSDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedThursdayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-            <th>FRIDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedFridayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-            <th>SATURDAY
-                <span style="color: orange" th:text="${daysMap.get('convertedSaturdayDate').substring(3, 5)}"></span>
-                <a href="/workout/new">
-                    <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
-                </a>
-            </th>
-        </tr>
-        <tr>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSundayDate'))} ">
+<div class="section">
+    <div class="container">    
+        <hr>
+        <h3>Workouts week view</h3>
+        <hr>
+        <p th:text="${daysMap.get('convertedSundayDate')} + ' -- ' + ${daysMap.get('convertedSaturdayDate')}"></p>
+        <br>
+        <table class="table is-bordered">
+    <!--        <tr style="background-color: #5F6B91;color: yellow" >-->
+    <!--            <th th:text="${daysMap.get('convertedSundayDate')}"></th>-->
+    <!--            <th th:text="${daysMap.get('convertedMondayDate')}"></th>-->
+    <!--            <th th:text="${daysMap.get('convertedTuesdayDate')}"></th>-->
+    <!--            <th th:text="${daysMap.get('convertedWednesdayDate')}"></th>-->
+    <!--            <th th:text="${daysMap.get('convertedThursdayDate')}"></th>-->
+    <!--            <th th:text="${daysMap.get('convertedFridayDate')}"></th>-->
+    <!--            <th th:text="${daysMap.get('convertedSaturdayDate')}"></th>-->
+    <!--        </tr>-->
+            <tr >
+                <th>SUNDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedSundayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+                <th>MONDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedMondayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+                <th>TUESDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedTuesdayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+                <th>WEDNESDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedWednesdayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+                <th>THURSDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedThursdayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+                <th>FRIDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedFridayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+                <th>SATURDAY
+                    <span style="color: orange" th:text="${daysMap.get('convertedSaturdayDate').substring(3, 5)}"></span>
+                    <a href="/workout/new">
+                        <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSundayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedMondayDate'))} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedMondayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedTuesdayDate'))} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedTuesdayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedWednesdayDate'))} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedWednesdayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedThursdayDate'))} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedThursdayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedFridayDate'))} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedFridayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-            <td class="month-table-td">
-                <th:block th:each="workout : ${userWorkouts}">
-                    <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSaturdayDate'))} ">
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+                <td class="month-table-td">
+                    <th:block th:each="workout : ${userWorkouts}">
+                        <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSaturdayDate'))} ">
 
-                        <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                            <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
-                        </a>
-                    </p>
-                </th:block>
-            </td>
-        </tr>
-    </table>
-</div>
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image"  th:src="@{${workout.imagePath}}" />
+                            </a>
+                        </p>
+                    </th:block>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
 
 
 </body>
