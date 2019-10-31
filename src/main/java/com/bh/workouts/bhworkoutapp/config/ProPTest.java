@@ -1,4 +1,4 @@
-//package com.bh.workouts.bhworkoutapp.config;
+/package com.bh.workouts.bhworkoutapp.config;
 //
 //import lombok.Data;
 //import org.springframework.boot.context.properties.ConfigurationProperties;
