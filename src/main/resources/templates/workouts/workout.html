@@ -21,7 +21,7 @@
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/home">
-                <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNxJ-rgMTlAhXVxMQBHaJWB_sQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhedgehog&psig=AOvVaw0hDmC_ibJcA2Dxt_dPTzzo&ust=1572525541138505" width="112" height="28">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -40,8 +40,6 @@
                 <a class="navbar-item" href="/workouts/view">
                     Workouts
                 </a>
-
-
 
                 <a class="navbar-item" href="/workouts/week">
                     Week View
@@ -92,17 +90,17 @@
 
 <!-- NAVBAR END -->
 
-<div class="main_padding_margin">
+<div class="container">
     <!--<h3 style="text-align: center" th:text="${workout.name}"></h3>-->
-    <table class="table table-bordered">
+    <table class="table is-bordered">
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Type</th>
+            <th style="text-align: right">Type</th>
             <td>
                 <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
             </td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right;width: 500px">
+            <th style="text-align: right;width: 500px">
                 Exercises
                 <br />
                 <a href="#" th:href="@{/workout/{id}/exercise/new(id=${workout.id})}">
@@ -127,11 +125,11 @@
             </td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Sets</th>
+            <th style="text-align: right">Sets</th>
             <td th:text="${allSetsCount}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">
+            <th style="text-align: right">
                 Workout Duration Time &nbsp;
                 <img height="27px" width="27px" src="../../images/workout/clock_1.png" alt="">
                 <br />
@@ -139,7 +137,7 @@
             <td th:text="${workout.workoutTime}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">
+            <th style="text-align: right">
                 Day &nbsp;
                 <img height="24px" width="24px" src="../../images/workout/day_black.png" alt="">
                 <br />
@@ -147,7 +145,7 @@
             <td th:text="${workout.workoutDay}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">
+            <th style="text-align: right">
                 Date &nbsp;
                 <img height="30px" width="30px" src="../../images/workout/date_black_1.png" alt="">
                 <br />
@@ -155,11 +153,11 @@
             <td th:text="${workout.workoutDate}"></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Comments</th>
+            <th style="text-align: right">Comments</th>
             <td th:text="${workout.comments}"><a href="" th:href="@{}"></a></td>
         </tr>
         <tr>
-            <th style="background-color: grey;color:white;text-align: right">Actions</th>
+            <th style="text-align: right">Actions</th>
             <td>
                 <a th:href="@{/workout/{id}/edit(id=${workout.id})}"
                    class="btn btn-primary btn-sm" >
