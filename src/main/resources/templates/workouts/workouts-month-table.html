@@ -147,43 +147,35 @@
                 <p class="panel-heading">
                     Month View
                 </p>
-            <div>
+                <div class="panel-block">
+        
+                    <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
 
-                <li class="list-group-item">
-            
-                        <div>
-        
-                            <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
-        
-                                <div style="float: left;background-color: #8393c4;border: darkmagenta;margin: 5px;padding: 5px">
-        
-                                    <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                                    <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
-        
-                                    <th:block th:each="workout : ${userWorkouts}">
-        
+                        <span style="float: left;background-color: #8393c4;border: rgb(53, 161, 211);margin: 5px;padding: 5px">
+
+                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+
+                            <th:block th:each="workout : ${userWorkouts}">
+
                                 <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
-        
+
                                     <br />
                                     <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
                                         <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
                                     </a>
-        
-                                </span>
-        
-                                    </th:block>
-        
-                                </div>
-        
-                            </th:block>
-        
-                        </div>
-                </li>
 
-            </div>
-            
-            <li class="list-group-item">
-                <div>
+                                </span>
+
+                            </th:block>
+
+                        </span>
+
+                    </th:block>
+        
+                </div>               
+
+                <div class="panel-block">            
 
                     <th:block th:each="currentWorkoutDay : ${weekTwoCurrentDays}">
 
@@ -210,9 +202,8 @@
                     </th:block>
 
                 </div>
-            </li>
-            <li class="list-group-item">
-                <div>
+            
+                <div class="panel-block"> 
 
                     <th:block th:each="currentWorkoutDay : ${weekThreeCurrentDays}">
 
@@ -239,9 +230,7 @@
                     </th:block>
 
                 </div>
-            </li>
-            <li class="list-group-item">
-                <div>
+                <div class="panel-block"> 
 
                     <th:block th:each="currentWorkoutDay : ${weekFourCurrentDays}">
 
@@ -268,9 +257,7 @@
                     </th:block>
 
                 </div>
-            </li>
-            <li class="list-group-item">
-                <div>
+                <div class="panel-block"> 
 
                     <th:block th:each="currentWorkoutDay : ${weekFiveCurrentDays}">
 
@@ -297,9 +284,7 @@
                     </th:block>
 
                 </div>
-            </li>
-            <li class="list-group-item" >
-                <div>
+                <div class="panel-block"> 
 
                     <th:block th:each="currentWorkoutDay : ${weekSixCurrentDays}">
 
@@ -326,7 +311,7 @@
                     </th:block>
 
                 </div>
-            </li>
+            
         </article>
     </div>
 
