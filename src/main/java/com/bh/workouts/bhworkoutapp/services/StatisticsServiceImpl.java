@@ -8,7 +8,7 @@ import com.bh.workouts.bhworkoutapp.models.Workout;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StatisticsServiceImpl {
+public class StatisticsServiceImpl implements StatisticsService {
 
         
     

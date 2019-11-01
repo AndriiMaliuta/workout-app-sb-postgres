@@ -7,7 +7,7 @@ import com.bh.workouts.bhworkoutapp.models.Exercise;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;;
 
 @Controller
-public class ExerciseServiceImpl {
+public class ExerciseServiceImpl implements ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
 
