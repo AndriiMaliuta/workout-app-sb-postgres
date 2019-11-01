@@ -112,7 +112,7 @@
             <label class="label" for="workoutType"><b>Type</b></label>
             <div class="select">
                 <select id="workoutType" th:field="*{workoutType}">
-                    <option>Select workout type</option>
+                    <option value="">Select workout type</option>
                     <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}"
                             th:value="${workoutType}"
                             th:text="${workoutType}">
