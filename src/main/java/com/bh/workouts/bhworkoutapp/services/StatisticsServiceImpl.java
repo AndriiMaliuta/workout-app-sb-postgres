@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
-@Controller
+@Service
 public class StatisticsServiceImpl {
 
-    
+        
     
     public List<Workout> getMonthWorkouts(String dateFrom, String dateTo) {
 
