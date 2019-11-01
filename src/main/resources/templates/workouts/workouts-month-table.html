@@ -100,9 +100,7 @@
         <h4 class="title is-4" th:text="${monthNow} + ' ' + ${yearNow}"></h4> 
         <span><a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a></span>        
         <hr>
-        <p>
-            <a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a>
-        </p>
+        
     </div>
 
     <!--  STATISTICS  -->
@@ -140,6 +138,8 @@
     <!-- END of STATS -->
 
     <div class="container">
+
+        <p><a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a></p>
         
         <article class="panel is-info">
                 <p class="panel-heading">
