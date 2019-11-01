@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Statistics</title>
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body >
+
+<!--<div th:replace="/common/navbar :: navbar"/>-->
+
+<div th:fragment="navbar">
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            
+            <a class="navbar-item" href="/home">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+            
+        </div>        
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/home">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="/workouts/view">
+                    Workouts
+                </a>
+
+                <a class="navbar-item" href="/workouts/week">
+                    Week View
+                </a>
+
+                <a class="navbar-item" href="/workouts/month">
+                    Month View
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="/workout/find">
+                            Find Workout
+                        </a>
+                        <a class="navbar-item" href="/workout/new">
+                            Create Workout
+                        </a>
+                        <a href="/workout/stats" class="navbar-item">
+                            Workouts Statistics
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/registration">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/profile">
+                            Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="section">
+
+    <div class="container">
+
+        <h1 class="title is-1">Statistics</h1>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
