@@ -37,9 +37,9 @@ public class HomeController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication.getName().equals("anma")) {
-            model.addAttribute("userName", userService.findUserByLogin(authentication.getName()).getFirstName());
-        }
+        // if (authentication.getName().equals("anma")) {
+        model.addAttribute("userName", userService.findUserByLogin(authentication.getName()).getFirstName());
+        // }
 
         logger.info("============= User Name is " + authentication.getName());
 

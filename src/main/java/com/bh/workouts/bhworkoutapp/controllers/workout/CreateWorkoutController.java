@@ -23,7 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Controller
-@Profile("PROD")
+// @Profile("PROD")
 public class CreateWorkoutController {
 
     private final UserService userService;

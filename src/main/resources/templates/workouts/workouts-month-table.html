@@ -97,10 +97,8 @@
         <h3 class="title is-3">Workouts month view</h3>
         <hr>
 
-        <h4 class="title is-4" th:text="${monthNow} + ' ' + ${yearNow}"></h4>
-        <div>
-            <a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a>
-        </div>
+        <h4 class="title is-4" th:text="${monthNow} + ' ' + ${yearNow}"></h4> 
+        <span><a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a></span>        
         <hr>
         <p>
             <a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a>
