@@ -1,8 +1,7 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
-import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +17,11 @@ public class UserRegistrationController {
 
     private Logger logger = Logger.getLogger(UserRegistrationController.class.getName());
 
-    private final UserServiceImpl userService;
-    private final ExerciseNameService exerciseNameService;
+    private final UserService userService;
 
     @Autowired
-    public UserRegistrationController(UserServiceImpl userService,
-                                      ExerciseNameService exerciseNameService) {
+    public UserRegistrationController(UserService userService) {
         this.userService = userService;
-        this.exerciseNameService = exerciseNameService;
     }
 
     @GetMapping("/registration")

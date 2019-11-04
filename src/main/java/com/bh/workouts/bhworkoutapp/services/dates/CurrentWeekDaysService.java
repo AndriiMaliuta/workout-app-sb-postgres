@@ -1,6 +1,5 @@
 package com.bh.workouts.bhworkoutapp.services.dates;
 
-
 import com.bh.workouts.bhworkoutapp.models.CurrentWorkoutDay;
 
 import java.text.SimpleDateFormat;

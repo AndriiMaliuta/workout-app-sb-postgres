@@ -41,7 +41,8 @@ public class OwnExerciseController {
     @GetMapping("/exercises/own")
     public String getOwnExercises(Model model) {
 
-        model.addAttribute("ownExercisesList", exerciseNameService.getOwnExerciseNames());
+        model.addAttribute("ownExercisesList",
+                exerciseNameService.getOwnExerciseNames(authInitiatorService.getUserFromAuth()));
 
         return "exercises/own-exercises";
     }

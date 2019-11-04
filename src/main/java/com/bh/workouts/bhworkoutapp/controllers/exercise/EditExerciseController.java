@@ -7,8 +7,7 @@ import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
-import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseSelectorService;
-import com.bh.workouts.bhworkoutapp.services.user.UserService;
+import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,22 +23,23 @@ public class EditExerciseController {
 
     private final ExerciseRepository exerciseRepository;
     private final WorkoutRepository workoutRepository;
-    private final UserService userService;
+    private final ExerciseService exerciseService;
     private final ExerciseNameRepository exerciseNameRepository;
     private final AuthInitiatorService authInitiatorService;
 
     @Autowired
     public EditExerciseController(ExerciseRepository exerciseRepository,
                                   WorkoutRepository workoutRepository,
-                                  UserService userService,
+                                  ExerciseService exerciseService,
                                   ExerciseNameRepository exerciseNameRepository,
                                   AuthInitiatorService authInitiatorService) {
         this.exerciseRepository = exerciseRepository;
         this.workoutRepository = workoutRepository;
-        this.userService = userService;
+        this.exerciseService = exerciseService;
         this.exerciseNameRepository = exerciseNameRepository;
         this.authInitiatorService = authInitiatorService;
     }
+
 
     @GetMapping("/workout/{workoutId}/exercise/{exerciseId}/edit")
     public String getForm(@PathVariable long workoutId, @PathVariable long exerciseId,  Model model) {
@@ -53,7 +53,7 @@ public class EditExerciseController {
 
         List<ExerciseName> exerciseList = exerciseNameRepository.findAll();
         List<ExerciseName> userExercisesList =
-                ExerciseSelectorService.getExercisesList(exerciseList,
+                exerciseService.getExercisesListByUserAndType(exerciseList,
                         exercise.getWorkout().getWorkoutType(),
                         authInitiatorService.getUserFromAuth());
 
