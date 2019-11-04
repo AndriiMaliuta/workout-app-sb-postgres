@@ -4,7 +4,7 @@ import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentWeekDaysService;
-import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +21,15 @@ public class WeekWorkoutViewController {
 
     private final WorkoutRepository workoutRepository;
     private final AuthInitiatorService authInitiatorService;
+    private final WorkoutService workoutService;
 
     @Autowired
     public WeekWorkoutViewController(WorkoutRepository workoutRepository,
-                                     AuthInitiatorService authInitiatorService) {
+                                     AuthInitiatorService authInitiatorService,
+                                     WorkoutService workoutService) {
         this.workoutRepository = workoutRepository;
         this.authInitiatorService = authInitiatorService;
+        this.workoutService = workoutService;
     }
 
     @RequestMapping("/workouts/week")
@@ -34,7 +37,7 @@ public class WeekWorkoutViewController {
 
         List<Workout> workouts = workoutRepository.findAll();
 
-        model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, authInitiatorService.getUserFromAuth()));
+        model.addAttribute("userWorkouts", workoutService.userWorkouts(workouts, authInitiatorService.getUserFromAuth()));
         model.addAttribute("daysMap", CurrentWeekDaysService.getCurrentWeekDaysAnsWorkouts());
 
         logger.info("=========== Getting Workout Week page");

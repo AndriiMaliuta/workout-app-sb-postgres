@@ -2,7 +2,6 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
-import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +38,7 @@ public class FindWorkoutController {
         String date = workout.getWorkoutDate();
 
         List<Workout> workouts = workoutService.findWorkoutByWorkoutDate(date);
-        List<Workout> userWorkouts = GetSpecificUserWorkoutsService.userWorkouts(workouts, authInitiatorService.getUserFromAuth());
+        List<Workout> userWorkouts = workoutService.userWorkouts(workouts, authInitiatorService.getUserFromAuth());
 
         model.addAttribute("foundUserWorkouts", userWorkouts);
 

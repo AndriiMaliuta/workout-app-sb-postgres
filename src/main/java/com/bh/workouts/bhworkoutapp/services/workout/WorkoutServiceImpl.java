@@ -1,5 +1,6 @@
 package com.bh.workouts.bhworkoutapp.services.workout;
 
+import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,20 @@ public class WorkoutServiceImpl implements WorkoutService {
         }
 
         return workouts;
+    }
+
+    @Override
+    public List<Workout> userWorkouts(List<Workout> workouts, User userLogin) {
+
+        List<Workout> userWorkouts = new ArrayList<>();
+
+        for (Workout workout : workouts) {
+
+            if (workout.getUser().equals(userLogin)) {
+                userWorkouts.add(workout);
+            }
+        }
+
+        return userWorkouts;
     }
 }
