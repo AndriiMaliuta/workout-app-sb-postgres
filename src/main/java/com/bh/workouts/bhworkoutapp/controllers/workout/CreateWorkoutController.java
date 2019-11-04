@@ -1,11 +1,10 @@
 package com.bh.workouts.bhworkoutapp.controllers.workout;
 
-import com.bh.workouts.bhworkoutapp.config.AuthInitiator;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
-import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,16 +24,16 @@ import java.util.Date;
 // @Profile("PROD")
 public class CreateWorkoutController {
 
-    private final UserService userService;
     private final WorkoutRepository workoutRepository;
+    private final AuthInitiatorService authInitiatorService;
 
     private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
 
     @Autowired
-    public CreateWorkoutController(UserService userService,
-                                   WorkoutRepository workoutRepository) {
-        this.userService = userService;
+    public CreateWorkoutController(WorkoutRepository workoutRepository,
+                                   AuthInitiatorService authInitiatorService) {
         this.workoutRepository = workoutRepository;
+        this.authInitiatorService = authInitiatorService;
     }
 
     @GetMapping("/workout/new")
@@ -48,10 +47,6 @@ public class CreateWorkoutController {
     @PostMapping("/workout/new")
     public String createWorkout(@ModelAttribute Workout workout, Model model) throws ParseException {
 
-        AuthInitiator authInitiator = new AuthInitiator(userService);
-
-        User userByLogin = authInitiator.getUserFromAuth();
-
         Calendar calendar = Calendar.getInstance();
 
         Workout newWorkout = new Workout();
@@ -62,7 +57,7 @@ public class CreateWorkoutController {
         newWorkout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));
         newWorkout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
         newWorkout.setComments(workout.getComments());
-        newWorkout.setUser(userByLogin);
+        newWorkout.setUser(authInitiatorService.getUserFromAuth());
         newWorkout.setWeek(calendar.get(Calendar.WEEK_OF_MONTH));
 
         Date dayDate = new SimpleDateFormat("MM/dd/yyyy").parse(workout.getWorkoutDate());

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bh.workouts</groupId>
 	<artifactId>bh-workout-app</artifactId>
-	<version>1.3.0</version>
+	<version>1.3.1</version>
 	<name>bh-workout-app</name>
 	<description>Workout Web App with PostreSQL</description>
 

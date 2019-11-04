@@ -4,13 +4,12 @@ import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.ExerciseNameAccess;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
-import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,19 +20,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class OwnExerciseController {
 
-    Logger logger = LoggerFactory.getLogger(OwnExerciseController.class);
+    private Logger logger = LoggerFactory.getLogger(OwnExerciseController.class);
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
     private final ExerciseNameService exerciseNameService;
     private final ExerciseNameRepository exerciseNameRepository;
+    private final AuthInitiatorService authInitiatorService;
 
     @Autowired
-    public OwnExerciseController(UserServiceImpl userService,
+    public OwnExerciseController(UserService userService,
                                  ExerciseNameService exerciseNameService,
-                                 ExerciseNameRepository exerciseNameRepository) {
+                                 ExerciseNameRepository exerciseNameRepository,
+                                 AuthInitiatorService authInitiatorService) {
         this.userService = userService;
         this.exerciseNameService = exerciseNameService;
         this.exerciseNameRepository = exerciseNameRepository;
+        this.authInitiatorService = authInitiatorService;
     }
 
     @GetMapping("/exercises/own")
@@ -56,9 +58,7 @@ public class OwnExerciseController {
     @PostMapping("/exercise/own/add")
     public String addOwnExercise(@ModelAttribute ExerciseName exerciseName) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        User userByLogin = userService.findUserByLogin(authentication.getName());
+        User userByLogin = authInitiatorService.getUserFromAuth();
 
         exerciseName.setUser(userByLogin);
         exerciseName.setAccess(ExerciseNameAccess.PERSONAL.name());
@@ -67,7 +67,7 @@ public class OwnExerciseController {
 
         logger.info(exerciseName.getUser().getLogin());
         logger.info(exerciseName.getAccess());
-        logger.info(authentication.getName());
+        logger.info(authInitiatorService.getUserFromAuth().getLogin());
 
         return "redirect:/exercises/own";
     }

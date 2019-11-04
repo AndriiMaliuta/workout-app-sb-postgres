@@ -1,21 +1,18 @@
 package com.bh.workouts.bhworkoutapp.controllers.workout;
 
 import com.bh.workouts.bhworkoutapp.models.MonthForm;
-import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.models.WorkoutType;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.helpers.DigitFromMonthNameService;
-import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
-import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
+import com.bh.workouts.bhworkoutapp.services.helpers.DigitFromMonthNameService;
+import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.helpers.stats.MonthWorkoutsStatsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,14 +27,19 @@ import java.util.List;
 @Controller
 public class OtherMonthWorkoutController {
 
-    private final UserServiceImpl userService;
     private final WorkoutRepository workoutRepository;
+    private final AuthInitiatorService authInitiatorService;
+    private final MonthWorkoutsStatsService monthWorkoutsStatsService;
+
     private Logger logger = LoggerFactory.getLogger(OtherMonthWorkoutController.class);
 
     @Autowired
-    public OtherMonthWorkoutController(UserServiceImpl userService, WorkoutRepository workoutRepository) {
-        this.userService = userService;
+    public OtherMonthWorkoutController(WorkoutRepository workoutRepository,
+                                       AuthInitiatorService authInitiatorService,
+                                       MonthWorkoutsStatsService monthWorkoutsStatsService) {
         this.workoutRepository = workoutRepository;
+        this.authInitiatorService = authInitiatorService;
+        this.monthWorkoutsStatsService = monthWorkoutsStatsService;
     }
 
     @GetMapping("/workout/other/month")
@@ -67,9 +69,6 @@ public class OtherMonthWorkoutController {
     @PostMapping("/workout/other/month")
     public String getOtherMonthPage(@ModelAttribute MonthForm monthForm, Model model) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(authentication.getName());
-
         List<Workout> workouts = workoutRepository.findAll();
 
         String monthName = monthForm.getMonth();
@@ -84,18 +83,16 @@ public class OtherMonthWorkoutController {
                 yearMonth = YearMonth.of(monthForm.getYear(), DigitFromMonthNameService.getDigitFromMonth(monthName));
             }
 
-            MonthWorkoutsStatsService monthWorkoutsStatsService = new MonthWorkoutsStatsService(workoutRepository);
-
             int pecsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.PECS.name(), userByLogin);
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
             int backWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BACK.name(), userByLogin);
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
             int bicepsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BICEPS.name(), userByLogin);
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
             int tricepsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.TRICEPS.name(), userByLogin);
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
             int deltsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), userByLogin);
+                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
 
             model.addAttribute("weekOneCurrentDays",
                     CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));
@@ -110,7 +107,7 @@ public class OtherMonthWorkoutController {
             model.addAttribute("weekSixCurrentDays",
                     CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 6));
 
-            model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
+            model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, authInitiatorService.getUserFromAuth()));
             model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
             model.addAttribute("pecsWorkoutsNumber", pecsWorkoutsNumber);
             model.addAttribute("bicepsWorkoutsNumber", bicepsWorkoutsNumber);
@@ -118,7 +115,7 @@ public class OtherMonthWorkoutController {
             model.addAttribute("backWorkoutsNumber", backWorkoutsNumber);
             model.addAttribute("deltsWorkoutsNumber", deltsWorkoutsNumber);
 
-            model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin));
+            model.addAttribute("userWorkouts", GetSpecificUserWorkoutsService.userWorkouts(workouts, authInitiatorService.getUserFromAuth()));
 //            model.addAttribute("currentDayMap", CurrentMonthDaysService.getMonthDays(yearMonth));
             model.addAttribute("monthName", monthName);
             model.addAttribute("yearMonth", monthForm.getYear());
@@ -127,8 +124,7 @@ public class OtherMonthWorkoutController {
             logger.info(e.toString());
         }
 
-        logger.info(monthName);
-        logger.info(String.valueOf(DigitFromMonthNameService.getDigitFromMonth(monthName)));
+        logger.info("=========== Other month page initiated for: " + monthName +" " + DigitFromMonthNameService.getDigitFromMonth(monthName));
 
         return "workouts/workouts-other-month-table";
     }

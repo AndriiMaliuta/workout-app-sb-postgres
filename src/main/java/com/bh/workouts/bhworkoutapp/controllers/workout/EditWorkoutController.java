@@ -3,8 +3,9 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.dates.DayOfWeekService;
-import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,13 +23,13 @@ import java.util.Date;
 public class EditWorkoutController {
 
     private final WorkoutRepository workoutRepository;
-    private final UserServiceImpl userService;
+    private final AuthInitiatorService authInitiatorService;
 
     @Autowired
     public EditWorkoutController(WorkoutRepository workoutRepository,
-                                 UserServiceImpl userService) {
+                                 AuthInitiatorService authInitiatorService) {
         this.workoutRepository = workoutRepository;
-        this.userService = userService;
+        this.authInitiatorService = authInitiatorService;
     }
 
     @GetMapping("/workout/{id}/edit")
@@ -42,13 +43,10 @@ public class EditWorkoutController {
     @PostMapping("/workout/edit")
     public String editWorkout(@ModelAttribute Workout workout) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(auth.getName());
-
         workout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
         workout.setCreationDate(new Date());
         workout.setWorkoutDay(DayOfWeekService.dayOfWeek());
-        workout.setUser(userByLogin);
+        workout.setUser(authInitiatorService.getUserFromAuth());
 
         workoutRepository.save(workout);
 

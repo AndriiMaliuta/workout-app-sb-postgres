@@ -58,6 +58,8 @@ public class DEVCreateWorkoutController {
 
         model.addAttribute("newWorkout", workout);
 
+        logger.info("========= Workout created: " + workout);
+
         return "redirect:/workout/" + workout.getId();
     }
 

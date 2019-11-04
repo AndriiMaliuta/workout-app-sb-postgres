@@ -31,7 +31,7 @@ public class Bootstrap implements CommandLineRunner {
         this.initExercisesService = initExercisesService;
     }
 
-    public void loadUsers() {
+    private void loadUsers() {
 
         if (userService.findAllUsers().size() == 0) {
 

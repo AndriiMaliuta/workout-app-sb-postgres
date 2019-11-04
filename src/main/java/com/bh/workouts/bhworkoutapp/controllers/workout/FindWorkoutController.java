@@ -3,6 +3,7 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
 import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
@@ -22,11 +23,12 @@ import java.util.List;
 public class FindWorkoutController {
 
     private final WorkoutService workoutService;
-    private final UserService userService;
+    private final AuthInitiatorService authInitiatorService;
 
-    public FindWorkoutController(WorkoutService workoutService, UserService userService) {
+    @Autowired
+    public FindWorkoutController(WorkoutService workoutService, AuthInitiatorService authInitiatorService) {
         this.workoutService = workoutService;
-        this.userService = userService;
+        this.authInitiatorService = authInitiatorService;
     }
 
     @GetMapping("/workout/find")
@@ -40,13 +42,10 @@ public class FindWorkoutController {
     @PostMapping("/workout/find")
     public String findWorkoutByName(@ModelAttribute Workout workout, Model model) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(authentication.getName());
-
         String date = workout.getWorkoutDate();
 
         List<Workout> workouts = workoutService.findWorkoutByWorkoutDate(date);
-        List<Workout> userWorkouts = GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin);
+        List<Workout> userWorkouts = GetSpecificUserWorkoutsService.userWorkouts(workouts, authInitiatorService.getUserFromAuth());
 
         model.addAttribute("foundUserWorkouts", userWorkouts);
 

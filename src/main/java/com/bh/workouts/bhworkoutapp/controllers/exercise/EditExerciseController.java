@@ -6,11 +6,10 @@ import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseSelectorService;
-import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,24 +24,25 @@ public class EditExerciseController {
 
     private final ExerciseRepository exerciseRepository;
     private final WorkoutRepository workoutRepository;
-    private final UserServiceImpl userService;
+    private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;
+    private final AuthInitiatorService authInitiatorService;
 
     @Autowired
     public EditExerciseController(ExerciseRepository exerciseRepository,
                                   WorkoutRepository workoutRepository,
-                                  UserServiceImpl userService,
-                                  ExerciseNameRepository exerciseNameRepository) {
+                                  UserService userService,
+                                  ExerciseNameRepository exerciseNameRepository,
+                                  AuthInitiatorService authInitiatorService) {
         this.exerciseRepository = exerciseRepository;
         this.workoutRepository = workoutRepository;
         this.userService = userService;
         this.exerciseNameRepository = exerciseNameRepository;
+        this.authInitiatorService = authInitiatorService;
     }
 
     @GetMapping("/workout/{workoutId}/exercise/{exerciseId}/edit")
     public String getForm(@PathVariable long workoutId, @PathVariable long exerciseId,  Model model) {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Workout workout = workoutRepository.findById(workoutId).get();
 
@@ -55,7 +55,7 @@ public class EditExerciseController {
         List<ExerciseName> userExercisesList =
                 ExerciseSelectorService.getExercisesList(exerciseList,
                         exercise.getWorkout().getWorkoutType(),
-                        userService.findUserByLogin(authentication.getName()));
+                        authInitiatorService.getUserFromAuth());
 
         model.addAttribute("userExercisesList", userExercisesList);
 
