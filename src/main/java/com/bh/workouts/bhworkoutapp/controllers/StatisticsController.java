@@ -6,6 +6,7 @@ import com.bh.workouts.bhworkoutapp.services.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class StatisticsController {
@@ -20,6 +21,7 @@ public class StatisticsController {
         this.authInitiatorService = authInitiatorService;
     }
 
+    @GetMapping("/workout/stats")
     public String getStats(Model model) {
 
         model.addAttribute("yearMap", statisticsService.getWorkoutsForYear(2019, authInitiatorService.getUserFromAuth()));

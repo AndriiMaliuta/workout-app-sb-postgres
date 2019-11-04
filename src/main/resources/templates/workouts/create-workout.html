@@ -25,118 +25,124 @@
 
 <body>
 
-    <!--<div th:replace="/common/navbar :: navbar"></div>-->
+<div th:fragment="navbar">
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
 
-    <div th:fragment="navbar">
-        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
+            <a class="navbar-item" href="/home">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <div class="navbar-start">
+
                 <a class="navbar-item" href="/home">
-                    <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
+                    Home
                 </a>
 
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+                <a class="navbar-item" href="/workouts/view">
+                    Workouts
                 </a>
-            </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="/home">
-                        Home
+                <a class="navbar-item" href="/workouts/week">
+                    Week View
+                </a>
+
+                <a class="navbar-item" href="/workouts/month">
+                    Month View
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
                     </a>
 
-                    <a class="navbar-item" href="/workouts/view">
-                        Workouts
-                    </a>
-
-                    <a class="navbar-item" href="/workouts/week">
-                        Week View
-                    </a>
-
-                    <a class="navbar-item" href="/workouts/month">
-                        Month View
-                    </a>
-
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            More
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="/workout/find">
+                            Find Workout
                         </a>
-
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item" href="/workouts/find">
-                                Find Workout
-                            </a>
-                            <a class="navbar-item" href="/workouts/new">
-                                Create Workout
-                            </a>
-                            <a class="navbar-item">
-                                Contact
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                                Report an issue
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary" href="/registration">
-                                <strong>Sign up</strong>
-                            </a>
-                            <a class="button is-light" href="/profile">
-                                Profile
-                            </a>
-                        </div>
+                        <a class="navbar-item" href="/workout/new">
+                            Create Workout
+                        </a>
+                        <a href="/workout/stats" class="navbar-item">
+                            Workouts Statistics
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
                     </div>
                 </div>
             </div>
-        </nav>
-    </div>
 
-    <div class="section">
-
-        <div class="container">
-
-            <form th:action="@{/workout/new}" th:object="${workout}" method="post">
-
-                <!--<div class="field">-->
-                <!--<label for="name">Title</label>-->
-                <!--<input th:field="*{name}" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Title">-->
-                <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Title Error></p>-->
-                <!--</div>-->
-
-                <div class="field">
-                    <div class="control">
-                        <div class="select is-info">
-                            <select>
-                                <option value="">Select workout type</option>
-                                <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}" th:value="${workoutType}" th:text="${workoutType}">
-                                </option>
-                            </select>
-                            <p th:if="${#fields.hasErrors('workoutType')}" th:errors="*{workoutType}">Type Error></p>
-                        </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/registration">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/profile">
+                            Profile
+                        </a>
                     </div>
                 </div>
-
-        <div class="field">
-            <label class="label" for="datepicker"><b>Date(MM/dd/yyyy)</b></label>
-            <input class="input" type="text" id="datepicker" th:field="*{workoutDate}" >
+            </div>
         </div>
+    </nav>
+</div>
 
-        <div class="field">
-            <label class="label" for="comments"><b>Comments</b></label>
-            <textarea class="textarea" id="comments" th:field="*{comments}" rows="3"></textarea>
-        </div>
 
-        <button type="submit" class="button is-primary">Submit</button>
+<div class="section">
 
-    </form>
-    
+    <div class="container">
+
+        <form th:action="@{/workout/new}" th:object="${workout}" method="post">
+
+            <!--<div class="field">-->
+            <!--<label for="name">Title</label>-->
+            <!--<input th:field="*{name}" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Title">-->
+            <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Title Error></p>-->
+            <!--</div>-->
+
+            <div class="field">
+                <div class="control">
+                    <div class="select is-info">
+                        <select>
+                            <option value="">Select workout type</option>
+                            <option th:each="workoutType : ${T(com.bh.workouts.bhworkoutapp.models.WorkoutType).values()}" th:value="${workoutType}" th:text="${workoutType}">
+                            </option>
+                        </select>
+                        <p th:if="${#fields.hasErrors('workoutType')}" th:errors="*{workoutType}">Type Error></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="datepicker"><b>Date(MM/dd/yyyy)</b></label>
+                <input class="input" type="text" id="datepicker" th:field="*{workoutDate}" >
+            </div>
+
+            <div class="field">
+                <label class="label" for="comments"><b>Comments</b></label>
+                <textarea class="textarea" id="comments" th:field="*{comments}" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="button is-primary">Submit</button>
+
+        </form>
+
     </div>
 
 </div>
