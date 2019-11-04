@@ -101,7 +101,7 @@
 
         <h1 class="title is-2">Statistics</h1>
 
-        <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+        <div id="columnchart_values"></div>
 
     </div>
 
@@ -116,16 +116,16 @@
             ["Month", "Number", { role: "style" } ],
             ["January", [[${yearMap.get('January')}]], "#b87333"],
             ["February", [[${yearMap.get('February')}]], "silver"],
-            ["March", 19.30, "gold"],
-            ["April", 34, "color: green"],
-            ["May", 34, "color: green"],
-            ["June", 34, "color: green"],
-            ["July", 34, "color: green"],
-            ["August", 34, "color: green"],
-            ["September", 34, "color: green"],
-            ["October", 34, "color: green"],
-            ["November", 34, "color: green"],
-            ["December", 34, "color: green"],
+            ["March", [[${yearMap.get('March')}]], "gold"],
+            ["April", [[${yearMap.get('April')}]], "color: green"],
+            ["May", [[${yearMap.get('May')}]], "color: #3FBF7F"],
+            ["June", [[${yearMap.get('June')}]], "color: #3F7FBF"],
+            ["July", [[${yearMap.get('July')}]], "color: #BF3FBF"],
+            ["August", [[${yearMap.get('August')}]], "color: #3FBFBF"],
+            ["September", [[${yearMap.get('September')}]], "color: #3F3FBF"],
+            ["October", [[${yearMap.get('October')}]], "color: #BFBF3F"],
+            ["November", [[${yearMap.get('November')}]], "color: #19334C"],
+            ["December", [[${yearMap.get('December')}]], "color: #6D20BF"]
         ]);
 
         var view = new google.visualization.DataView(data);
