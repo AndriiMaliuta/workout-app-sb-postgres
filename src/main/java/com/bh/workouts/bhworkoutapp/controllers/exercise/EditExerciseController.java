@@ -6,7 +6,7 @@ import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

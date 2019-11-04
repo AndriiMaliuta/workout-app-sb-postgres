@@ -1,4 +1,4 @@
-package com.bh.workouts.bhworkoutapp.services;
+package com.bh.workouts.bhworkoutapp.services.helpers.stats;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +17,13 @@ import org.springframework.stereotype.Service;
 public class StatisticsServiceImpl implements StatisticsService {
 
     private final WorkoutRepository workoutRepository;
+    private final WorkoutService workoutService;
 
     @Autowired
-    public StatisticsServiceImpl(WorkoutRepository workoutRepository) {
+    public StatisticsServiceImpl(WorkoutRepository workoutRepository,
+                                 WorkoutService workoutService) {
         this.workoutRepository = workoutRepository;
+        this.workoutService = workoutService;
     }
 
     public List<Workout> getWorkoutCountsByDatesRange(String dateFrom, String dateTo) {
@@ -81,5 +85,26 @@ public class StatisticsServiceImpl implements StatisticsService {
         tempMap.put("December", decemberNumber);
 
         return tempMap;
+    }
+
+
+    @Override
+    public int getWorkoutsNumberByType(String month, String workoutType, User user) {
+
+        List<Workout> userWorkouts = workoutService.userWorkouts(workoutRepository.findAll(), user);
+
+        List<Workout> workoutsByType = new ArrayList<>();
+
+        for (Workout workout : userWorkouts) {
+
+            if (workout.getWorkoutMonth().equalsIgnoreCase(month)
+                    && workout.getWorkoutType().equalsIgnoreCase(workoutType)) {
+
+                workoutsByType.add(workout);
+
+            }
+        }
+
+        return workoutsByType.size();
     }
 }

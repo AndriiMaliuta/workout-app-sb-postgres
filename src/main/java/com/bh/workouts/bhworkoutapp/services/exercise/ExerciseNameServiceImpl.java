@@ -3,7 +3,7 @@ package com.bh.workouts.bhworkoutapp.services.exercise;
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -4,11 +4,11 @@ import com.bh.workouts.bhworkoutapp.models.MonthForm;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.models.WorkoutType;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
 import com.bh.workouts.bhworkoutapp.services.helpers.DigitFromMonthNameService;
-import com.bh.workouts.bhworkoutapp.services.helpers.stats.MonthWorkoutsStatsService;
+import com.bh.workouts.bhworkoutapp.services.helpers.stats.StatisticsService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class OtherMonthWorkoutController {
     private final WorkoutRepository workoutRepository;
     private final WorkoutService workoutService;
     private final AuthInitiatorService authInitiatorService;
-    private final MonthWorkoutsStatsService monthWorkoutsStatsService;
+    private final StatisticsService statisticsService;
 
     private Logger logger = LoggerFactory.getLogger(OtherMonthWorkoutController.class);
 
@@ -38,11 +38,11 @@ public class OtherMonthWorkoutController {
     public OtherMonthWorkoutController(WorkoutRepository workoutRepository,
                                        WorkoutService workoutService,
                                        AuthInitiatorService authInitiatorService,
-                                       MonthWorkoutsStatsService monthWorkoutsStatsService) {
+                                       StatisticsService statisticsService) {
         this.workoutRepository = workoutRepository;
         this.workoutService = workoutService;
         this.authInitiatorService = authInitiatorService;
-        this.monthWorkoutsStatsService = monthWorkoutsStatsService;
+        this.statisticsService = statisticsService;
     }
 
     @GetMapping("/workout/other/month")
@@ -87,15 +87,15 @@ public class OtherMonthWorkoutController {
             }
 
             int pecsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
             int backWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
             int bicepsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
             int tricepsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
             int deltsWorkoutsNumber =
-                    monthWorkoutsStatsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
 
             model.addAttribute("weekOneCurrentDays",
                     CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));

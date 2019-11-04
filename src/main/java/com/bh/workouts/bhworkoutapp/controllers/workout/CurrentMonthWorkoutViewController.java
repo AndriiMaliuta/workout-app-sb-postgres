@@ -3,10 +3,10 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.models.WorkoutType;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
-import com.bh.workouts.bhworkoutapp.services.helpers.stats.MonthWorkoutsStatsService;
+import com.bh.workouts.bhworkoutapp.services.helpers.stats.StatisticsService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,17 +21,17 @@ import java.util.List;
 public class CurrentMonthWorkoutViewController {
 
     private final WorkoutRepository workoutRepository;
-    private final MonthWorkoutsStatsService workoutsStatsService;
+    private final StatisticsService statisticsService;
     private final AuthInitiatorService authInitiatorService;
     private final WorkoutService workoutService;
 
     @Autowired
     public CurrentMonthWorkoutViewController(WorkoutRepository workoutRepository,
-                                             MonthWorkoutsStatsService workoutsStatsService,
+                                             StatisticsService statisticsService,
                                              AuthInitiatorService authInitiatorService,
                                              WorkoutService workoutService) {
         this.workoutRepository = workoutRepository;
-        this.workoutsStatsService = workoutsStatsService;
+        this.statisticsService = statisticsService;
         this.authInitiatorService = authInitiatorService;
         this.workoutService = workoutService;
     }
@@ -46,15 +46,15 @@ public class CurrentMonthWorkoutViewController {
         YearMonth yearMonth = YearMonth.now();
 
         int pecsWorkoutsNumber =
-                workoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
         int backWorkoutsNumber =
-                workoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
         int bicepsWorkoutsNumber =
-                workoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
         int tricepsWorkoutsNumber =
-                workoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
         int deltsWorkoutsNumber =
-                workoutsStatsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
 
         model.addAttribute("weekOneCurrentDays",
                 CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));

@@ -1,7 +1,7 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
-import com.bh.workouts.bhworkoutapp.services.StatisticsService;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.helpers.stats.StatisticsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

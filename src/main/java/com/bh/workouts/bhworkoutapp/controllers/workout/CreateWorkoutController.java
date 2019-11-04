@@ -1,7 +1,6 @@
 package com.bh.workouts.bhworkoutapp.controllers.workout;
 
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
-import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;

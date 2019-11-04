@@ -1,4 +1,4 @@
-package com.bh.workouts.bhworkoutapp.services;
+package com.bh.workouts.bhworkoutapp.services.helpers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.services.user.UserService;

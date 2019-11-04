@@ -4,7 +4,7 @@ import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.ExerciseNameAccess;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
-import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import org.slf4j.Logger;
