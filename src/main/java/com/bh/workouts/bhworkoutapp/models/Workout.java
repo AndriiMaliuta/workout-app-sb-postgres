@@ -1,6 +1,5 @@
 package com.bh.workouts.bhworkoutapp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 

@@ -18,6 +18,8 @@ public class StatisticsController {
 
     public String getStats(Model model) {
 
+
+
         // statisticsService.getMonthWorkouts(dateFrom, dateTo)
 
         return "/workout/stats";

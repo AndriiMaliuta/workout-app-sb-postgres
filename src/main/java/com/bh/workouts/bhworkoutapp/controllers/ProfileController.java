@@ -1,7 +1,10 @@
 package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.services.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,20 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProfileController {
 
-    private final UserServiceImpl userService;
+    private Logger logger = LoggerFactory.getLogger(ProfileController.class);
+
+    private final AuthInitiatorService authInitiatorService;
 
     @Autowired
-    public ProfileController(UserServiceImpl userService) {
-        this.userService = userService;
+    public ProfileController(AuthInitiatorService authInitiatorService) {
+        this.authInitiatorService = authInitiatorService;
     }
 
     @RequestMapping("/profile")
     public String getProfilePage(Model model) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User userByLogin = userService.findUserByLogin(auth.getName());
+        model.addAttribute("user", authInitiatorService.getUserFromAuth());
 
-        model.addAttribute("user", userByLogin);
+        logger.info("=========== Opening Profile page for: " + authInitiatorService.getUserFromAuth().getLogin());
 
         return "profile/profile";
     }
