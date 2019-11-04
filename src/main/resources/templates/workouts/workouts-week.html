@@ -108,13 +108,13 @@
 
         <div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     SU<span style="color: orange" th:text="${daysMap.get('convertedSundayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSundayDate'))} ">
 
@@ -123,16 +123,16 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     MO<span style="color: orange" th:text="${daysMap.get('convertedMondayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedMondayDate'))} ">
 
@@ -141,17 +141,17 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     TU
                     <span style="color: orange" th:text="${daysMap.get('convertedTuesdayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedTuesdayDate'))} ">
 
@@ -160,17 +160,17 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     WE
                     <span style="color: orange" th:text="${daysMap.get('convertedWednesdayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedWednesdayDate'))} ">
 
@@ -179,17 +179,17 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     TH
                     <span style="color: orange" th:text="${daysMap.get('convertedThursdayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedThursdayDate'))} ">
 
@@ -198,17 +198,17 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     FR
                     <span style="color: orange" th:text="${daysMap.get('convertedFridayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedFridayDate'))} ">
 
@@ -217,17 +217,17 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
             <div class="week-workout-block">
-                <p>
+                <div>
                     SA
                     <span style="color: orange" th:text="${daysMap.get('convertedSaturdayDate').substring(3, 5)}"></span>
                     <a href="/workout/new">
                         <img style="vertical-align: bottom" src="../../images/cross_green.png" height="20" width="20" alt="Add">
                     </a>
-                </p>
-                <p>
+                </div>
+                <div>
                     <th:block th:each="workout : ${userWorkouts}">
                         <p th:if="${workout.workoutDate.equals(daysMap.get('convertedSaturdayDate'))} ">
 
@@ -236,7 +236,7 @@
                             </a>
                         </p>
                     </th:block>
-                </p>
+                </div>
             </div>
         </div>
 
