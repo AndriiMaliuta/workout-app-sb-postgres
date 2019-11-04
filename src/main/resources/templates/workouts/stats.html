@@ -114,10 +114,18 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ["Month", "Number", { role: "style" } ],
-            ["January", [[${yearMap.get('january')}]], "#b87333"],
-            ["Silver", 10.49, "silver"],
-            ["Gold", 19.30, "gold"],
-            ["Platinum", 34, "color: green"]
+            ["January", [[${yearMap.get('January')}]], "#b87333"],
+            ["February", [[${yearMap.get('February')}]], "silver"],
+            ["March", 19.30, "gold"],
+            ["April", 34, "color: green"],
+            ["May", 34, "color: green"],
+            ["June", 34, "color: green"],
+            ["July", 34, "color: green"],
+            ["August", 34, "color: green"],
+            ["September", 34, "color: green"],
+            ["October", 34, "color: green"],
+            ["November", 34, "color: green"],
+            ["December", 34, "color: green"],
         ]);
 
         var view = new google.visualization.DataView(data);
