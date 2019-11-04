@@ -20,9 +20,13 @@
 .week-workout-block {
     background-color: #00d1b2;
     width: 140px;
-    height: 80px;
+    height: 90px;
     float: left;
     padding: 10px;
     margin: 5px;
     color:white;
+}
+
+.day-div {
+    margin-bottom: 3px;
 }
