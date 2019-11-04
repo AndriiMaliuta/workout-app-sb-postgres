@@ -24,7 +24,7 @@ public class StatisticsController {
 
         model.addAttribute("yearMap", statisticsService.getWorkoutsForYear(2019, authInitiatorService.getUserFromAuth()));
 
-        return "/workout/stats";
+        return "workouts/stats";
     }
 
 
