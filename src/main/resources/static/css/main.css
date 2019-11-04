@@ -16,3 +16,10 @@
     padding : 15px;
     margin : 15px;
 }
+
+.week-workout-block {
+    background-color: #00d1b2;
+    width: 200px;
+    height: 60px;
+    float: right;
+}
