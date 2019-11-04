@@ -18,14 +18,10 @@ public class HomeController {
 
     private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
 
-    private final StatisticsService statisticsService;
     private final AuthInitiatorService authInitiatorService;
 
     @Autowired
-    public HomeController(
-            StatisticsService statisticsService,
-            AuthInitiatorService authInitiatorService) {
-        this.statisticsService = statisticsService;
+    public HomeController(AuthInitiatorService authInitiatorService) {
         this.authInitiatorService = authInitiatorService;
     }
 
@@ -38,7 +34,7 @@ public class HomeController {
 
 //        logger.info("======== Testing for May 2019 == " + statisticsService.getWorkoutsForYear(2019, authInitiatorService.getUserFromAuth()));
 
-        model.addAttribute("workoutsMap", statisticsService.getWorkoutsForYear(2019, authInitiatorService.getUserFromAuth()));
+//        model.addAttribute("workoutsMap", statisticsService.getWorkoutsForYear(2019, authInitiatorService.getUserFromAuth()));
 
         return "home";
     }
