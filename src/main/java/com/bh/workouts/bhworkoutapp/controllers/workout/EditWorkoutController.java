@@ -4,8 +4,8 @@ import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.dates.DayOfWeekService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
-import com.bh.workouts.bhworkoutapp.services.WorkoutColorService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,11 +22,11 @@ import java.util.Date;
 public class EditWorkoutController {
 
     private final WorkoutRepository workoutRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
     public EditWorkoutController(WorkoutRepository workoutRepository,
-                                 UserService userService) {
+                                 UserServiceImpl userService) {
         this.workoutRepository = workoutRepository;
         this.userService = userService;
     }

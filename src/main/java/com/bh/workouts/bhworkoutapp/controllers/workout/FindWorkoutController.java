@@ -3,8 +3,10 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,13 +21,11 @@ import java.util.List;
 @Controller
 public class FindWorkoutController {
 
-    private final WorkoutRepository workoutRepository;
+    private final WorkoutService workoutService;
     private final UserService userService;
 
-    @Autowired
-    public FindWorkoutController(WorkoutRepository workoutRepository,
-                                 UserService userService) {
-        this.workoutRepository = workoutRepository;
+    public FindWorkoutController(WorkoutService workoutService, UserService userService) {
+        this.workoutService = workoutService;
         this.userService = userService;
     }
 
@@ -45,7 +45,7 @@ public class FindWorkoutController {
 
         String date = workout.getWorkoutDate();
 
-        List<Workout> workouts = workoutRepository.findWorkoutByWorkoutDate(date);
+        List<Workout> workouts = workoutService.findWorkoutByWorkoutDate(date);
         List<Workout> userWorkouts = GetSpecificUserWorkoutsService.userWorkouts(workouts, userByLogin);
 
         model.addAttribute("foundUserWorkouts", userWorkouts);

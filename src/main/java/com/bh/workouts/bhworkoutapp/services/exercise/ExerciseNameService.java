@@ -3,7 +3,7 @@ package com.bh.workouts.bhworkoutapp.services.exercise;
 import com.bh.workouts.bhworkoutapp.models.ExerciseName;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,11 +16,11 @@ import java.util.List;
 public class ExerciseNameService {
 
     private final ExerciseNameRepository exerciseNameRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
     public ExerciseNameService(ExerciseNameRepository exerciseNameRepository,
-                               UserService userService) {
+                               UserServiceImpl userService) {
         this.exerciseNameRepository = exerciseNameRepository;
         this.userService = userService;
     }

@@ -2,12 +2,11 @@ package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.controllers.workout.CreateWorkoutController;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,12 +18,12 @@ public class HomeController {
 
     private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final ExerciseNameService exerciseNameService;
     private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
-    public HomeController(UserService userService,
+    public HomeController(UserServiceImpl userService,
                           ExerciseNameService exerciseNameService,
                           ExerciseNameRepository exerciseNameRepository) {
         this.userService = userService;

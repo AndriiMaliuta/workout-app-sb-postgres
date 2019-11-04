@@ -3,8 +3,8 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import com.bh.workouts.bhworkoutapp.services.exercise.GetSetsForWorkoutService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,11 +25,11 @@ public class ViewWorkoutController {
     private Logger logger = LoggerFactory.getLogger(CreateWorkoutController.class);
 
     private final WorkoutRepository workoutRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
     public ViewWorkoutController(WorkoutRepository workoutRepository,
-                                 UserService userService) {
+                                 UserServiceImpl userService) {
         this.workoutRepository = workoutRepository;
         this.userService = userService;
     }

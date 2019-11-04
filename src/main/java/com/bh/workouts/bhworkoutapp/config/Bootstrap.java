@@ -3,7 +3,7 @@ package com.bh.workouts.bhworkoutapp.config;
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import com.bh.workouts.bhworkoutapp.services.exercise.InitExercisesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,14 +18,17 @@ public class Bootstrap implements CommandLineRunner {
 
     private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;
+    private final InitExercisesService initExercisesService;
 
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     @Autowired
     public Bootstrap(UserService userService,
-                     ExerciseNameRepository exerciseNameRepository) {
+                     ExerciseNameRepository exerciseNameRepository,
+                     InitExercisesService initExercisesService) {
         this.userService = userService;
         this.exerciseNameRepository = exerciseNameRepository;
+        this.initExercisesService = initExercisesService;
     }
 
     public void loadUsers() {
@@ -59,8 +62,6 @@ public class Bootstrap implements CommandLineRunner {
 
         if (exerciseNameRepository.findAll().size() == 0) {
 
-            InitExercisesService initExercisesService = new InitExercisesService(exerciseNameRepository, userService);
-
             initExercisesService.initExercises();
         }
     }
@@ -71,8 +72,7 @@ public class Bootstrap implements CommandLineRunner {
         loadUsers();
         loadExercises();
 
-        logger.debug("===========");
-        logger.debug("Exercises loaded");
+        logger.debug("============== Exercises loaded ===============");
 
     }
 }

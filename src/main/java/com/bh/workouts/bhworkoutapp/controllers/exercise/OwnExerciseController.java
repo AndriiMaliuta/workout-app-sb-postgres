@@ -5,7 +5,7 @@ import com.bh.workouts.bhworkoutapp.models.ExerciseNameAccess;
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseNameService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +23,12 @@ public class OwnExerciseController {
 
     Logger logger = LoggerFactory.getLogger(OwnExerciseController.class);
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final ExerciseNameService exerciseNameService;
     private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
-    public OwnExerciseController(UserService userService,
+    public OwnExerciseController(UserServiceImpl userService,
                                  ExerciseNameService exerciseNameService,
                                  ExerciseNameRepository exerciseNameRepository) {
         this.userService = userService;

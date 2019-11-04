@@ -2,8 +2,8 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.UserService;
-import com.bh.workouts.bhworkoutapp.services.WorkoutColorService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +23,13 @@ import java.util.Date;
 @Profile("DEV")
 public class DEVCreateWorkoutController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final WorkoutRepository workoutRepository;
 
     private Logger logger = LoggerFactory.getLogger(DEVCreateWorkoutController.class);
 
     @Autowired
-    public DEVCreateWorkoutController(UserService userService,
+    public DEVCreateWorkoutController(UserServiceImpl userService,
                                       WorkoutRepository workoutRepository) {
         this.userService = userService;
         this.workoutRepository = workoutRepository;

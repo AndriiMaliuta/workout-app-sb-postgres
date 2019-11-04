@@ -2,7 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.repositories.UserRepository;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class EditProfileController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final UserRepository userRepository;
 
     @Autowired
-    public EditProfileController(UserService userService,
+    public EditProfileController(UserServiceImpl userService,
                                  UserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;

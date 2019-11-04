@@ -1,4 +1,4 @@
-package com.bh.workouts.bhworkoutapp.services;
+package com.bh.workouts.bhworkoutapp.services.helpers;
 
 public class DigitFromMonthNameService {
 

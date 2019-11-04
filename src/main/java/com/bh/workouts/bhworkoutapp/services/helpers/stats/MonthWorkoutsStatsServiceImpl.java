@@ -1,21 +1,26 @@
-package com.bh.workouts.bhworkoutapp.services.stats;
+package com.bh.workouts.bhworkoutapp.services.helpers.stats;
 
 import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthWorkoutsStatsService {
+@Service
+public class MonthWorkoutsStatsServiceImpl implements MonthWorkoutsStatsService {
 
     private final WorkoutRepository workoutRepository;
 
-    public MonthWorkoutsStatsService(WorkoutRepository workoutRepository) {
+    @Autowired
+    public MonthWorkoutsStatsServiceImpl(WorkoutRepository workoutRepository) {
         this.workoutRepository = workoutRepository;
     }
 
+    @Override
     public int getWorkoutsNumberByType(String month, String workoutType, User user) {
 
         List<Workout> userWorkouts = GetSpecificUserWorkoutsService.userWorkouts(workoutRepository.findAll(), user);

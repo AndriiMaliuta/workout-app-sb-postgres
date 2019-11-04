@@ -7,7 +7,7 @@ import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseSelectorService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,13 +25,13 @@ public class EditExerciseController {
 
     private final ExerciseRepository exerciseRepository;
     private final WorkoutRepository workoutRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final ExerciseNameRepository exerciseNameRepository;
 
     @Autowired
     public EditExerciseController(ExerciseRepository exerciseRepository,
                                   WorkoutRepository workoutRepository,
-                                  UserService userService,
+                                  UserServiceImpl userService,
                                   ExerciseNameRepository exerciseNameRepository) {
         this.exerciseRepository = exerciseRepository;
         this.workoutRepository = workoutRepository;

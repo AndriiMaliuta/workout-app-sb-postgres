@@ -5,12 +5,12 @@ import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.models.WorkoutType;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.DigitFromMonthNameService;
-import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.helpers.DigitFromMonthNameService;
+import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
-import com.bh.workouts.bhworkoutapp.services.stats.MonthWorkoutsStatsService;
+import com.bh.workouts.bhworkoutapp.services.helpers.stats.MonthWorkoutsStatsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -31,12 +30,12 @@ import java.util.List;
 @Controller
 public class OtherMonthWorkoutController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final WorkoutRepository workoutRepository;
     private Logger logger = LoggerFactory.getLogger(OtherMonthWorkoutController.class);
 
     @Autowired
-    public OtherMonthWorkoutController(UserService userService, WorkoutRepository workoutRepository) {
+    public OtherMonthWorkoutController(UserServiceImpl userService, WorkoutRepository workoutRepository) {
         this.userService = userService;
         this.workoutRepository = workoutRepository;
     }

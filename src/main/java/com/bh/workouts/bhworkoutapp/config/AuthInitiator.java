@@ -1,7 +1,8 @@
 package com.bh.workouts.bhworkoutapp.config;
 
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;

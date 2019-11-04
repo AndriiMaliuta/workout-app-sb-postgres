@@ -1,4 +1,4 @@
-package com.bh.workouts.bhworkoutapp.services;
+package com.bh.workouts.bhworkoutapp.services.user;
 
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
@@ -9,25 +9,47 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("userService")
-public class UserService {
+@Service
+public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository,
-                       BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImpl(UserRepository userRepository,
+                           BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+    @Override
     public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+
+        for (User user : userRepository.findAll()) {
+            if (user.getEmail().equals(email)) return user;
+        }
+
+        return new User();
     }
 
+    @Override
     public User findUserByLogin(String login) {
-        return userRepository.findByLogin(login);
+
+        for (User user : userRepository.findAll()) {
+            if (user.getLogin().equals(login)) return user;
+        }
+
+        return new User();
+    }
+
+    @Override
+    public User findUserByLastName(String lastName) {
+
+        for (User user : userRepository.findAll()) {
+            if (user.getLastName().equals(lastName)) return user;
+        }
+
+        return new User();
     }
 
     public void saveUser(User user) {
@@ -44,9 +66,8 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Override
     public List<User> findAllUsers() {
-
         return userRepository.findAll();
     }
-
 }

@@ -4,11 +4,11 @@ import com.bh.workouts.bhworkoutapp.models.User;
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.models.WorkoutType;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
-import com.bh.workouts.bhworkoutapp.services.GetSpecificUserWorkoutsService;
-import com.bh.workouts.bhworkoutapp.services.UserService;
+import com.bh.workouts.bhworkoutapp.services.helpers.GetSpecificUserWorkoutsService;
+import com.bh.workouts.bhworkoutapp.services.user.UserServiceImpl;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentMonthDaysService;
 import com.bh.workouts.bhworkoutapp.services.dates.CurrentWorkoutDaysByWeekService;
-import com.bh.workouts.bhworkoutapp.services.stats.MonthWorkoutsStatsService;
+import com.bh.workouts.bhworkoutapp.services.helpers.stats.MonthWorkoutsStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,11 +24,11 @@ import java.util.List;
 public class CurrentMonthWorkoutViewController {
 
     private final WorkoutRepository workoutRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
     public CurrentMonthWorkoutViewController(WorkoutRepository workoutRepository,
-                                             UserService userService) {
+                                             UserServiceImpl userService) {
         this.workoutRepository = workoutRepository;
         this.userService = userService;
     }
