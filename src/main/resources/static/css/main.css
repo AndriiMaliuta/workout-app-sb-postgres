@@ -19,7 +19,10 @@
 
 .week-workout-block {
     background-color: #00d1b2;
-    width: 200px;
-    height: 60px;
-    float: right;
+    width: 120px;
+    height: 65px;
+    float: left;
+    padding: 10px;
+    margin: 5px;
+    color:white;
 }
