@@ -4,9 +4,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <title>Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 
@@ -15,113 +18,138 @@
 <!--<div th:replace="/common/navbar :: navbar"/>-->
 
 <div th:fragment="navbar">
-    <nav style="background-color: #5F6B91;color:white" class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
 
-        <a class="navbar-brand" href="/home">Home</a>
+            <a class="navbar-item" href="/home">
+                <img src="https://img.icons8.com/dotty/80/000000/barbell.png">
+            </a>
 
-        <button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li style="color: white" class="nav-item">
-                    <a class="nav-link" href="/workouts/view">My Workouts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workout/new">Create Workout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workout/find">Find Workout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workouts/week">Week view</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/workouts/month">Month view</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/registration">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises/own">Own Exercises</a>
-                </li>
-                <!--<form class="form-inline">-->
-                <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-                <!--<button style="float: right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-                <!--</form>-->
-            </ul>
         </div>
-        <div>
-            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                <li  class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       style="color: white"
-                       href="#"
-                       id="navbarDropdown"
-                       role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">
-                        Profile
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <div class="navbar-start">
+
+                <a class="navbar-item" href="/home">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="/workouts/view">
+                    Workouts
+                </a>
+
+                <a class="navbar-item" href="/workouts/week">
+                    Week View
+                </a>
+
+                <a class="navbar-item" href="/workouts/month">
+                    Month View
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/profile}" href="#">Profile page</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="/workout/find">
+                            Find Workout
+                        </a>
+                        <a class="navbar-item" href="/workout/new">
+                            Create Workout
+                        </a>
+                        <a href="/workout/stats" class="navbar-item">
+                            Workouts Statistics
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/registration">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/profile">
+                            Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 </div>
 
-<div class="main_padding_margin">
-    <hr>
-    <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
-    <hr>
-    <div>
-        <a class="btn btn-info" href="" th:href="@{/workouts/view}">My Workouts</a>
-    </div>
-    <br>
-    <div>
-        <a class="btn btn-primary" href="" th:href="@{/exercises/own}">My Exercises</a>
-    </div>
-    <br />
-    <table class="table table-bordered">
-        <tr>
-            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">First Name</th>
-            <td th:text="${user.firstName}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Last Name</th>
-            <td th:text="${user.lastName}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Email</th>
-            <td th:text="${user.email}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Age</th>
-            <td th:text="${user.age}"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Weight</th>
-            <td th:text="${user.weight} + ' (kg)'"></td>
-        </tr>
-        <tr>
-            <th style="background-color: #5F6B91;color:white;text-align: right;width: 500px">Height</th>
-            <td th:text="${user.height} + ' (cm)'"></td>
-        </tr>
-    </table>
+<div class="section">
+    
+    <div class="container">
+        
+        <hr>
+        <h3 th:text="${user.firstName} + ' ' + ${user.lastName} + ' Profile'"></h3>
+        <hr>
+        
+        <div>
+            <a class="btn btn-info" href="" th:href="@{/workouts/view}">My Workouts</a>
+        </div>
+        
+        <br>
+        
+        <div>
+            <a class="btn btn-primary" href="" th:href="@{/exercises/own}">My Exercises</a>
+        </div>
+        
+        <br />
+        
+        <table class="table table-bordered month-table">
+            <tr>
+                <th style="text-align: right;width: 500px">First Name</th>
+                <td th:text="${user.firstName}"></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;width: 500px">Last Name</th>
+                <td th:text="${user.lastName}"></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;width: 500px">Email</th>
+                <td th:text="${user.email}"></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;width: 500px">Age</th>
+                <td th:text="${user.age}"></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;width: 500px">Weight</th>
+                <td th:text="${user.weight} + ' (kg)'"></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;width: 500px">Height</th>
+                <td th:text="${user.height} + ' (cm)'"></td>
+            </tr>
+        </table>
 
-    <a class="btn btn-warning" href="" th:href="@{profile/edit}">Edit Info</a>
+        <a class="btn btn-warning" href="" th:href="@{profile/edit}">Edit Info</a>
+    </div>
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
+
 </body>
 </html>
