@@ -191,25 +191,30 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekTwoCurrentDays}">
 
-                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                    <article class="panel is-primary">
+                        <p class="panel-heading">
+                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        </p>
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
 
-                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                                <th:block th:each="workout : ${userWorkouts}">
 
-                        <th:block th:each="workout : ${userWorkouts}">
+                                <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                    <br />
+                                    <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                        <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                    </a>
 
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                </span>
 
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
+                                </th:block>
 
-                        </span>
-
-                        </th:block>
-
-                    </div>
+                                </span>
+                            </p>
+                        </div>
+                    </article>
 
                 </th:block>
 
@@ -219,25 +224,30 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekThreeCurrentDays}">
 
-                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                    <article class="panel is-primary">
+                        <p class="panel-heading">
+                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        </p>
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
 
-                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                                <th:block th:each="workout : ${userWorkouts}">
 
-                        <th:block th:each="workout : ${userWorkouts}">
+                                <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                    <br />
+                                    <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                        <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                    </a>
 
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                </span>
 
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
+                                </th:block>
 
-                        </span>
-
-                        </th:block>
-
-                    </div>
+                                </span>
+                            </p>
+                        </div>
+                    </article>
 
                 </th:block>
 
@@ -246,25 +256,30 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekFourCurrentDays}">
 
-                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                    <article class="panel is-primary">
+                        <p class="panel-heading">
+                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        </p>
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
 
-                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                                <th:block th:each="workout : ${userWorkouts}">
 
-                        <th:block th:each="workout : ${userWorkouts}">
+                                <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                    <br />
+                                    <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                        <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                    </a>
 
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                </span>
 
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
+                                </th:block>
 
-                        </span>
-
-                        </th:block>
-
-                    </div>
+                                </span>
+                            </p>
+                        </div>
+                    </article>
 
                 </th:block>
 
@@ -273,25 +288,30 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekFiveCurrentDays}">
 
-                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                    <article class="panel is-primary">
+                        <p class="panel-heading">
+                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        </p>
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
 
-                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                                <th:block th:each="workout : ${userWorkouts}">
 
-                        <th:block th:each="workout : ${userWorkouts}">
+                                <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                    <br />
+                                    <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                        <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                    </a>
 
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                </span>
 
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
+                                </th:block>
 
-                        </span>
-
-                        </th:block>
-
-                    </div>
+                                </span>
+                            </p>
+                        </div>
+                    </article>
 
                 </th:block>
 
@@ -300,25 +320,30 @@
 
                 <th:block th:each="currentWorkoutDay : ${weekSixCurrentDays}">
 
-                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                    <article class="panel is-primary">
+                        <p class="panel-heading">
+                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        </p>
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
 
-                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                                <th:block th:each="workout : ${userWorkouts}">
 
-                        <th:block th:each="workout : ${userWorkouts}">
+                                <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                    <br />
+                                    <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                        <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                                    </a>
 
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+                                </span>
 
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
+                                </th:block>
 
-                        </span>
-
-                        </th:block>
-
-                    </div>
+                                </span>
+                            </p>
+                        </div>
+                    </article>
 
                 </th:block>
 
