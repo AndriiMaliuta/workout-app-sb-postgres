@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Month view | Workkouts App</title>
+    <title>Month view | Workouts App</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -104,10 +104,10 @@
         <h3 class="title is-3">Workouts month view</h3>
         <hr>
 
-        <h4 class="title is-4" th:text="${monthNow} + ' ' + ${yearNow}"></h4> 
-        <span><a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a></span>        
+        <h4 class="title is-4" th:text="${monthNow} + ' ' + ${yearNow}"></h4>
+        <span><a href="" class="button is-info" th:href="@{/workout/other/month}">Other Month</a></span>
         <hr>
-        
+
     </div>
 
     <!--  STATISTICS  -->
@@ -149,14 +149,20 @@
         <p><a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a></p>
         <br>
         <article class="panel is-info">
-                <p class="panel-heading">
-                    Month View
-                </p>
-                <div class="panel-block" style="float: right">
-        
-                    <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
+            <p class="panel-heading">
+                Month View
+            </p>
+            <div class="panel-block">
 
-                        <span style="float: left;background-color: #3FBFBF;border: rgb(53, 161, 211);margin: 5px;padding: 5px">
+                <th:block th:each="currentWorkoutDay : ${weekOneCurrentDays}">
+
+                    <article class="panel is-primary">
+                        <p class="panel-heading">
+                            <!-- Primary -->
+                        </p>
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
+                                    <span style="float: left;background-color: #3FBFBF;border: rgb(53, 161, 211);margin: 5px;padding: 5px">
 
                             <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
                             <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
@@ -175,21 +181,24 @@
                             </th:block>
 
                         </span>
+                            </p>
+                        </div>
+                    </article>
 
-                    </th:block>
-        
-                </div>               
+                </th:block>
 
-                <div class="panel-block">            
+            </div>
 
-                    <th:block th:each="currentWorkoutDay : ${weekTwoCurrentDays}">
+            <div class="panel-block">
 
-                        <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                <th:block th:each="currentWorkoutDay : ${weekTwoCurrentDays}">
 
-                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
 
-                            <th:block th:each="workout : ${userWorkouts}">
+                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+
+                        <th:block th:each="workout : ${userWorkouts}">
 
                         <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
 
@@ -200,51 +209,24 @@
 
                         </span>
 
-                            </th:block>
+                        </th:block>
 
-                        </div>
+                    </div>
 
-                    </th:block>
+                </th:block>
 
-                </div>
-            
-                <div class="panel-block"> 
+            </div>
 
-                    <th:block th:each="currentWorkoutDay : ${weekThreeCurrentDays}">
+            <div class="panel-block">
 
-                        <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                <th:block th:each="currentWorkoutDay : ${weekThreeCurrentDays}">
 
-                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
 
-                            <th:block th:each="workout : ${userWorkouts}">
+                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
-
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
-
-                        </span>
-
-                            </th:block>
-
-                        </div>
-
-                    </th:block>
-
-                </div>
-                <div class="panel-block"> 
-
-                    <th:block th:each="currentWorkoutDay : ${weekFourCurrentDays}">
-
-                        <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
-
-                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
-
-                            <th:block th:each="workout : ${userWorkouts}">
+                        <th:block th:each="workout : ${userWorkouts}">
 
                         <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
 
@@ -255,50 +237,23 @@
 
                         </span>
 
-                            </th:block>
+                        </th:block>
 
-                        </div>
+                    </div>
 
-                    </th:block>
+                </th:block>
 
-                </div>
-                <div class="panel-block"> 
+            </div>
+            <div class="panel-block">
 
-                    <th:block th:each="currentWorkoutDay : ${weekFiveCurrentDays}">
+                <th:block th:each="currentWorkoutDay : ${weekFourCurrentDays}">
 
-                        <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
 
-                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
 
-                            <th:block th:each="workout : ${userWorkouts}">
-
-                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
-
-                            <br />
-                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
-                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
-                            </a>
-
-                        </span>
-
-                            </th:block>
-
-                        </div>
-
-                    </th:block>
-
-                </div>
-                <div class="panel-block"> 
-
-                    <th:block th:each="currentWorkoutDay : ${weekSixCurrentDays}">
-
-                        <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
-
-                            <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
-                            <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
-
-                            <th:block th:each="workout : ${userWorkouts}">
+                        <th:block th:each="workout : ${userWorkouts}">
 
                         <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
 
@@ -309,14 +264,68 @@
 
                         </span>
 
-                            </th:block>
+                        </th:block>
 
-                        </div>
+                    </div>
 
-                    </th:block>
+                </th:block>
 
-                </div>
-            
+            </div>
+            <div class="panel-block">
+
+                <th:block th:each="currentWorkoutDay : ${weekFiveCurrentDays}">
+
+                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+
+                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+
+                        <th:block th:each="workout : ${userWorkouts}">
+
+                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+
+                            <br />
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                            </a>
+
+                        </span>
+
+                        </th:block>
+
+                    </div>
+
+                </th:block>
+
+            </div>
+            <div class="panel-block">
+
+                <th:block th:each="currentWorkoutDay : ${weekSixCurrentDays}">
+
+                    <div style="float: left;background-color: #3FBFBF;margin: 5px;padding: 5px">
+
+                        <span style="color:white" th:text="${currentWorkoutDay.dayName} + ' ' " ></span>
+                        <span style="color: orange" th:text="${currentWorkoutDay.dayNumber}" ></span>
+
+                        <th:block th:each="workout : ${userWorkouts}">
+
+                        <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
+
+                            <br />
+                            <a href="#" th:href="@{/workout/{id}(id=${workout.id})}">
+                                <img src="#" alt="image" th:src="@{${workout.imagePath}}" />
+                            </a>
+
+                        </span>
+
+                        </th:block>
+
+                    </div>
+
+                </th:block>
+
+            </div>
+
         </article>
     </div>
 
@@ -324,26 +333,26 @@
 
 <script th:inline="javascript" type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script th:inline="javascript" type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Type', 'Workout Types'],
-          ['Pecs', [[${pecsWorkoutsNumber}]]],
-          ['Triceps', [[${tricepsWorkoutsNumber}]]],
-          ['Back',  [[${backWorkoutsNumber}]]],
-          ['Delts', [[${deltsWorkoutsNumber}]]],
-          ['Biceps', [[${bicepsWorkoutsNumber}]]]
+            ['Type', 'Workout Types'],
+            ['Pecs', [[${pecsWorkoutsNumber}]]],
+            ['Triceps', [[${tricepsWorkoutsNumber}]]],
+            ['Back',  [[${backWorkoutsNumber}]]],
+            ['Delts', [[${deltsWorkoutsNumber}]]],
+            ['Biceps', [[${bicepsWorkoutsNumber}]]]
         ]);
 
         var options = {
-          title: 'Statistics on Workouts',
-          pieHole: 0.4
+            title: 'Statistics on Workouts',
+            pieHole: 0.4
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
-      }
+    }
 </script>
 
 
