@@ -31,31 +31,31 @@ public class EditWorkoutController {
         this.authInitiatorService = authInitiatorService;
     }
 
-    @GetMapping("/workout/{id}/edit")
-    public String getEditForm(Model model, @PathVariable long id) {
+    @GetMapping("/workout/{workoutId}/edit")
+    public String getEditForm(Model model, @PathVariable long workoutId) {
 
-        model.addAttribute("workout", workoutRepository.findById(id).get());
+        model.addAttribute("workout", workoutRepository.findById(workoutId).get());
 
         return "workouts/edit-workout";
     }
 
-    @PostMapping("/workout/edit")
-    public String editWorkout(@ModelAttribute Workout workout) {
+    @PostMapping("/workout/{workoutId}/edit")
+    public String editWorkout(@PathVariable long workoutId, @ModelAttribute Workout workout) {
 
-        Calendar calendar = Calendar.getInstance();
+        Workout workoutFromDb = workoutRepository.getOne(workoutId);
 
         workout.setWorkoutType(workout.getWorkoutType());
         workout.setWorkoutDate(workout.getWorkoutDate());
         workout.setComments(workout.getComments());
 
-        workout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
-        workout.setWorkoutDay(workout.getWorkoutDay());
-        workout.setUser(workout.getUser());
-        workout.setCreationDate(workout.getCreationDate());
-        workout.setWorkoutMonth(workout.getWorkoutMonth());
-        workout.setImagePath(workout.getImagePath());
-        workout.setWeek(workout.getWeek());
-        workout.setWorkoutDay(workout.getWorkoutDay());
+        workout.setImagePath(workoutFromDb.getWorkoutType());
+        workout.setWorkoutDay(workoutFromDb.getWorkoutDay());
+        workout.setUser(workoutFromDb.getUser());
+        workout.setCreationDate(workoutFromDb.getCreationDate());
+        workout.setWorkoutMonth(workoutFromDb.getWorkoutMonth());
+        workout.setImagePath(workoutFromDb.getImagePath());
+        workout.setWeek(workoutFromDb.getWeek());
+        workout.setWorkoutDay(workoutFromDb.getWorkoutDay());
 
         workoutRepository.save(workout);
 
