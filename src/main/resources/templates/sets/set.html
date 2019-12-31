@@ -95,10 +95,10 @@
     </nav>
 </div>
 
-<div class="section">
+<div class="container">
 
     <p style="text-align: center">
-        <a class="button isprimary" href="" th:href="@{/exercise/{id}/view(id=${set.exercise.id})}">Back to Exercise</a>
+        <a class="button is-primary" href="" th:href="@{/exercise/{id}/view(id=${set.exercise.id})}">Back to Exercise</a>
     </p>
 
     <h3 class="title is-3" style="text-align: center" th:text="'Set ' + ${set.number}"></h3>
@@ -132,11 +132,11 @@
             <th style="text-align: right">Actions</th>
             <td>
                 <a th:href="@{/set/{id}/edit(id=${set.id})}"
-                   class="btn btn-primary btn-sm" >
+                   class="button is-info" >
                     Edit
                 </a>
                 <a th:href="@{/exercise/{exerciseId}/set/{setId}/delete(setId=${set.id},exerciseId=${exercise.id})}"
-                   class="btn btn-danger btn-sm"
+                   class="button is-danger"
                    onclick="if (!(confirm('Are you sure you want to delete this set?'))) return false">
                     Delete
                 </a>
