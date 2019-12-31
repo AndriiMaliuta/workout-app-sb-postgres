@@ -104,31 +104,33 @@
 
         <div class="field">
             <label class="label" for="title"><b>Title</b></label>
-            <select class="select" id="title" th:field="*{title}">
+            <div class="select is-info">
+                <select  id="title" th:field="*{title}">
 
-                <option value="0">Select Exercise</option>
-                <option th:each="title : ${userExercisesList}"
-                        th:value="${title.name}"
-                        th:text="${title.name}">
+                    <option value="0">Select Exercise</option>
+                    <option th:each="title : ${userExercisesList}"
+                            th:value="${title.name}"
+                            th:text="${title.name}">
 
-                </option>
+                    </option>
 
-            </select>
+                </select>
+            </div>
             <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error></p>
         </div>
 
         <!--<div class="form-group">-->
-            <!--<label for="overallWeight">Overall Weights</label>-->
-            <!--<input th:field="*{overallWeight}" type="text" class="form-control" id="overallWeight" aria-describedby="overallWeight"-->
-                   <!--placeholder="Overall Weights">-->
-            <!--<p th:if="${#fields.hasErrors('overallWeight')}" th:errors="*{overallWeight}">Weights Error></p>-->
+        <!--<label for="overallWeight">Overall Weights</label>-->
+        <!--<input th:field="*{overallWeight}" type="text" class="form-control" id="overallWeight" aria-describedby="overallWeight"-->
+        <!--placeholder="Overall Weights">-->
+        <!--<p th:if="${#fields.hasErrors('overallWeight')}" th:errors="*{overallWeight}">Weights Error></p>-->
         <!--</div>-->
 
         <!--<div class="form-group">-->
-            <!--<label for="overallTime">Overall Time</label>-->
-            <!--<input th:field="*{overallTime}" type="text" class="form-control" id="overallTime" aria-describedby="overallTime"-->
-                   <!--placeholder="Overall Time">-->
-            <!--<p th:if="${#fields.hasErrors('overallTime')}" th:errors="*{overallTime}">Minutes Error></p>-->
+        <!--<label for="overallTime">Overall Time</label>-->
+        <!--<input th:field="*{overallTime}" type="text" class="form-control" id="overallTime" aria-describedby="overallTime"-->
+        <!--placeholder="Overall Time">-->
+        <!--<p th:if="${#fields.hasErrors('overallTime')}" th:errors="*{overallTime}">Minutes Error></p>-->
         <!--</div>-->
 
         <div class="field">

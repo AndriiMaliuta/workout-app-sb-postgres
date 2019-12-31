@@ -42,6 +42,6 @@ public class WeekWorkoutViewController {
 
         logger.info("=========== Getting Workout Week page");
 
-        return "workouts/workouts-week";
+        return "workouts-week-custom";
     }
 }

@@ -2,6 +2,7 @@ package com.bh.workouts.bhworkoutapp.controllers.workout;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
 import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.dates.DayOfWeekService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 @Controller
@@ -39,10 +42,20 @@ public class EditWorkoutController {
     @PostMapping("/workout/edit")
     public String editWorkout(@ModelAttribute Workout workout) {
 
+        Calendar calendar = Calendar.getInstance();
+
+        workout.setWorkoutType(workout.getWorkoutType());
+        workout.setWorkoutDate(workout.getWorkoutDate());
+        workout.setComments(workout.getComments());
+
         workout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
-        workout.setCreationDate(new Date());
-        workout.setWorkoutDay(DayOfWeekService.dayOfWeek());
-        workout.setUser(authInitiatorService.getUserFromAuth());
+        workout.setWorkoutDay(workout.getWorkoutDay());
+        workout.setUser(workout.getUser());
+        workout.setCreationDate(workout.getCreationDate());
+        workout.setWorkoutMonth(workout.getWorkoutMonth());
+        workout.setImagePath(workout.getImagePath());
+        workout.setWeek(workout.getWeek());
+        workout.setWorkoutDay(workout.getWorkoutDay());
 
         workoutRepository.save(workout);
 

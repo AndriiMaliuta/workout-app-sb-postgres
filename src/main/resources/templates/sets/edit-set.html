@@ -93,7 +93,7 @@
 <div class="container">
 
     <p style="text-align: center">
-        <a class="button is-info" href="" th:href="@{/set/{id}(id=${set.id})}">Cancel</a>
+        <a class="button is-info" href="" th:href="@{/set/{id}/view(id=${set.id})}">Cancel</a>
     </p>
 
     <form th:action="@{/set/{id}/edit(id=${set.id})}" th:object="${set}" method="post">
@@ -108,32 +108,32 @@
         </div>
 
         <div class="field">
-            <label for="weight"><b>Weight(Kg)</b></label>
-            <input th:field="*{weight}" type="text" class="form-control" id="weight" aria-describedby="weight" placeholder="Weight">
+            <label class="label" for="weight"><b>Weight(Kg)</b></label>
+            <input th:field="*{weight}" type="text" class="input is-info" id="weight" aria-describedby="weight" placeholder="Weight">
             <p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Weight Error></p>
         </div>
 
         <div class="field">
-            <label for="reps"><b>Reps</b></label>
-            <input th:field="*{reps}" type="text" class="form-control" id="reps" aria-describedby="reps" placeholder="Reps">
+            <label class="label" for="reps"><b>Reps</b></label>
+            <input th:field="*{reps}" type="text" class="input is-info" id="reps" aria-describedby="reps" placeholder="Reps">
             <p th:if="${#fields.hasErrors('reps')}" th:errors="*{number}">Reps Error></p>
         </div>
 
         <div class="field">
-            <label for="setTime"><b>Duration Time (seconds)</b></label>
-            <input th:field="*{setTime}" type="text" class="form-control" id="setTime" aria-describedby="setTime" placeholder="Set Duration Time">
+            <label class="label" for="setTime"><b>Duration Time (seconds)</b></label>
+            <input th:field="*{setTime}" type="text" class="input is-info" id="setTime" aria-describedby="setTime" placeholder="Set Duration Time">
             <p th:if="${#fields.hasErrors('setTime')}" th:errors="*{setTime}">Set Duration Time Error></p>
         </div>
 
         <div class="field">
-            <label for="breakInSeconds"><b>Break Time (seconds)</b></label>
-            <input th:field="*{breakInSeconds}" type="text" class="form-control" id="breakInSeconds" aria-describedby="breakInSeconds" placeholder="Time">
+            <label class="label" for="breakInSeconds"><b>Break Time (seconds)</b></label>
+            <input th:field="*{breakInSeconds}" type="text" class="input is-info" id="breakInSeconds" aria-describedby="breakInSeconds" placeholder="Time">
             <p th:if="${#fields.hasErrors('breakInSeconds')}" th:errors="*{breakInSeconds}">Break In Seconds Error></p>
         </div>
 
         <div class="field">
-            <label style="color: blue" for="comments"><b>Comments</b></label>
-            <textarea class="form-control" id="comments" th:field="*{comments}" rows="3"></textarea>
+            <label class="label" style="color: blue" for="comments"><b>Comments</b></label>
+            <textarea class="textarea" id="comments" th:field="*{comments}" rows="3"></textarea>
         </div>
 
         <button type="submit" class="button is-primary">Submit</button>
