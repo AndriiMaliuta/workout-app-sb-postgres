@@ -105,7 +105,7 @@
 
 <div class="container">
 
-    <form th:action="@{/workout/edit}" th:object="${workout}" method="post">
+    <form th:action="@{/workout/{id}/edit(id=${workout.id})}" th:object="${workout}" method="post">
 
         <input type="hidden" th:field="*{id}" />
 

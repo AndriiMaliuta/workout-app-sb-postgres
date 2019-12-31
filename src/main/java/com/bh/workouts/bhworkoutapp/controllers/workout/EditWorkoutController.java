@@ -59,6 +59,6 @@ public class EditWorkoutController {
 
         workoutRepository.save(workout);
 
-        return "redirect:/workout/" + workout.getId();
+        return "redirect:/workout/" + workoutFromDb.getId();
     }
 }
