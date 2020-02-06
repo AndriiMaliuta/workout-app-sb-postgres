@@ -148,7 +148,7 @@
 
         <p><a class="button is-success" href="#" th:href="@{/workout/new}">Create Workout</a></p>
         <br>
-        <article class="panel is-info">
+        <article class="panel is-primary">
             <p class="panel-heading">
                 Month View
             </p>
@@ -163,9 +163,9 @@
                         </p>
                         <div class="panel-block">
                             <p class="control has-icons-left">
-<!--                            <span style="float: left;background-color: #3FBFBF;border: rgb(53, 161, 211);margin: 5px;padding: 5px">-->
+                                <!--                            <span style="float: left;background-color: #3FBFBF;border: rgb(53, 161, 211);margin: 5px;padding: 5px">-->
 
-                            <th:block th:each="workout : ${userWorkouts}">
+                                <th:block th:each="workout : ${userWorkouts}">
 
                                 <span th:if="${workout.workoutDate.equalsIgnoreCase(currentWorkoutDay.todayWeekDate)} ">
 
@@ -176,9 +176,9 @@
 
                                 </span>
 
-                            </th:block>
+                                </th:block>
 
-                        </span>
+                                </span>
                             </p>
                         </div>
                     </article>
