@@ -8,6 +8,8 @@ import com.bh.workouts.bhworkoutapp.repositories.ExerciseRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.exercise.ExerciseService;
 import com.bh.workouts.bhworkoutapp.services.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,8 @@ import java.util.List;
 
 @Controller
 public class CreateExerciseController {
+
+    private Logger logger = LoggerFactory.getLogger(CreateExerciseController.class);
 
     private final ExerciseRepository exerciseRepository;
     private final WorkoutRepository workoutRepository;
@@ -45,6 +49,8 @@ public class CreateExerciseController {
     @GetMapping("/workout/{id}/exercise/new")
     public String getCreateForm(@PathVariable long id, Model model) {
 
+        logger.debug("============= Opening Create Exercise menu ===============");
+
         model.addAttribute("exercise", new Exercise());
 
         Workout workout = workoutRepository.findById(id).get();
@@ -59,6 +65,8 @@ public class CreateExerciseController {
                 exerciseService.getExercisesListByUserAndType(exercisesList,
                         workout.getWorkoutType(),
                         userService.findUserByLogin(authentication.getName())));
+
+        logger.debug("============= Adding exercises list to Exercise menu ===============");
 
         return "exercises/create-exercise";
     }
@@ -77,6 +85,10 @@ public class CreateExerciseController {
         exerciseRepository.save(newExercise);
 
         model.addAttribute("newExercise", newExercise);
+
+        logger.debug("============= New Exercise created !!! ===============");
+        logger.debug("Id ==" + newExercise.getId());
+        logger.debug("Title ==" + newExercise.getTitle());
 
         return "redirect:/workout/" + workout.getId();
     }
