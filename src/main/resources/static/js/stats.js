@@ -4,5 +4,10 @@ const yearSelect = document.querySelector('#year-select');
 const yearBtn = document.querySelector('year-confirm-btn');
 
 yearSelect.addEventListener('change', e => {
-    console.log(yearSelect.value)
+    fetch(`/api/v1/workouts/year/${yearSelect.value}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        });
+
 });
