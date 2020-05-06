@@ -124,19 +124,20 @@
     const yearBtn = document.querySelector('year-confirm-btn');
 
     let workouts = [];
+    let workouts2 = [];
 
     yearSelect.addEventListener('change', e => {
         fetch(`/api/v1/workouts/year/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
-                for (let w of data) {
-                    workouts.push(w);
-                }
+                data.forEach(w => workouts.push(w));
+                workouts2.push(data)
             });
 
     });
 
     console.log(workouts);
+    console.log(workouts2);
 
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
