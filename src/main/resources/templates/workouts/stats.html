@@ -130,18 +130,17 @@
         fetch(`/api/v1/workouts/year/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
-                console.log('data root')
-                console.log(data)
                 data.forEach(w => workouts.push(w));
                 workouts2.push(data)
+                console.log('workouts:')
+                console.log(workouts);
+                console.log('workuts2')
+                console.log(workouts2);
             });
 
     });
 
-    console.log('workouts:')
-    console.log(workouts);
-    console.log('workuts2')
-    console.log(workouts2);
+
 
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
