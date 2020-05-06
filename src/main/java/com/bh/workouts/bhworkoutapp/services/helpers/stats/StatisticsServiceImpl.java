@@ -54,7 +54,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         int novemberNumber = 0;
         int decemberNumber = 0;
 
-        for (Workout w : workoutRepository.findAll()) {
+        for (Workout w : workoutService.getWorkoutsByYear(workoutRepository.findAll(), year)) {
             switch (w.getWorkoutMonth()) {
                 case "January" : januaryNumber++; break;
                 case "February" : febrNumber++; break;

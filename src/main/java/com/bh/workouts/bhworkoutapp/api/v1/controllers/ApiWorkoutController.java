@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping(ApiWorkoutController.BASE_URL)
 public class ApiWorkoutController {
 
-    static final String BASE_URL = "/api/v1/workouts/";
+    static final String BASE_URL = "/api/v1/workouts";
 
     private final WorkoutRepository workoutRepository;
 
@@ -29,7 +29,7 @@ public class ApiWorkoutController {
         return workoutRepository.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Workout getWorkoutByIdApi(@PathVariable long id) {
 

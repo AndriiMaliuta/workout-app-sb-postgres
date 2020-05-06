@@ -6,7 +6,10 @@ import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -56,5 +59,23 @@ public class WorkoutServiceImpl implements WorkoutService {
         }
 
         return userWorkouts;
+    }
+
+    @Override
+    public List<Workout> getWorkoutsByYear(List<Workout> workouts, int year) {
+
+        List<Workout> workoutsByYear = new ArrayList<>();
+
+        for (Workout w : workouts) {
+            if (Integer.parseInt(w.getWorkoutDate().substring(6)) == year) {
+                workoutsByYear.add(w);
+            }
+
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//                Date wDate = dateFormat.parse(w.getWorkoutDate());
+//                wDate.getYear()
+
+        }
+        return workoutsByYear;
     }
 }
