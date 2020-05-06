@@ -39,7 +39,7 @@ public class ApiWorkoutController {
         return workoutRepository.findById(id).get();
     }
 
-    @GetMapping(path = "/{year}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/year/{year}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Workout> getWorkoutsByYear(@PathVariable(value = "year") Integer year) {
         return workoutService.getWorkoutsByYear(workoutRepository.findAll(), year);
     }

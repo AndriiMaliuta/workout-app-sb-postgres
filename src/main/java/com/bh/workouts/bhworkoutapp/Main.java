@@ -15,6 +15,8 @@ public class Main {
 
         calendar.get(Calendar.WEEK_OF_MONTH);
 
+        System.out.println(currentMonth.name());
+
     }
 }
     
