@@ -119,6 +119,25 @@
 
 <script th:inline="javascript" type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script th:inline="javascript" type="text/javascript">
+
+    const yearSelect = document.querySelector('#year-select');
+    const yearBtn = document.querySelector('year-confirm-btn');
+
+    let workouts = [];
+
+    yearSelect.addEventListener('change', e => {
+        fetch(`/api/v1/workouts/year/${yearSelect.value}`)
+            .then(response => response.json())
+            .then(data => {
+                for (let w of data) {
+                    workouts.push(w);
+                }
+            });
+
+    });
+
+    console.log(workouts);
+
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -166,7 +185,7 @@
 
     gtag('config', 'UA-165694098-1');
 </script>
-<script src="../../js/stats.js"></script>
+<!--<script src="../../js/stats.js"></script>-->
 </body>
 
 </html>
