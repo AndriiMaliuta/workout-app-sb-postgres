@@ -130,6 +130,7 @@
         fetch(`/api/v1/workouts/year/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 data.forEach(w => workouts.push(w));
                 workouts2.push(data)
             });
