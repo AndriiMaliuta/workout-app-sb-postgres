@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 </head>
 
 <body >
@@ -99,9 +100,14 @@
 
     <div class="container">
 
-        <h1 class="title is-2">Statistics by <span th:text="${year}"></span> year</h1>
+        <h1 class="title is-2">Statistics by <span style="color: #00d1b2" th:text="${year}"></span> year</h1>
 
-<!--        <h2 class="title is-4">Number of workouts per each month</h2>-->
+        <select name="year-select" id="year-select">
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+        </select>
+        <br>
+        <button class="button" id="year-confirm-btn">Select</button>
 
         <br>
 
@@ -160,6 +166,7 @@
 
     gtag('config', 'UA-165694098-1');
 </script>
+<script src="js/stats.js"></script>
 </body>
 
 </html>
