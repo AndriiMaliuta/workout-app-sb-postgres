@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Calendar;
+import java.util.Date;
+
 @Controller
 public class StatisticsController {
 
@@ -24,8 +27,10 @@ public class StatisticsController {
     @GetMapping("/workout/stats")
     public String getStats(Model model) {
 
-        model.addAttribute("yearMap", statisticsService.getWorkoutsForYear(2019, authInitiatorService.getUserFromAuth()));
-        model.addAttribute("year", 2019);
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+
+        model.addAttribute("yearMap", statisticsService.getWorkoutsForYear(currentYear, authInitiatorService.getUserFromAuth()));
+        model.addAttribute("year", currentYear);
 
         return "workouts/stats";
     }
