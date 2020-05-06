@@ -2,6 +2,7 @@ package com.bh.workouts.bhworkoutapp.api.v1.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,10 +17,12 @@ public class ApiWorkoutController {
     static final String BASE_URL = "/api/v1/workouts";
 
     private final WorkoutRepository workoutRepository;
+    private final WorkoutService workoutService;
 
     @Autowired
-    public ApiWorkoutController(WorkoutRepository workoutRepository) {
+    public ApiWorkoutController(WorkoutRepository workoutRepository, WorkoutService workoutService) {
         this.workoutRepository = workoutRepository;
+        this.workoutService = workoutService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,6 +37,11 @@ public class ApiWorkoutController {
     public Workout getWorkoutByIdApi(@PathVariable long id) {
 
         return workoutRepository.findById(id).get();
+    }
+
+    @GetMapping(path = "/{year}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Workout> getWorkoutsByYear(@PathVariable(value = "year") Integer year) {
+        return workoutService.getWorkoutsByYear(workoutRepository.findAll(), year);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

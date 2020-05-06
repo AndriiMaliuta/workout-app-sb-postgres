@@ -35,5 +35,10 @@ public class StatisticsController {
         return "workouts/stats";
     }
 
+//    @GetMapping("/workout/stats/other-year")
+//    public String getStatsForOtherYear() {
+//
+//    }
+
 
 }
