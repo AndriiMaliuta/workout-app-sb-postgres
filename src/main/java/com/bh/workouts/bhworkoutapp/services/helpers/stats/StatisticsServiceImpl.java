@@ -89,9 +89,12 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 
     @Override
-    public int getWorkoutsNumberByType(String month, String workoutType, User user) {
+    public int getWorkoutsNumberByType(int year, String month, String workoutType, User user) {
 
-        List<Workout> userWorkouts = workoutService.userWorkouts(workoutRepository.findAll(), user);
+        List<Workout> userWorkouts =
+                workoutService.userWorkouts(
+                        workoutService.getWorkoutsByYear(workoutRepository.findAll(), year),
+                        user);
 
         List<Workout> workoutsByType = new ArrayList<>();
 

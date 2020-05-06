@@ -10,6 +10,6 @@ public interface StatisticsService {
 
     List<Workout> getWorkoutCountsByDatesRange(String dateFrom, String dateTo);
     Map<String, Integer> getWorkoutsForYear(int year, User user);
-    public int getWorkoutsNumberByType(String month, String workoutType, User user);
+    public int getWorkoutsNumberByType(int year, String month, String workoutType, User user);
 
 }

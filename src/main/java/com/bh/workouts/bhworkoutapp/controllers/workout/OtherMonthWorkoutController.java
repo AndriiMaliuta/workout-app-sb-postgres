@@ -80,22 +80,27 @@ public class OtherMonthWorkoutController {
 
         try {
 
+            int year;
             if (monthForm.getYear() == 0 || monthForm.getYear() == null) {
-                yearMonth = YearMonth.of(Year.now().getValue(), DigitFromMonthNameService.getDigitFromMonth(monthName));
+                year = Year.now().getValue();
+                yearMonth = YearMonth.of(year, DigitFromMonthNameService.getDigitFromMonth(monthName));
             } else {
-                yearMonth = YearMonth.of(monthForm.getYear(), DigitFromMonthNameService.getDigitFromMonth(monthName));
+                year = monthForm.getYear();
+                yearMonth = YearMonth.of(year, DigitFromMonthNameService.getDigitFromMonth(monthName));
             }
 
             int pecsWorkoutsNumber =
-                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(
+                            year,
+                            monthName, WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
             int backWorkoutsNumber =
-                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(year, monthName, WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
             int bicepsWorkoutsNumber =
-                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(year, monthName, WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
             int tricepsWorkoutsNumber =
-                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(year, monthName, WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
             int deltsWorkoutsNumber =
-                    statisticsService.getWorkoutsNumberByType(monthName, WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
+                    statisticsService.getWorkoutsNumberByType(year ,monthName, WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
 
             model.addAttribute("weekOneCurrentDays",
                     CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));

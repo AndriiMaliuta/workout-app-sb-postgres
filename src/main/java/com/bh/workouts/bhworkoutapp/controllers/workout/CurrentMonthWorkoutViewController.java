@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.YearMonth;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -46,15 +48,27 @@ public class CurrentMonthWorkoutViewController {
         YearMonth yearMonth = YearMonth.now();
 
         int pecsWorkoutsNumber =
-                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.PECS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(
+                        Calendar.getInstance().get(Calendar.YEAR),
+                        localDate.getMonth().name(),
+                        WorkoutType.PECS.name(),
+                        authInitiatorService.getUserFromAuth());
         int backWorkoutsNumber =
-                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(
+                        Year.now().getValue(),
+                        localDate.getMonth().name(), WorkoutType.BACK.name(), authInitiatorService.getUserFromAuth());
         int bicepsWorkoutsNumber =
-                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(
+                        LocalDate.now().getYear(),
+                        localDate.getMonth().name(), WorkoutType.BICEPS.name(), authInitiatorService.getUserFromAuth());
         int tricepsWorkoutsNumber =
-                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(
+                        Calendar.getInstance().get(Calendar.YEAR),
+                        localDate.getMonth().name(), WorkoutType.TRICEPS.name(), authInitiatorService.getUserFromAuth());
         int deltsWorkoutsNumber =
-                statisticsService.getWorkoutsNumberByType(localDate.getMonth().name(), WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
+                statisticsService.getWorkoutsNumberByType(
+                        Calendar.getInstance().get(Calendar.YEAR),
+                        localDate.getMonth().name(), WorkoutType.DELTS.name(), authInitiatorService.getUserFromAuth());
 
         model.addAttribute("weekOneCurrentDays",
                 CurrentWorkoutDaysByWeekService.getCurrentWorkoutDaysByWeek(CurrentMonthDaysService.getMonthDays(yearMonth), 1));
