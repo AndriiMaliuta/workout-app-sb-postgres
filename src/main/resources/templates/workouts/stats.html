@@ -123,18 +123,17 @@
     const yearSelect = document.querySelector('#year-select');
     const yearSpan = document.querySelector('#year-span')
 
-    let workouts = [];
-    let data = {};
+    // let workouts = [];
+    // let data = {};
 
     yearSelect.addEventListener('change', e => {
         yearSpan.textContent = yearSelect.value;
         workouts = [];
-        fetch(`/api/v1/workouts/year/${yearSelect.value}`)
+        fetch(`/rest/api/v1/stats/workouts/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
-                data.forEach(w => workouts.push(w));
-                let january = 0;
-                generateChart()
+                console.log(data)
+                // generateChart()
             });
     });
 
