@@ -127,21 +127,23 @@
         yearSpan.textContent = yearSelect.value;
         fetch(`/rest/api/v1/stats/workouts/${yearSelect.value}`)
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                generateChart(data)
+            .then(monthsData => {
+                console.log(monthsData)
+                generateChart(monthsData)
             });
     });
 
-    function generateChart(data) {
+    function generateChart(monthsData) {
+
+        console.log(`data inside chart == ${data}`)
 
         google.charts.load("current", {packages:['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ["Month", "Number", {role: "style"}],
-                ["January", data.january, "#b87333"],
-                ["February", data.february, "silver"],
+                ["January", monthsData.january, "#b87333"],
+                ["February", monthsData.february, "silver"],
                 ["March", 0, "gold"],
                 ["April", 0, "color: green"],
                 ["May", 0, "color: #3FBF7F"],
