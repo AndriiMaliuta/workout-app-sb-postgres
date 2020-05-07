@@ -104,7 +104,7 @@
 
         <select name="year-select" id="year-select">
             <option value="2019">2019</option>
-            <option value="2020">2020</option>
+            <option selected value="2020">2020</option>
         </select>
         <br>
         <button class="button" id="year-confirm-btn">Select</button>
@@ -128,7 +128,6 @@
 
     yearSelect.addEventListener('change', e => {
         yearSpan.textContent = yearSelect.value;
-        workouts = [];
         fetch(`/rest/api/v1/stats/workouts/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
