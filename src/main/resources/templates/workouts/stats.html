@@ -123,16 +123,13 @@
     const yearSelect = document.querySelector('#year-select');
     const yearSpan = document.querySelector('#year-span')
 
-    // let workouts = [];
-    // let data = {};
-
     yearSelect.addEventListener('change', e => {
         yearSpan.textContent = yearSelect.value;
         fetch(`/rest/api/v1/stats/workouts/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                // generateChart()
+                generateChart(data)
             });
     });
 
@@ -144,7 +141,7 @@
             var data = google.visualization.arrayToDataTable([
                 ["Month", "Number", {role: "style"}],
                 ["January", data.january, "#b87333"],
-                ["February", 0, "silver"],
+                ["February", data.february, "silver"],
                 ["March", 0, "gold"],
                 ["April", 0, "color: green"],
                 ["May", 0, "color: #3FBF7F"],
@@ -178,6 +175,8 @@
             chart.draw(view, options);
         }
     }
+
+    // generateChart();
 
 </script>
 

@@ -30,16 +30,16 @@ public class ApiStatsController {
         monthCountModel.setJanuary(workoutService.getWorkoutsByYearMonth(
                 workoutService.userWorkouts(workoutService.findAllWorkouts(), authInitiatorService.getUserFromAuth()),year, "January").size());
         monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "February").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "March").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "April").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "May").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "June").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "July").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "August").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "September").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "October").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "November").size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "December").size());
+        monthCountModel.setMarch(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "March").size());
+        monthCountModel.setApril(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "April").size());
+        monthCountModel.setMay(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "May").size());
+        monthCountModel.setJune(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "June").size());
+        monthCountModel.setJuly(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "July").size());
+        monthCountModel.setAugust(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "August").size());
+        monthCountModel.setSeptember(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "September").size());
+        monthCountModel.setOctober(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "October").size());
+        monthCountModel.setNovember(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "November").size());
+        monthCountModel.setDecember(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "December").size());
 
         return monthCountModel;
     }
