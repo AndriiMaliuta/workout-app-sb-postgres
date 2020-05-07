@@ -102,15 +102,17 @@
 
         <h1 class="title is-2">Statistics for <span id="year-span" style="color: #00d1b2" th:text="${year}"></span> year</h1>
 
-        <select name="year-select" id="year-select">
-            <option value="2019">2019</option>
-            <option selected value="2020">2020</option>
-        </select>
+        <div class="field">
+            <label class="label" for="year-select"><b>Select year</b></label>
+            <div class="select">
+                <select name="year-select" id="year-select">
+                    <option value="2019">2019</option>
+                    <option selected value="2020">2020</option>
+                </select>
+            </div>
+        </div>
         <br>
-        <button class="button" id="year-confirm-btn">Select</button>
-
-        <br>
-
+        <!--        <button class="button" id="year-confirm-btn">Select</button>-->
         <div id="columnchart_values"></div>
 
     </div>
@@ -123,20 +125,26 @@
     const yearSelect = document.querySelector('#year-select');
     const yearSpan = document.querySelector('#year-span')
 
+    window.onload((e) => {
+        yearSpan.textContent = yearSelect.value;
+        fetch(`/rest/api/v1/stats/workouts/${yearSelect.value}`)
+            .then(response => response.json())
+            .then(monthsData => {
+                generateChart(monthsData)
+            });
+    })
+
     yearSelect.addEventListener('change', e => {
         yearSpan.textContent = yearSelect.value;
         fetch(`/rest/api/v1/stats/workouts/${yearSelect.value}`)
             .then(response => response.json())
             .then(monthsData => {
-                console.log(monthsData)
                 generateChart(monthsData)
             });
     });
 
     function generateChart(monthsData) {
-
-        console.log(`data inside chart == ${monthsData}`)
-
+        // console.log(`data inside chart == ${monthsData}`)
         google.charts.load("current", {packages:['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
