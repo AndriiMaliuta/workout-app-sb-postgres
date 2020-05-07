@@ -144,17 +144,17 @@
             var data = google.visualization.arrayToDataTable([
                 ["Month", "Number", {role: "style"}],
                 ["January", data.january, "#b87333"],
-                ["February", [[${yearMap.get('February')}]], "silver"],
-                ["March", [[${yearMap.get('March')}]], "gold"],
-                ["April", [[${yearMap.get('April')}]], "color: green"],
-                ["May", [[${yearMap.get('May')}]], "color: #3FBF7F"],
-                ["June", [[${yearMap.get('June')}]], "color: #3F7FBF"],
-                ["July", [[${yearMap.get('July')}]], "color: #BF3FBF"],
-                ["August", [[${yearMap.get('August')}]], "color: #3FBFBF"],
-                ["September", [[${yearMap.get('September')}]], "color: #3F3FBF"],
-                ["October", [[${yearMap.get('October')}]], "color: #BFBF3F"],
-                ["November", [[${yearMap.get('November')}]], "color: #19334C"],
-                ["December", [[${yearMap.get('December')}]], "color: #6D20BF"]
+                ["February", 0, "silver"],
+                ["March", 0, "gold"],
+                ["April", 0, "color: green"],
+                ["May", 0, "color: #3FBF7F"],
+                ["June", 0, "color: #3F7FBF"],
+                ["July", 0, "color: #BF3FBF"],
+                ["August", 0, "color: #3FBFBF"],
+                ["September", 0, "color: #3F3FBF"],
+                ["October", 0, "color: #BFBF3F"],
+                ["November", 0, "color: #19334C"],
+                ["December", 0, "color: #6D20BF"]
             ]);
 
             var view = new google.visualization.DataView(data);
