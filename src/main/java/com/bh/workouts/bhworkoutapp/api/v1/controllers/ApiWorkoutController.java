@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(ApiWorkoutController.BASE_URL)
 public class ApiWorkoutController {
 
-    static final String BASE_URL = "/api/v1/workouts";
+    static final String BASE_URL = "/rest/api/v1/workouts";
 
     private final WorkoutRepository workoutRepository;
     private final WorkoutService workoutService;

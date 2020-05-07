@@ -17,15 +17,17 @@ public class ApiStatsController {
         this.workoutService = workoutService;
     }
 
-    static final String REST_API_URL = "/rest/api/v1/stats/workouts/{year}/{month}/count";
+    static final String REST_API_URL = "/rest/api/v1/stats/workouts";
 
-    @GetMapping
-    public MonthCountModel getSizeByMonth(@PathVariable int year, @PathVariable String month) {
+    @GetMapping("/{year}/count")
+    public MonthCountModel getSizeByMonth(@PathVariable int year) {
 
         MonthCountModel monthCountModel = new MonthCountModel();
 
-        monthCountModel.setJanuary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, month).size());
-        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, month).size());
+        monthCountModel.setJanuary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "January").size());
+        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "February").size());
+        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "March").size());
+        monthCountModel.setFebruary(workoutService.getWorkoutsByYearMonth(workoutService.findAllWorkouts(), year, "April").size());
 
         return monthCountModel;
     }
