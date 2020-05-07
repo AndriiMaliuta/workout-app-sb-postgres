@@ -28,7 +28,7 @@ public class StatisticsController {
 
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
-        model.addAttribute("yearMap", statisticsService.getWorkoutsForYear(currentYear, authInitiatorService.getUserFromAuth()));
+//        model.addAttribute("yearMap", statisticsService.getWorkoutsForYear(currentYear, authInitiatorService.getUserFromAuth()));
         model.addAttribute("year", currentYear);
 
         return "workouts/stats";

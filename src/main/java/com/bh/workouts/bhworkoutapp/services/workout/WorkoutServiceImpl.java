@@ -23,6 +23,11 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
+    public List<Workout> findAllWorkouts() {
+        return workoutRepository.findAll();
+    }
+
+    @Override
     public List<Workout> findWorkoutsByWorkoutDay(String day) {
 
         List<Workout> workouts = new ArrayList<>();
@@ -77,5 +82,19 @@ public class WorkoutServiceImpl implements WorkoutService {
 
         }
         return workoutsByYear;
+    }
+
+    @Override
+    public List<Workout> getWorkoutsByYearMonth(List<Workout> workouts, int year, String month) {
+
+        List<Workout> workoutsByYearMonth = new ArrayList<>();
+
+        for (Workout w : workouts) {
+            if (Integer.parseInt(w.getWorkoutDate().substring(6)) == year && w.getWorkoutMonth().equalsIgnoreCase(month)) {
+                workoutsByYearMonth.add(w);
+            }
+
+        }
+        return workoutsByYearMonth;
     }
 }

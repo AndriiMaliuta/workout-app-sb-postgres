@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Statistics</title>
 
     <link rel="stylesheet" href="../../css/main.css">
@@ -100,7 +100,7 @@
 
     <div class="container">
 
-        <h1 class="title is-2">Statistics by <span style="color: #00d1b2" th:text="${year}"></span> year</h1>
+        <h1 class="title is-2">Statistics for <span id="year-span" style="color: #00d1b2" th:text="${year}"></span> year</h1>
 
         <select name="year-select" id="year-select">
             <option value="2019">2019</option>
@@ -121,64 +121,66 @@
 <script th:inline="javascript" type="text/javascript">
 
     const yearSelect = document.querySelector('#year-select');
-    const yearBtn = document.querySelector('year-confirm-btn');
+    const yearSpan = document.querySelector('#year-span')
 
     let workouts = [];
-    let workouts2 = [];
+    let data = {};
 
     yearSelect.addEventListener('change', e => {
+        yearSpan.textContent = yearSelect.value;
+        workouts = [];
         fetch(`/api/v1/workouts/year/${yearSelect.value}`)
             .then(response => response.json())
             .then(data => {
                 data.forEach(w => workouts.push(w));
-                workouts2.push(data)
-                console.log('workouts:')
-                console.log(workouts);
-                console.log('workuts2')
-                console.log(workouts2);
+                let january = 0;
+                generateChart()
             });
-
     });
 
+    function generateChart(data) {
 
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["Month", "Number", {role: "style"}],
+                ["January", data.january, "#b87333"],
+                ["February", [[${yearMap.get('February')}]], "silver"],
+                ["March", [[${yearMap.get('March')}]], "gold"],
+                ["April", [[${yearMap.get('April')}]], "color: green"],
+                ["May", [[${yearMap.get('May')}]], "color: #3FBF7F"],
+                ["June", [[${yearMap.get('June')}]], "color: #3F7FBF"],
+                ["July", [[${yearMap.get('July')}]], "color: #BF3FBF"],
+                ["August", [[${yearMap.get('August')}]], "color: #3FBFBF"],
+                ["September", [[${yearMap.get('September')}]], "color: #3F3FBF"],
+                ["October", [[${yearMap.get('October')}]], "color: #BFBF3F"],
+                ["November", [[${yearMap.get('November')}]], "color: #19334C"],
+                ["December", [[${yearMap.get('December')}]], "color: #6D20BF"]
+            ]);
 
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ["Month", "Number", { role: "style" } ],
-            ["January", [[${yearMap.get('January')}]], "#b87333"],
-            ["February", [[${yearMap.get('February')}]], "silver"],
-            ["March", [[${yearMap.get('March')}]], "gold"],
-            ["April", [[${yearMap.get('April')}]], "color: green"],
-            ["May", [[${yearMap.get('May')}]], "color: #3FBF7F"],
-            ["June", [[${yearMap.get('June')}]], "color: #3F7FBF"],
-            ["July", [[${yearMap.get('July')}]], "color: #BF3FBF"],
-            ["August", [[${yearMap.get('August')}]], "color: #3FBFBF"],
-            ["September", [[${yearMap.get('September')}]], "color: #3F3FBF"],
-            ["October", [[${yearMap.get('October')}]], "color: #BFBF3F"],
-            ["November", [[${yearMap.get('November')}]], "color: #19334C"],
-            ["December", [[${yearMap.get('December')}]], "color: #6D20BF"]
-        ]);
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
 
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0, 1,
-            { calc: "stringify",
-                sourceColumn: 1,
-                type: "string",
-                role: "annotation" },
-            2]);
-
-        var options = {
-            title: "Total numbers of workouts per each month",
-            width: 1200,
-            height: 800,
-            bar: {groupWidth: "95%"},
-            legend: { position: "none" }
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-        chart.draw(view, options);
+            var options = {
+                title: "Total numbers of workouts per each month",
+                width: 1200,
+                height: 800,
+                bar: {groupWidth: "95%"},
+                legend: {position: "none"}
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
     }
+
 </script>
 
 
