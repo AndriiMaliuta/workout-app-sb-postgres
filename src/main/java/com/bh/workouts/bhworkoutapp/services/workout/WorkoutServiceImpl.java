@@ -106,22 +106,25 @@ public class WorkoutServiceImpl implements WorkoutService {
 
         for (Workout w : workouts) {
 
-            if (Integer.parseInt(w.getWorkoutDate().substring(6)) == year && w.getWorkoutMonth().equalsIgnoreCase(month)) {
+            if (Integer.parseInt(w.getWorkoutDate().substring(6)) == year
+                    && w.getWorkoutMonth().equalsIgnoreCase(month)
+                    && w.getWeek() == week) {
 
-                SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-                Date date = null;
-
-                try {
-
-                    date = df.parse(w.getWorkoutDate());
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(date);
-                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_YEAR);
-                    if (weekFromWorkout == week) workoutsByYearMonthWeek.add(w);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                workoutsByYearMonthWeek.add(w);
+//                SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+//                Date date = null;
+//
+//                try {
+//
+//                    date = format.parse(w.getWorkoutDate());
+//                    Calendar cal = Calendar.getInstance();
+//                    cal.setTime(date);
+//                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_YEAR);
+//                    if (weekFromWorkout == week) workoutsByYearMonthWeek.add(w);
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
             }
         }
         return workoutsByYearMonthWeek;
