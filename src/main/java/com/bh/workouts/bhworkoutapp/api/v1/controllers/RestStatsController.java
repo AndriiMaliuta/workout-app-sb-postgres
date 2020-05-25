@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ApiStatsController.REST_API_URL)
-public class ApiStatsController {
+@RequestMapping(RestStatsController.REST_API_URL)
+public class RestStatsController {
 
     private final WorkoutService workoutService;
     private final AuthInitiatorService authInitiatorService;
 
-    public ApiStatsController(WorkoutService workoutService, AuthInitiatorService authInitiatorService) {
+    public RestStatsController(WorkoutService workoutService, AuthInitiatorService authInitiatorService) {
         this.workoutService = workoutService;
         this.authInitiatorService = authInitiatorService;
     }

@@ -13,5 +13,6 @@ public interface WorkoutService {
     List<Workout> userWorkouts(List<Workout> workouts, User userLogin);
     List<Workout> getWorkoutsByYear(List<Workout> workouts, int year);
     List<Workout> getWorkoutsByYearMonth(List<Workout> workouts, int year, String month);
+    List<Workout> getWorkoutsByYearMonthWeek(List<Workout> workouts, int year, String month, Integer week);
 
 }

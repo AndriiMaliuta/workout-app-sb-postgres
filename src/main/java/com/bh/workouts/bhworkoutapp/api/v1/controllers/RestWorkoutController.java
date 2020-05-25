@@ -8,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(ApiWorkoutController.BASE_URL)
-public class ApiWorkoutController {
+@RequestMapping(RestWorkoutController.BASE_URL)
+public class RestWorkoutController {
 
     static final String BASE_URL = "/rest/api/v1/workouts";
 
@@ -20,7 +21,7 @@ public class ApiWorkoutController {
     private final WorkoutService workoutService;
 
     @Autowired
-    public ApiWorkoutController(WorkoutRepository workoutRepository, WorkoutService workoutService) {
+    public RestWorkoutController(WorkoutRepository workoutRepository, WorkoutService workoutService) {
         this.workoutRepository = workoutRepository;
         this.workoutService = workoutService;
     }
@@ -45,14 +46,21 @@ public class ApiWorkoutController {
     }
 
     @GetMapping(path = "/date/{year}/{month}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Workout> getWorkoutsByYear(@PathVariable(value = "year") Integer year, @PathVariable String month) {
+    public List<Workout> getWorkoutsByYearMonth(@PathVariable(value = "year") Integer year, @PathVariable String month) {
+        return workoutService.getWorkoutsByYearMonth(workoutRepository.findAll(), year, month);
+    }
+
+    @GetMapping(path = "/date/{year}/{month}/{week}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Workout> getWorkoutsByYearMonthWeek(@PathVariable(value = "year") Integer year,
+                                                    @PathVariable String month,
+                                                    @PathVariable Integer week){
         return workoutService.getWorkoutsByYearMonth(workoutRepository.findAll(), year, month);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Workout createWorkout(@RequestBody Workout workout) {
+    public Workout createWorkout(@Valid @RequestBody Workout workoutDetails) {
 
-        return workoutRepository.save(workout);
+        return workoutRepository.save(workoutDetails);
     }
 }

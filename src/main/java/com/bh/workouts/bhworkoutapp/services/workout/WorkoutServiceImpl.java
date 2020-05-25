@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -96,5 +97,33 @@ public class WorkoutServiceImpl implements WorkoutService {
 
         }
         return workoutsByYearMonth;
+    }
+
+    @Override
+    public List<Workout> getWorkoutsByYearMonthWeek(List<Workout> workouts, int year, String month, Integer week) {
+
+        List<Workout> workoutsByYearMonthWeek = new ArrayList<>();
+
+        for (Workout w : workouts) {
+
+            if (Integer.parseInt(w.getWorkoutDate().substring(6)) == year && w.getWorkoutMonth().equalsIgnoreCase(month)) {
+
+                SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                Date date = null;
+
+                try {
+
+                    date = df.parse(w.getWorkoutDate());
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(date);
+                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_YEAR);
+                    if (weekFromWorkout == week) workoutsByYearMonthWeek.add(w);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return workoutsByYearMonthWeek;
     }
 }
