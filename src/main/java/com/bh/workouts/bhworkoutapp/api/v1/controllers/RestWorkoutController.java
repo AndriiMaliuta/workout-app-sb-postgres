@@ -54,7 +54,7 @@ public class RestWorkoutController {
     public List<Workout> getWorkoutsByYearMonthWeek(@PathVariable(value = "year") Integer year,
                                                     @PathVariable String month,
                                                     @PathVariable Integer week){
-        return workoutService.getWorkoutsByYearMonth(workoutRepository.findAll(), year, month);
+        return workoutService.getWorkoutsByYearMonthWeek(workoutRepository.findAll(), year, month, week);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
