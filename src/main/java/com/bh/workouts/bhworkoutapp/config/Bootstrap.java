@@ -103,6 +103,8 @@ public class Bootstrap implements CommandLineRunner {
 //                    e.printStackTrace();
 //                }
 //        }
-        workoutRepository.findById(453L).get().setWeek(2);
+        Workout workout = workoutRepository.findById(453L).get();
+        workout.setWeek(2);
+        workoutRepository.save(workout);
     }
 }
