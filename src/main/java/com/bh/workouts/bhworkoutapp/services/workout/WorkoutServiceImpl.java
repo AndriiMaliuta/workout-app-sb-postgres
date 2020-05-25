@@ -119,7 +119,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 //                    date = format.parse(w.getWorkoutDate());
 //                    Calendar cal = Calendar.getInstance();
 //                    cal.setTime(date);
-//                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_YEAR);
+//                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_MONTH);
 //                    if (weekFromWorkout == week) workoutsByYearMonthWeek.add(w);
 //
 //                } catch (ParseException e) {

@@ -2,7 +2,9 @@ package com.bh.workouts.bhworkoutapp.config;
 
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
+import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
+import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import com.bh.workouts.bhworkoutapp.services.exercise.InitExercisesService;
 import org.slf4j.Logger;
@@ -12,6 +14,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Component
 public class Bootstrap implements CommandLineRunner {
@@ -19,16 +25,30 @@ public class Bootstrap implements CommandLineRunner {
     private final UserService userService;
     private final ExerciseNameRepository exerciseNameRepository;
     private final InitExercisesService initExercisesService;
+    private final WorkoutRepository workoutRepository;
 
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     @Autowired
     public Bootstrap(UserService userService,
                      ExerciseNameRepository exerciseNameRepository,
-                     InitExercisesService initExercisesService) {
+                     InitExercisesService initExercisesService,
+                     WorkoutRepository workoutRepository) {
         this.userService = userService;
         this.exerciseNameRepository = exerciseNameRepository;
         this.initExercisesService = initExercisesService;
+        this.workoutRepository = workoutRepository;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        loadUsers();
+        loadExercises();
+        setCorrectWeeks();                                                                      // TODO - one time to set correct Weeks
+
+        logger.debug("============== Exercises loaded ===============");
+
     }
 
     private void loadUsers() {
@@ -66,13 +86,23 @@ public class Bootstrap implements CommandLineRunner {
         }
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-
-        loadUsers();
-        loadExercises();
-
-        logger.debug("============== Exercises loaded ===============");
-
+    private void setCorrectWeeks() {
+//        for (Workout w : workoutRepository.findAll()) {
+//            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+//                Date date = null;
+//
+//                try {
+//
+//                    date = format.parse(w.getWorkoutDate());
+//                    Calendar cal = Calendar.getInstance();
+//                    cal.setTime(date);
+//                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_MONTH);
+//                    w.setWeek(weekFromWorkout);
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//        }
+        workoutRepository.findById(453L).get().setWeek(2);
     }
 }

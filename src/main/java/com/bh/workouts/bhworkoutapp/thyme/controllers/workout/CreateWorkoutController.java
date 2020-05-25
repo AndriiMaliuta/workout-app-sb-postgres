@@ -48,6 +48,8 @@ public class CreateWorkoutController {
     public String createWorkout(@ModelAttribute Workout workout, Model model) throws ParseException {
 
         Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        calendar.setTime(format.parse(workout.getWorkoutDate()));
 
         Workout newWorkout = new Workout();
 
