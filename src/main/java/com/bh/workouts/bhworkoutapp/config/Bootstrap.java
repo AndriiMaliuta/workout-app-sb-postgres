@@ -87,24 +87,25 @@ public class Bootstrap implements CommandLineRunner {
     }
 
     private void setCorrectWeeks() {
-//        for (Workout w : workoutRepository.findAll()) {
-//            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-//                Date date = null;
-//
-//                try {
-//
-//                    date = format.parse(w.getWorkoutDate());
-//                    Calendar cal = Calendar.getInstance();
-//                    cal.setTime(date);
-//                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_MONTH);
-//                    w.setWeek(weekFromWorkout);
-//
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//        }
-        Workout workout = workoutRepository.findById(453L).get();
-        workout.setWeek(2);
-        workoutRepository.save(workout);
+        for (Workout w : workoutRepository.findAll()) {
+            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+                Date date = null;
+
+                try {
+
+                    date = format.parse(w.getWorkoutDate());
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(date);
+                    int weekFromWorkout = cal.get(Calendar.WEEK_OF_MONTH);
+                    w.setWeek(weekFromWorkout);
+                    workoutRepository.save(w);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+        }
+//        Workout workout = workoutRepository.findById(453L).get();
+//        workout.setWeek(2);
+//        workoutRepository.save(workout);
     }
 }
