@@ -21,19 +21,19 @@ public class Main {
 
 //        Month currentMonth = LocalDate.of(2020, 5, 1).getMonth();
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        calendar.setTime(format.parse("31/05/2020"));
-
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
-        int week = calendar.get(Calendar.WEEK_OF_MONTH);
-
-        System.out.println(year);
-        System.out.println(month);
-        System.out.println(week);
-        System.out.println(dayOfYear);
+//        Calendar calendar = Calendar.getInstance();
+//        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+//        calendar.setTime(format.parse("31/05/2020"));
+//
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH);
+//        int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
+//        int week = calendar.get(Calendar.WEEK_OF_MONTH);
+//
+//        System.out.println(year);
+//        System.out.println(month);
+//        System.out.println(week);
+//        System.out.println(dayOfYear);
 
     }
 }
