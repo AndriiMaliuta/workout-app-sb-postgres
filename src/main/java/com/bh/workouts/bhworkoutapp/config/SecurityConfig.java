@@ -27,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -37,8 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic();
         http.formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error=true")
+//                .loginPage("/login")
+//                .failureUrl("/login?error=true")
                 .defaultSuccessUrl("/home")
                 .usernameParameter("login")
                 .passwordParameter("password");
