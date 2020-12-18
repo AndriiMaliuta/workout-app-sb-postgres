@@ -2,7 +2,6 @@ package com.bh.workouts.bhworkoutapp.config;
 
 import com.bh.workouts.bhworkoutapp.models.RoleEnum;
 import com.bh.workouts.bhworkoutapp.models.User;
-import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.ExerciseNameRepository;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.user.UserService;
@@ -14,10 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 @Component
 public class Bootstrap implements CommandLineRunner {
@@ -27,7 +22,7 @@ public class Bootstrap implements CommandLineRunner {
     private final InitExercisesService initExercisesService;
     private final WorkoutRepository workoutRepository;
 
-    private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+    private final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     @Autowired
     public Bootstrap(UserService userService,
@@ -57,10 +52,11 @@ public class Bootstrap implements CommandLineRunner {
             User anma = new User();
 
             anma.setId(1L);
-            anma.setRoles(RoleEnum.ADMIN);
+            anma.setRoles(RoleEnum.ROLE_ADMIN + "," + RoleEnum.ROLE_USER);
             anma.setActive(1);
             anma.setEmail("test-main@test.com");
             anma.setLogin("anma");
+//            anma.setUsername("anma");
             anma.setFirstName("Andrii");
             anma.setLastName("Maliuta");
             anma.setPassword("Porkie");

@@ -40,6 +40,10 @@ public class User {
     @NotEmpty(message = "Please specify your login")
     private String login;
 
+//    @Column(name = "username")
+//    @NotEmpty(message = "Please specify your username")
+//    private String username;
+
     @Column(name = "email", unique = true, nullable = false)
     @Email(message = "*Please provide valid Email")
     @NotEmpty(message = "*Please provide email")
@@ -57,7 +61,7 @@ public class User {
 //    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 //    private Collection<Role> roles;
 
-    private RoleEnum roles;
+    private String roles;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")

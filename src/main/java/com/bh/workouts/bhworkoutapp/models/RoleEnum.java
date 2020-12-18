@@ -2,5 +2,5 @@ package com.bh.workouts.bhworkoutapp.models;
 
 public enum  RoleEnum {
 
-    USER , ADMIN
+    ROLE_USER, ROLE_ADMIN, ROLE_SYSADMIN
 }
