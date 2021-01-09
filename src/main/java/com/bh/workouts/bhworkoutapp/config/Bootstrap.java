@@ -53,7 +53,7 @@ public class Bootstrap implements CommandLineRunner {
             User anma = new User();
 
             anma.setId(1L);
-            anma.setRoles(RoleEnum.ROLE_ADMIN + "," + RoleEnum.ROLE_USER);
+            anma.setRoles(RoleEnum.ROLE_ADMIN);
             anma.setActive(1);
             anma.setEmail("test-main@test.com");
             anma.setLogin("anma");
