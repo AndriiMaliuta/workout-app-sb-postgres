@@ -44,8 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("login")
                 .passwordParameter("password");
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/", "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()
