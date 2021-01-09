@@ -71,4 +71,19 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<ExerciseName> exerciseNames;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", active=" + active +
+                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", weight=" + weight +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                '}';
+    }
 }
