@@ -61,7 +61,7 @@ public class User {
 //    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 //    private Collection<Role> roles;
 
-    private String roles;
+    private RoleEnum roles;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
