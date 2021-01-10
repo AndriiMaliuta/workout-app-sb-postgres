@@ -65,6 +65,11 @@ public class RestWorkoutController {
         return workoutRepository.findById(id).get();
     }
 
+    @GetMapping(path = "/date", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Workout> getWorkoutsByDatesRange(@RequestParam String from, @RequestParam String to) {
+        return workoutService.findWorkoutsFromTo(from, to);
+    }
+
     @GetMapping(path = "/date/{year}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Workout> getWorkoutsByYear(@PathVariable(value = "year") Integer year) {
         return workoutService.getWorkoutsByYear(workoutRepository.findAll(), year);

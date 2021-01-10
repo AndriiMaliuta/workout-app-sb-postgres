@@ -29,6 +29,29 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
+    public List<Workout> findWorkoutsFromTo(String from, String to) {
+
+        List<Workout> workoutsByDatesRange = new ArrayList<>();
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+
+        for (Workout w : findAllWorkouts()) {
+            try {
+                Date wDate = format.parse(w.getWorkoutDate());
+                Date fromDate = format.parse(from);
+                Date toDate = format.parse(to);
+                if ( (wDate.after(fromDate) || wDate.equals(fromDate))
+                        && (wDate.before(toDate) || wDate.equals(toDate))) {
+                    workoutsByDatesRange.add(w);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return workoutsByDatesRange;
+    }
+
+    @Override
     public List<Workout> findWorkoutsByWorkoutDay(String day) {
 
         List<Workout> workouts = new ArrayList<>();
