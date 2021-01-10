@@ -100,7 +100,7 @@ public class RestWorkoutController {
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updateWorkout(@RequestBody CreateWorkoutRequest request, @PathVariable long id) throws ParseException {
+    public ResponseEntity<WorkoutResponse> updateWorkout(@RequestBody CreateWorkoutRequest request, @PathVariable long id) throws ParseException {
 
         log.info(">>>>>>>>>>>>>>>>>> REST PUT request to change workout with ID == " + id);
 
@@ -125,6 +125,8 @@ public class RestWorkoutController {
 
         log.info(">>>>>>>>>>>>>>>>>> PUT OK -> Workout changed successfully");
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(workoutRepository.save(fromRequest));
+        WorkoutResponse response = mapper.map(workoutRepository.save(fromRequest), WorkoutResponse.class);
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 }
