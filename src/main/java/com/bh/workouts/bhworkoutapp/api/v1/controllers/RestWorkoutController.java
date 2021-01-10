@@ -125,6 +125,6 @@ public class RestWorkoutController {
 
         log.info(">>>>>>>>>>>>>>>>>> PUT OK -> Workout changed successfully");
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(fromRequest);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(workoutRepository.save(fromRequest));
     }
 }
