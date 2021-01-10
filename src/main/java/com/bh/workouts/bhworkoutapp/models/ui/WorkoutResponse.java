@@ -9,5 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class WorkoutResponse {
 
+    private String type;
+    private String date;
+    private String comments;
 
 }
