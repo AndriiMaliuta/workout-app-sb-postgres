@@ -18,7 +18,6 @@ public class Workout {
     @Column(name = "workout_id")
     private Long id;
 
-    @NotEmpty(message = "Please provide workout type")
     @Column(columnDefinition = "varchar(255)")
     private String workoutType;
 
