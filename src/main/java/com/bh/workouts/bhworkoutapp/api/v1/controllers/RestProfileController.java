@@ -19,6 +19,6 @@ public class RestProfileController {
     @GetMapping("/rest/api/v1/users/{login}")
     public UserRest getUserInfo(@PathVariable String login) {
 
-        return new ModelMapper().map(userRepository.findByLogin(login), UserRest.class);
+        return new ModelMapper().map(userRepository.findByLogin(login).get(), UserRest.class);
     }
 }
