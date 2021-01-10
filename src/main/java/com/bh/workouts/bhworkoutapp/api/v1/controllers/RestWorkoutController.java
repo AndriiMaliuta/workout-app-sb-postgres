@@ -49,20 +49,16 @@ public class RestWorkoutController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Workout> getWorkoutsForApi(@RequestParam(required = false) String author) {
-
         if (author == null || author.isEmpty()) {
             return workoutRepository.findAll();
         }
-
         return workoutService.userWorkouts(workoutRepository.findAll(), userService.findUserByLogin(author));
-
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Workout getWorkoutByIdApi(@PathVariable long id) {
-
-        return workoutRepository.findById(id).get();
+        return workoutRepository.findById(id).orElseThrow(()-> new RuntimeException(">>> Workout with id= " + id + " not found!"));
     }
 
     @GetMapping(path = "/date", produces = MediaType.APPLICATION_JSON_VALUE)
