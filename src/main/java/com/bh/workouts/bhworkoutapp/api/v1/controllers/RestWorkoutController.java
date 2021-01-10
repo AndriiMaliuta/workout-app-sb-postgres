@@ -48,12 +48,12 @@ public class RestWorkoutController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<Workout> getWorkoutsForApi(@RequestParam String author) {
+    public List<Workout> getWorkoutsForApi(@RequestParam(required = false) String author) {
 
         if (author == null || author.isEmpty()) {
             return workoutRepository.findAll();
         }
-        
+
         return workoutService.userWorkouts(workoutRepository.findAll(), userService.findUserByLogin(author));
 
     }
