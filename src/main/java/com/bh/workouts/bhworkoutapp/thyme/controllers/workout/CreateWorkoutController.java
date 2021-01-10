@@ -56,6 +56,7 @@ public class CreateWorkoutController {
         newWorkout.setWorkoutType(workout.getWorkoutType());
         newWorkout.setCreationDate(workout.getCreationDate());
         newWorkout.setWorkoutDate(workout.getWorkoutDate());
+
         newWorkout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));
         newWorkout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
         newWorkout.setComments(workout.getComments());
@@ -63,7 +64,6 @@ public class CreateWorkoutController {
         newWorkout.setWeek(calendar.get(Calendar.WEEK_OF_MONTH));
 
         Date dayDate = new SimpleDateFormat("MM/dd/yyyy").parse(workout.getWorkoutDate());
-
         newWorkout.setWorkoutDay(new SimpleDateFormat("EEEE").format(dayDate));
 
         workoutRepository.save(newWorkout);

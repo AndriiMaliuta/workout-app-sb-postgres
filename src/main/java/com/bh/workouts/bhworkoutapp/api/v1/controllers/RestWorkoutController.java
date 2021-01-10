@@ -10,6 +10,7 @@ import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -92,5 +93,17 @@ public class RestWorkoutController {
         workout.setWorkoutDay(new SimpleDateFormat("EEEE").format(dayDate));
 
         return workoutRepository.save(workout);
+    }
+
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Workout> updateWorkout(@Valid @RequestBody CreateWorkoutRequest request, @PathVariable long id) {
+
+        Workout existingWorkout = workoutRepository.getOne(id);
+
+        existingWorkout.setWorkoutType(request.getType());
+        existingWorkout.setWorkoutDate(request.getDate());
+        existingWorkout.setComments(request.getComments());
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(workoutRepository.save(existingWorkout));
     }
 }
