@@ -2,11 +2,14 @@ package com.bh.workouts.bhworkoutapp.api.v1.controllers;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.models.ui.CreateWorkoutRequest;
+import com.bh.workouts.bhworkoutapp.models.ui.WorkoutResponse;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
 import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
+import lombok.extern.java.Log;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +26,7 @@ import java.util.List;
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping(RestWorkoutController.BASE_URL)
+@Log
 public class RestWorkoutController {
 
     static final String BASE_URL = "/rest/api/v1/workouts";
@@ -96,14 +100,17 @@ public class RestWorkoutController {
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Workout> updateWorkout(@Valid @RequestBody CreateWorkoutRequest request, @PathVariable long id) {
+    public ResponseEntity<Workout> updateWorkout(@RequestBody CreateWorkoutRequest request, @PathVariable long id) {
 
-        Workout existingWorkout = workoutRepository.getOne(id);
+        log.info(">>>>>>>>>>>>>>>>>> REST PUT request to change workout with ID == " + id);
 
-        existingWorkout.setWorkoutType(request.getType());
-        existingWorkout.setWorkoutDate(request.getDate());
-        existingWorkout.setComments(request.getComments());
+//        Workout existingWorkout = workoutRepository.getOne(id);
+//        existingWorkout.setWorkoutType(request.getType());
+//        existingWorkout.setWorkoutDate(request.getDate());
+//        existingWorkout.setComments(request.getComments());
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(workoutRepository.save(existingWorkout));
+        log.info(">>>>>>>>>>>>>>>>>> PUT OK -> Workout changed successfully");
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(workoutRepository.save(new ModelMapper().map(request, Workout.class)));
     }
 }
