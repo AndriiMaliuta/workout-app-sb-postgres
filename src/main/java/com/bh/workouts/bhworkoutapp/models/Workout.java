@@ -42,7 +42,7 @@ public class Workout {
     private String workoutDay;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     @Column(columnDefinition = "varchar(500)")
