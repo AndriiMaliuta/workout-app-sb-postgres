@@ -2,7 +2,9 @@ package com.bh.workouts.bhworkoutapp.thyme.controllers.workout;
 
 import com.bh.workouts.bhworkoutapp.models.Workout;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
+import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
 import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class EditWorkoutController {
@@ -33,7 +39,7 @@ public class EditWorkoutController {
     }
 
     @PostMapping("/workout/{workoutId}/edit")
-    public String editWorkout(@PathVariable long workoutId, @ModelAttribute Workout workout) {
+    public String editWorkout(@PathVariable long workoutId, @ModelAttribute Workout workout) throws ParseException {
 
         Workout workoutFromDb = workoutRepository.getOne(workoutId);
 
@@ -41,14 +47,15 @@ public class EditWorkoutController {
         workout.setWorkoutDate(workout.getWorkoutDate());
         workout.setComments(workout.getComments());
 
-        workout.setImagePath(workoutFromDb.getWorkoutType());
-        workout.setWorkoutDay(workoutFromDb.getWorkoutDay());
-        workout.setUser(workoutFromDb.getUser());
-        workout.setCreationDate(workoutFromDb.getCreationDate());
-        workout.setWorkoutMonth(workoutFromDb.getWorkoutMonth());
-        workout.setImagePath(workoutFromDb.getImagePath());
-        workout.setWeek(workoutFromDb.getWeek());
-        workout.setWorkoutDay(workoutFromDb.getWorkoutDay());
+        workout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
+//        workout.setWorkoutDay(workoutFromDb.getWorkoutDay());
+//        workout.setUser(workoutFromDb.getUser());
+//        workout.setCreationDate(workoutFromDb.getCreationDate());
+        workout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));
+//        workout.setWeek(workoutFromDb.getWeek());
+
+        Date dayDate = new SimpleDateFormat("MM/dd/yyyy").parse(workout.getWorkoutDate());
+        workout.setWorkoutDay(new SimpleDateFormat("EEEE").format(dayDate));
 
         workoutRepository.save(workout);
 
