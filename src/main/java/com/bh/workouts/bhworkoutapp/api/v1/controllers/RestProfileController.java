@@ -21,4 +21,6 @@ public class RestProfileController {
 
         return new ModelMapper().map(userRepository.findByLogin(login).get(), UserRest.class);
     }
+
+
 }

@@ -31,7 +31,5 @@ public class UserRest {
 
     private int height;
 
-    private List<Workout> workouts;
-
     private List<ExerciseName> exerciseNames;
 }

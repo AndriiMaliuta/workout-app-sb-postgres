@@ -6,6 +6,7 @@ import com.bh.workouts.bhworkoutapp.models.ui.WorkoutResponse;
 import com.bh.workouts.bhworkoutapp.repositories.WorkoutRepository;
 import com.bh.workouts.bhworkoutapp.services.dates.WorkoutDateTrimToMonthService;
 import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
+import com.bh.workouts.bhworkoutapp.services.user.UserService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutColorService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
 import lombok.extern.java.Log;
@@ -34,19 +35,27 @@ public class RestWorkoutController {
     private final WorkoutRepository workoutRepository;
     private final WorkoutService workoutService;
     private final AuthInitiatorService authInitiatorService;
+    private final UserService userService;
 
     @Autowired
-    public RestWorkoutController(WorkoutRepository workoutRepository, WorkoutService workoutService, AuthInitiatorService authInitiatorService) {
+    public RestWorkoutController(WorkoutRepository workoutRepository, WorkoutService workoutService,
+                                 AuthInitiatorService authInitiatorService, UserService userService) {
         this.workoutRepository = workoutRepository;
         this.workoutService = workoutService;
         this.authInitiatorService = authInitiatorService;
+        this.userService = userService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<Workout> getWorkoutsForApi() {
+    public List<Workout> getWorkoutsForApi(@RequestParam String author) {
 
-        return workoutRepository.findAll();
+        if (author == null || author.isEmpty()) {
+            return workoutRepository.findAll();
+        }
+        
+        return workoutService.userWorkouts(workoutRepository.findAll(), userService.findUserByLogin(author));
+
     }
 
     @GetMapping("/{id}")

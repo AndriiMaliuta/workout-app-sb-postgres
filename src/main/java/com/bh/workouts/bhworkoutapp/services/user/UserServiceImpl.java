@@ -25,11 +25,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findUserByEmail(String email) {
 
-        for (User user : userRepository.findAll()) {
-            if (user.getEmail().equals(email)) return user;
-        }
-
-        return new User();
+//        for (User user : userRepository.findAll()) {
+//            if (user.getEmail().equals(email)) return user;
+//        }
+//
+//        return new User();
+        return userRepository.findByEmail(email).get();
     }
 
     @Override
