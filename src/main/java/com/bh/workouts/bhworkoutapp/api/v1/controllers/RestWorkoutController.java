@@ -100,17 +100,31 @@ public class RestWorkoutController {
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Workout> updateWorkout(@RequestBody CreateWorkoutRequest request, @PathVariable long id) {
+    public ResponseEntity<Workout> updateWorkout(@RequestBody CreateWorkoutRequest request, @PathVariable long id) throws ParseException {
 
         log.info(">>>>>>>>>>>>>>>>>> REST PUT request to change workout with ID == " + id);
+
+        ModelMapper mapper = new ModelMapper();
 
 //        Workout existingWorkout = workoutRepository.getOne(id);
 //        existingWorkout.setWorkoutType(request.getType());
 //        existingWorkout.setWorkoutDate(request.getDate());
 //        existingWorkout.setComments(request.getComments());
+        Workout fromRequest = mapper.map(request, Workout.class);
+        Workout existingWorkout = workoutRepository.getOne(id);
+
+        fromRequest.setId(id);
+        fromRequest.setImagePath(WorkoutColorService.workoutColorSet(fromRequest.getWorkoutType()));
+        fromRequest.setUser(existingWorkout.getUser());
+        fromRequest.setCreationDate(existingWorkout.getCreationDate());
+        fromRequest.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(fromRequest.getWorkoutDate()));
+        fromRequest.setWeek(existingWorkout.getWeek());
+
+        Date dayDate = new SimpleDateFormat("MM/dd/yyyy").parse(fromRequest.getWorkoutDate());
+        fromRequest.setWorkoutDay(new SimpleDateFormat("EEEE").format(dayDate));
 
         log.info(">>>>>>>>>>>>>>>>>> PUT OK -> Workout changed successfully");
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(workoutRepository.save(new ModelMapper().map(request, Workout.class)));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(fromRequest);
     }
 }

@@ -48,7 +48,6 @@ public class EditWorkoutController {
         workout.setComments(workout.getComments());
 
         workout.setImagePath(WorkoutColorService.workoutColorSet(workout.getWorkoutType()));
-        workout.setWorkoutDay(workoutFromDb.getWorkoutDay());
         workout.setUser(workoutFromDb.getUser());
         workout.setCreationDate(workoutFromDb.getCreationDate());
         workout.setWorkoutMonth(WorkoutDateTrimToMonthService.getTrimmedMonthFromDate(workout.getWorkoutDate()));

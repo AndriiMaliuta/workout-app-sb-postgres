@@ -129,4 +129,12 @@ public class WorkoutServiceImpl implements WorkoutService {
         }
         return workoutsByYearMonthWeek;
     }
+
+    @Override
+    public Workout saveWorkout(Workout workout) {
+
+
+
+        return null;
+    }
 }
