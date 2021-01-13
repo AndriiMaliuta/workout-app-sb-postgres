@@ -139,4 +139,10 @@ public class RestWorkoutController {
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteWorkout(@PathVariable long id) {
+        workoutRepository.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted workout with id = " + id);
+    }
 }
