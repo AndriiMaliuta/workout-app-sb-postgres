@@ -24,7 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@CrossOrigin(origins = {"https://anma-workouts.netlify.app/workouts", "http://localhost:3000"})
+@CrossOrigin(origins = {"https://anma-workouts.netlify.app", "http://localhost:3000"})
 @RestController
 @RequestMapping(RestWorkoutController.BASE_URL)
 @Log
