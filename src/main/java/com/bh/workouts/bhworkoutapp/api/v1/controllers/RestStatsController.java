@@ -3,13 +3,11 @@ package com.bh.workouts.bhworkoutapp.api.v1.controllers;
 import com.bh.workouts.bhworkoutapp.api.v1.models.MonthCountModel;
 import com.bh.workouts.bhworkoutapp.services.helpers.AuthInitiatorService;
 import com.bh.workouts.bhworkoutapp.services.workout.WorkoutService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(RestStatsController.REST_API_URL)
+@CrossOrigin(origins = {"https://anma-workouts.netlify.app/workouts", "http://localhost:3000"})
 public class RestStatsController {
 
     private final WorkoutService workoutService;
